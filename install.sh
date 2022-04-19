@@ -13,7 +13,7 @@ dotfiles=(
 
 # Symlink all dotfiles listed above to the right spot
 for dotfile in ${dotfiles[@]}; do
-  rm -f $HOME/$dotfile
+  rm -rf $HOME/$dotfile
   mkdir -p $(dirname $HOME/$dotfile)
   ln -sf $PWD/$dotfile $HOME/$dotfile
 done
