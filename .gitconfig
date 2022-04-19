@@ -1,0 +1,13 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+	name = Bobby Gerace
+	email = bobby.gerace@world50.com
+[diff]
+    tool = nvimdiff
+[merge]
+    tool = nvimdiff
+[init]
+	defaultBranch = main
+[include]
+      path = ~/.gitconfig_local
