@@ -5,7 +5,7 @@ alias gvim="nvim-qt&!"
 
 alias tabname="kitty @ set-tab-title"
 
-alias config-edit="nvim ~/dotfiles"
+alias confedit="nvim ~/dotfiles"
 
 theme() {
   cp ~/.config/kitty/themes/"$1".conf ~/.config/kitty/current-theme.conf
