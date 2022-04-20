@@ -17,6 +17,7 @@ Plug 'EdenEast/nightfox.nvim'
 
 " status bar
 Plug 'nvim-lualine/lualine.nvim'
+Plug 'arkav/lualine-lsp-progress'
 Plug 'kyazdani42/nvim-web-devicons'
 
 " tab bar
@@ -36,16 +37,10 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 
 " autoformatting
-Plug 'mitermayer/vim-prettier'
+" Plug 'mitermayer/vim-prettier'
 
 " file tree
 Plug 'scrooloose/nerdtree'
-
-" language server
-Plug 'neovim/nvim-lspconfig'
-
-" typescript goodness
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " gql syntax highlighting
 Plug 'jparise/vim-graphql'
@@ -53,15 +48,59 @@ Plug 'jparise/vim-graphql'
 " file search and grepper
 Plug 'nvim-telescope/telescope.nvim'
 
+Plug 'neovim/nvim-lspconfig'
+Plug 'jose-elias-alvarez/null-ls.nvim'
+Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
+
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+
 call plug#end()
 
 " lua specific stuff
 lua << END
-require('lualine').setup({
+-- Color for highlights
+local colors = {
+  yellow = '#ECBE7B',
+  cyan = '#008080',
+  darkblue = '#081633',
+  green = '#98be65',
+  orange = '#FF8800',
+  violet = '#a9a1e1',
+  magenta = '#c678dd',
+  blue = '#51afef',
+  red = '#ec5f67'
+}
+
+local config = {
   sections = {
-    lualine_c = {'filename', 'g:coc_status'},
+    lualine_c = {'filename'},
   }
-})
+} 
+
+-- Inserts a component in lualine_c at left section
+local function ins_left(component)
+  table.insert(config.sections.lualine_c, component)
+end
+
+ins_left {
+	'lsp_progress',
+	separators = {
+		message = { pre = '', post = ''},
+	},
+  message = { commenced = 'Initializing', completed = 'Ready' },
+	display_components = { 'lsp_client_name', { 'message' }, 'spinner'},
+	timer = {progress_enddelay = 0, spinner = 100, lsp_client_name_enddelay = 0 },
+  spinner_symbols = {'⠈', '⠐', '⠠', '⢀', '⡀', '⠄', '⠂', '⠁'},
+}
+
+require('lualine').setup(config)
 
 require('tabline').setup({
   options = {
@@ -85,7 +124,154 @@ require('telescope').setup{
     }
   }
 }
+local lspconfig = require("lspconfig")
+local null_ls = require("null-ls")
+
+local buf_map = function(bufnr, mode, lhs, rhs, opts)
+    vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts or {
+        silent = true,
+    })
+end
+
+local on_attach = function(client, bufnr)
+    vim.cmd("command! LspDef lua vim.lsp.buf.definition()")
+    vim.cmd("command! LspFormatting lua vim.lsp.buf.formatting()")
+    vim.cmd("command! LspCodeAction lua vim.lsp.buf.code_action()")
+    vim.cmd("command! LspHover lua vim.lsp.buf.hover()")
+    vim.cmd("command! LspRename lua vim.lsp.buf.rename()")
+    vim.cmd("command! LspRefs lua vim.lsp.buf.references()")
+    vim.cmd("command! LspTypeDef lua vim.lsp.buf.type_definition()")
+    vim.cmd("command! LspImplementation lua vim.lsp.buf.implementation()")
+    vim.cmd("command! LspDiagPrev lua vim.diagnostic.goto_prev()")
+    vim.cmd("command! LspDiagNext lua vim.diagnostic.goto_next()")
+    vim.cmd("command! LspDiagLine lua vim.diagnostic.open_float()")
+    vim.cmd("command! LspSignatureHelp lua vim.lsp.buf.signature_help()")    buf_map(bufnr, "n", "gd", ":LspDef<CR>")
+
+    buf_map(bufnr, "n", "gr", ":LspRename<CR>")
+    buf_map(bufnr, "n", "gy", ":LspTypeDef<CR>")
+    buf_map(bufnr, "n", "K", ":LspHover<CR>")
+    buf_map(bufnr, "n", "[a", ":LspDiagPrev<CR>")
+    buf_map(bufnr, "n", "]a", ":LspDiagNext<CR>")
+    buf_map(bufnr, "n", "ga", ":LspCodeAction<CR>")
+    buf_map(bufnr, "n", "<Leader>a", ":LspDiagLine<CR>")
+    buf_map(bufnr, "i", "<C-x><C-x>", "<cmd> LspSignatureHelp<CR>")
+
+    if client.resolved_capabilities.document_formatting then
+        vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+    end
+end
+
+  -- Setup nvim-cmp.
+  local cmp = require'cmp'
+
+  cmp.setup({
+    snippet = {
+      -- REQUIRED - you must specify a snippet engine
+      expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+        -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+        -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+        -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+      end,
+    },
+    window = {
+      -- completion = cmp.config.window.bordered(),
+      -- documentation = cmp.config.window.bordered(),
+    },
+    mapping = cmp.mapping.preset.insert({
+      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.abort(),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    }),
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      { name = 'vsnip' }, -- For vsnip users.
+      -- { name = 'luasnip' }, -- For luasnip users.
+      -- { name = 'ultisnips' }, -- For ultisnips users.
+      -- { name = 'snippy' }, -- For snippy users.
+    }, {
+      { name = 'buffer' },
+    })
+  })
+
+  -- Set configuration for specific filetype.
+  cmp.setup.filetype('gitcommit', {
+    sources = cmp.config.sources({
+      { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+    }, {
+      { name = 'buffer' },
+    })
+  })
+
+  -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline('/', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+      { name = 'buffer' }
+    }
+  })
+
+  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+      { name = 'path' }
+    }, {
+      { name = 'cmdline' }
+    })
+  })
+
+  -- Setup lspconfig.
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+lspconfig.tsserver.setup({
+    init_options = {
+      preferences = {
+        importModuleSpecifierPreference = "relative",
+      },
+    },
+    capabilities,
+    on_attach = function(client, bufnr)
+        client.resolved_capabilities.document_formatting = false
+        client.resolved_capabilities.document_range_formatting = false
+
+        local ts_utils = require("nvim-lsp-ts-utils")
+        ts_utils.setup({})
+        ts_utils.setup_client(client)
+
+        buf_map(bufnr, "n", "gs", ":TSLspOrganize<CR>")
+        buf_map(bufnr, "n", "gi", ":TSLspRenameFile<CR>")
+        buf_map(bufnr, "n", "go", ":TSLspImportAll<CR>")
+
+        on_attach(client, bufnr)
+    end,
+})
+
+null_ls.setup({
+    sources = {
+        null_ls.builtins.formatting.prettier,
+    },
+    on_attach = on_attach,
+})
+
+-- Color for highlights
+local colors = {
+  yellow = '#ECBE7B',
+  cyan = '#008080',
+  darkblue = '#081633',
+  green = '#98be65',
+  orange = '#FF8800',
+  violet = '#a9a1e1',
+  magenta = '#c678dd',
+  blue = '#51afef',
+  red = '#ec5f67'
+}
+
 END
+
+set completeopt=menu,menuone,noselect
 
 " theme
 colorscheme nightfox
@@ -105,6 +291,7 @@ let g:everblushNR=1
 
 " basic settings
 let mapleader=" "
+set signcolumn=number
 set number
 set ignorecase
 set smartcase
@@ -159,11 +346,11 @@ nnoremap <silent><leader>qt :tabclose<CR>
 " Use K to show documentation in preview window.
 nnoremap <silent><leader>d :call <SID>show_documentation()<CR>
 " show diagnostics
-nnoremap <silent><leader>e :<C-u>CocList diagnostics<cr>
+" nnoremap <silent><leader>e :<C-u>CocList diagnostics<cr>
 " show commands
-nnoremap <silent><leader>c :<C-u>CocList commands<cr>
+" nnoremap <silent><leader>c :<C-u>CocList commands<cr>
 " Show coc commands.
-nnoremap <silent><nowait> <space>c  
+" nnoremap <silent><nowait> <space>c  
 " Exit terminal mode
 tnoremap <Esc> <C-\><C-n>
 " open terminal (shell)
@@ -245,113 +432,3 @@ if filereadable($LOCALFILE)
     source $LOCALFILE
 endif
 
-" Begin COC stuff (pretty much just copy & pasted)
-
-" Set internal encoding of vim, not needed on neovim, since coc.nvim using some
-" unicode characters in the file autoload/float.vim
-set encoding=utf-8
-
-" TextEdit might fail if hidden is not set.
-set hidden
-
-" Some servers have issues with backup files, see #649.
-set nobackup
-set nowritebackup
-
-" Give more space for displaying messages.
-set cmdheight=2
-
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=300
-
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
-
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
- if has("nvim-0.5.0") || has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-   set signcolumn=number
- else
-   set signcolumn=yes
- endif
-
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
-
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent><leader>[ <Plug>(coc-diagnostic-prev)
-nmap <silent><leader>] <Plug>(coc-diagnostic-next)
-
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
-
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
-
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder.
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
-
-" Remap <C-f> and <C-b> for scroll float windows/popups.
-if has('nvim-0.4.0') || has('patch-8.2.0750')
-  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-endif
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
