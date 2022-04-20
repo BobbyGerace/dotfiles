@@ -371,7 +371,7 @@ nnoremap <silent><leader>qt :tabclose<CR>
 " Use K to show documentation in preview window.
 nnoremap <silent><leader>d :call <SID>show_documentation()<CR>
 " show diagnostics
-" nnoremap <silent><leader>e :<C-u>CocList diagnostics<cr>
+nnoremap <silent><leader>e :Telescope diagnostics<cr>
 " show commands
 " nnoremap <silent><leader>c :<C-u>CocList commands<cr>
 " Show coc commands.
