@@ -110,8 +110,13 @@ require('tabline').setup({
 })
 
 local actions = require("telescope.actions")
+local make_entry = require("telescope.make_entry")
+
 require('telescope').setup{
   defaults = {
+    -- wrap_results = true,
+    path_display = {'smart'},
+    initial_mode = 'normal',
     mappings = {
       i = {
         ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
@@ -122,6 +127,14 @@ require('telescope').setup{
         ["<C-a>"] = actions.send_to_qflist + actions.open_qflist,
       },
     }
+  },
+  pickers = {
+    live_grep = {
+      initial_mode = 'insert'
+    },
+    find_files = {
+      initial_mode = 'insert'
+    },
   }
 }
 local lspconfig = require("lspconfig")
@@ -145,16 +158,16 @@ local on_attach = function(client, bufnr)
     vim.cmd("command! LspDiagPrev lua vim.diagnostic.goto_prev()")
     vim.cmd("command! LspDiagNext lua vim.diagnostic.goto_next()")
     vim.cmd("command! LspDiagLine lua vim.diagnostic.open_float()")
-    vim.cmd("command! LspSignatureHelp lua vim.lsp.buf.signature_help()")    buf_map(bufnr, "n", "gd", ":LspDef<CR>")
+    vim.cmd("command! LspSignatureHelp lua vim.lsp.buf.signature_help()")    
 
-    buf_map(bufnr, "n", "gr", ":LspRename<CR>")
+    buf_map(bufnr, "n", "gd", ":LspDef<CR>")
+    -- buf_map(bufnr, "n", "gr", ":LspRename<CR>")
     buf_map(bufnr, "n", "gy", ":LspTypeDef<CR>")
     buf_map(bufnr, "n", "K", ":LspHover<CR>")
-    buf_map(bufnr, "n", "[a", ":LspDiagPrev<CR>")
-    buf_map(bufnr, "n", "]a", ":LspDiagNext<CR>")
+    buf_map(bufnr, "n", "[e", ":LspDiagPrev<CR>")
+    buf_map(bufnr, "n", "]e", ":LspDiagNext<CR>")
     buf_map(bufnr, "n", "ga", ":LspCodeAction<CR>")
-    buf_map(bufnr, "n", "<Leader>a", ":LspDiagLine<CR>")
-    buf_map(bufnr, "i", "<C-x><C-x>", "<cmd> LspSignatureHelp<CR>")
+    buf_map(bufnr, "n", "ge", ":LspDiagLine<CR>")
 
     if client.resolved_capabilities.document_formatting then
         vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
@@ -269,7 +282,15 @@ local colors = {
   red = '#ec5f67'
 }
 
+local signs = { Error = ">>", Warn = ">>", Hint = ">>", Info = ">>" }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
 END
+
+let g:gitgutter_sign_priority = 0
 
 set completeopt=menu,menuone,noselect
 
@@ -313,6 +334,8 @@ au CursorHold * checktime
 nnoremap <silent><leader>p :Telescope find_files hidden=true<CR>
 " Search in files
 nnoremap <silent><leader>f :Telescope live_grep<CR>
+" go to references
+nnoremap <silent>gr :Telescope lsp_references include_declaration=false include_current_line=false<CR>
 " replace in project (after getting to quickfix window)
 nnoremap <leader>R :cfdo %s///g \| update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 " replace in current file
