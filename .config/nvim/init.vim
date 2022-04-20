@@ -169,7 +169,9 @@ tnoremap <Esc> <C-\><C-n>
 " open terminal (shell)
 nnoremap <silent><leader>s :10sp <bar> term<CR>
 " close buffer without closing window
-nnoremap <silent><leader>bd :bp<bar>sp<bar>bn<bar>bd<CR>
+nnoremap <silent><leader>qb :bp<bar>sp<bar>bn<bar>bd<CR>
+" clear search highlighting on esc
+map <silent><esc> :noh<cr>
 
 " Switch to window 
 nmap <silent> <c-k> :wincmd k<CR>
