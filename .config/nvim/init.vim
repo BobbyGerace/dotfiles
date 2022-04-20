@@ -17,7 +17,7 @@ Plug 'EdenEast/nightfox.nvim'
 
 " status bar
 Plug 'nvim-lualine/lualine.nvim'
-Plug 'arkav/lualine-lsp-progress'
+Plug 'BobbyGerace/lualine-lsp-progress'
 Plug 'kyazdani42/nvim-web-devicons'
 
 " tab bar
@@ -88,6 +88,8 @@ local config = {
 local function ins_left(component)
   table.insert(config.sections.lualine_c, component)
 end
+
+vim.diagnostic.config({ severity_sort = true })
 
 ins_left {
 	'lsp_progress',
