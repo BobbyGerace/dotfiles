@@ -2,6 +2,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " dependencies
 Plug 'nvim-lua/plenary.nvim'
+Plug 'sharkdp/fd'
+Plug 'nvim-treesitter/nvim-treesitter'
 
 " themes
 Plug 'sainnhe/sonokai'

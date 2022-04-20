@@ -7,6 +7,8 @@
     tool = nvimdiff
 [merge]
     tool = nvimdiff
+    keepBackup = false
+    keepTemporaries = false
 [init]
 	defaultBranch = main
 [include]
