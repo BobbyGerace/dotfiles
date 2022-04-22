@@ -9,6 +9,8 @@ alias confedit="nvim ~/dotfiles"
 
 alias :q="exit"
 
+alias lazygit="lazygit --use-config-file=$HOME/.config/lazygit/config.yml"
+
 theme() {
   cp ~/.config/kitty/themes/"$1".conf ~/.config/kitty/current-theme.conf
   kitty @ set-colors --all --configured ~/.config/kitty/kitty.conf

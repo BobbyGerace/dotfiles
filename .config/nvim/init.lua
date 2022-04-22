@@ -40,7 +40,6 @@ require('telescope').setup{
   defaults = {
     -- wrap_results = true,
     path_display = {'truncate'},
-    initial_mode = 'normal',
     mappings = {
       i = {
         ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
@@ -52,15 +51,17 @@ require('telescope').setup{
       },
     }
   },
-  pickers = {
-    live_grep = {
-      initial_mode = 'insert'
-    },
-    find_files = {
-      initial_mode = 'insert',
-    },
-  }
 }
+
+require('toggleterm').setup{}
+local Terminal  = require('toggleterm.terminal').Terminal
+local lazygit = Terminal:new({ cmd = "lazygit --use-config-file=$HOME/.config/lazygit/config.yml", hidden = true, direction = 'float' })
+
+function _lazygit_toggle()
+  lazygit:toggle()
+end
+
+vim.api.nvim_set_keymap("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
 
 -- falls back to all files if git not found
 project_files = function()
@@ -216,7 +217,7 @@ local g = vim.g
 g.gitgutter_sign_priority = 0
 g.mapleader = ' '
 o.completeopt = 'menu,menuone,noselect'
-g.signcolumn = 'number'
+o.signcolumn = 'number'
 o.number = true
 o.ignorecase = true
 o.smartcase = true
@@ -261,6 +262,8 @@ function map(mode, keys, cmd, opt)
   vim.api.nvim_set_keymap(mode, keys, cmd, opt)
 end
 
+
+-- map('n', '<leader>gg','<CMD>lua lazy_git()<CR>')
 -- find files
 map('n', '<leader>p','<CMD>lua project_files()<CR>')
 -- Search in files
