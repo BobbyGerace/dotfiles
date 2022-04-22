@@ -51,17 +51,28 @@ require('telescope').setup{
       },
     }
   },
+  pickers = {
+    live_grep = {
+      additional_args = function(opts)
+        return {"--hidden"}
+      end
+    },
+  },
 }
 
 require('toggleterm').setup{}
 local Terminal  = require('toggleterm.terminal').Terminal
 local lazygit = Terminal:new({ cmd = "lazygit --use-config-file=$HOME/.config/lazygit/config.yml", hidden = true, direction = 'float' })
+local vtop = Terminal:new({ cmd = "vtop", hidden = true, direction = 'float' })
 
 function _lazygit_toggle()
   lazygit:toggle()
 end
 
-vim.api.nvim_set_keymap("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
+function _vtop_toggle()
+  vtop:toggle()
+end
+
 
 -- falls back to all files if git not found
 project_files = function()
@@ -267,7 +278,7 @@ end
 -- find files
 map('n', '<leader>p','<CMD>lua project_files()<CR>')
 -- Search in files
-map('n','<leader>f', ':Telescope live_grep<CR>')
+map('n','<leader>f', ':lua require("telescope.builtin").live_grep({ hidden = true })<CR>')
 -- go to references
 map('n','gr', ':Telescope lsp_references<CR>')
 -- go to definition(s)
@@ -342,3 +353,6 @@ vim.cmd('command! Reload source $MYVIMRC')
 -- open Diffview with arguments – e.g., :DiffviewOpen origin/development...HEAD
 vim.cmd('command! -nargs=* Diff :DiffviewOpen <args>')
 vim.cmd("command! -nargs=1 DiffBase :execute 'DiffviewOpen' trim(system('git merge-base --fork-point '.<f-args>))")
+map("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
+map("n", "<leader>vt", "<cmd>lua _vtop_toggle()<CR>", {noremap = true, silent = true})
+map("n", "<leader><CR>", ":ToggleTerm", {noremap = true, silent = true})
