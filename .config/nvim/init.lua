@@ -57,10 +57,18 @@ require('telescope').setup{
       initial_mode = 'insert'
     },
     find_files = {
-      initial_mode = 'insert'
+      initial_mode = 'insert',
     },
   }
 }
+
+-- falls back to all files if git not found
+project_files = function()
+  local opts = { hidden = true }
+  local ok = pcall(require"telescope.builtin".git_files, opts)
+  if not ok then require"telescope.builtin".find_files(opts) end
+end
+
 local lspconfig = require("lspconfig")
 local null_ls = require("null-ls")
 
@@ -254,7 +262,7 @@ function map(mode, keys, cmd, opt)
 end
 
 -- find files
-map('n', '<leader>p',':Telescope find_files hidden=true<CR>')
+map('n', '<leader>p','<CMD>lua project_files()<CR>')
 -- Search in files
 map('n','<leader>f', ':Telescope live_grep<CR>')
 -- go to references
@@ -274,7 +282,7 @@ map('n','<leader>l', ':Telescope buffers<CR>')
 -- Flip to previous file
 map('n', '<leader><tab>', ':b#<CR>')
 -- File history
-map('n', '<leader>h', ':Telescope oldfiles<CR>')
+map('n', '<leader>h', ':Telescope oldfiles only_cwd=true<CR>')
 -- Copy to clipboard
 map('n', '<leader>y', '"*y')
 -- Paste from clipboard

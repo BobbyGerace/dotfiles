@@ -134,6 +134,11 @@ _G.packer_plugins = {
     path = "/Users/bobby.gerace/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
+  neogit = {
+    loaded = true,
+    path = "/Users/bobby.gerace/.local/share/nvim/site/pack/packer/start/neogit",
+    url = "https://github.com/TimUntersberger/neogit"
+  },
   nerdtree = {
     loaded = true,
     path = "/Users/bobby.gerace/.local/share/nvim/site/pack/packer/start/nerdtree",
