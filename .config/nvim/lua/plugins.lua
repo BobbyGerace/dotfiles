@@ -1,4 +1,3 @@
-
 function get_config(name)
 	return string.format('require("config/%s")', name)
 end
@@ -16,6 +15,7 @@ require('packer').startup(function(use)
   use { 'gosukiwi/vim-atom-dark' }
   use { 'mangeshrex/everblush.vim' }
   use { 'EdenEast/nightfox.nvim' }
+  use { 'michaeldyrynda/carbon' }
 
   -- pickers for search / grep / etc
   use { 
@@ -29,19 +29,44 @@ require('packer').startup(function(use)
     run = ':TSUpdate',
     config = get_config('treesitter')
   }
+
+  use { 'ryanoasis/vim-devicons' }
+
+  use { 'famiu/nvim-reload' }
+
+
+  use { 
+    'simrat39/symbols-outline.nvim',
+    config = get_config('symbols-outline')
+  }
+
+  use { 
+    'akinsho/toggleterm.nvim',
+    config = get_config('toggleterm')
+  }
+
+  -- status bar
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 
+      'BobbyGerace/lualine-lsp-progress',
+      'kyazdani42/nvim-web-devicons', 
+      opt = true 
+    },
+    config = get_config('lualine')
+  }
+
   
   -------------- TODO -------------- 
   use { 'nvim-lua/plenary.nvim' } 
 
   use { 'sharkdp/fd' }
 
-  -- status bar
-  use { 'nvim-lualine/lualine.nvim' }
-  use { 'BobbyGerace/lualine-lsp-progress' }
-  use { 'kyazdani42/nvim-web-devicons' }
-
   -- tab bar
-  use { 'kdheepak/tabline.nvim' }
+  use { 
+    'kdheepak/tabline.nvim',
+    config = get_config('tabline')
+  }
 
   -- git stuff
   use { 'tpope/vim-fugitive' }
@@ -68,7 +93,6 @@ require('packer').startup(function(use)
   use { 'jose-elias-alvarez/null-ls.nvim' }
   use { 'jose-elias-alvarez/nvim-lsp-ts-utils' }
 
-  use { 'neovim/nvim-lspconfig' }
   use { 'hrsh7th/cmp-nvim-lsp' }
   use { 'hrsh7th/cmp-buffer' }
   use { 'hrsh7th/cmp-path' }
@@ -77,6 +101,5 @@ require('packer').startup(function(use)
   use { 'hrsh7th/cmp-vsnip' }
   use { 'hrsh7th/vim-vsnip' }
 
-  use { 'akinsho/toggleterm.nvim' }
 end)
 

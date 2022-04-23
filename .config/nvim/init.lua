@@ -2,52 +2,7 @@ require('plugins')
 local util = require('util')
 local map = util.map
 
--- Color for highlights
-local config = {
-  sections = {
-    lualine_c = {'filename'},
-  }
-} 
-
--- Inserts a component in lualine_c at left section
-local function ins_left(component)
-  table.insert(config.sections.lualine_c, component)
-end
-
 vim.diagnostic.config({ severity_sort = true })
-
-ins_left {
-	'lsp_progress',
-	separators = {
-		message = { pre = '', post = ''},
-	},
-  message = { commenced = 'Initializing', completed = 'Ready' },
-	display_components = { 'lsp_client_name', { 'message' }, 'spinner'},
-	timer = {progress_enddelay = 0, spinner = 100, lsp_client_name_enddelay = 0 },
-  spinner_symbols = {'⠈', '⠐', '⠠', '⢀', '⡀', '⠄', '⠂', '⠁'},
-}
-
-require('lualine').setup(config)
-
-require('tabline').setup({
-  options = {
-    show_tabs_always = true,
-    show_filename_only = true,
-  }
-})
-
-require('toggleterm').setup{}
-local Terminal  = require('toggleterm.terminal').Terminal
-local lazygit = Terminal:new({ cmd = "lazygit --use-config-file=$HOME/.config/lazygit/config.yml", hidden = true, direction = 'float' })
-local vtop = Terminal:new({ cmd = "vtop", hidden = true, direction = 'float' })
-
-function _lazygit_toggle()
-  lazygit:toggle()
-end
-
-function _vtop_toggle()
-  vtop:toggle()
-end
 
 
 local lspconfig = require("lspconfig")
@@ -295,10 +250,8 @@ map('n', '<leader>tf', ':NERDTreeFind<cr>')
 -- Reload the file list
 map('n', '<leader>tr', ':NERDTreeRefreshRoot<cr>')
 
-vim.cmd('command! Reload source $MYVIMRC')
 -- open Diffview with arguments – e.g., :DiffviewOpen origin/development...HEAD
 vim.cmd('command! -nargs=* Diff :DiffviewOpen <args>')
 vim.cmd("command! -nargs=1 DiffBase :execute 'DiffviewOpen' trim(system('git merge-base --fork-point '.<f-args>))")
 map("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
 map("n", "<leader>vt", "<cmd>lua _vtop_toggle()<CR>", {noremap = true, silent = true})
-map("n", "<leader><CR>", ":ToggleTerm", {noremap = true, silent = true})
