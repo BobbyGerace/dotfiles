@@ -56,12 +56,6 @@ require('packer').startup(function(use)
     config = get_config('lualine')
   }
 
-  
-  -------------- TODO -------------- 
-  use { 'nvim-lua/plenary.nvim' } 
-
-  use { 'sharkdp/fd' }
-
   -- tab bar
   use { 
     'kdheepak/tabline.nvim',
@@ -70,8 +64,17 @@ require('packer').startup(function(use)
 
   -- git stuff
   use { 'tpope/vim-fugitive' }
-  use { 'airblade/vim-gitgutter' }
-  use { 'sindrets/diffview.nvim' }
+
+  use { 
+    'airblade/vim-gitgutter',
+    config = get_config('gitgutter')
+  }
+  use {
+    'sindrets/diffview.nvim',
+    requires =  { { 'nvim-lua/plenary.nvim' } },
+    config = get_config('diffview')
+  }
+
   use { 'kdheepak/lazygit.nvim' }
 
   -- commenting lines
@@ -84,14 +87,27 @@ require('packer').startup(function(use)
   use { 'tpope/vim-repeat' }
 
   -- file tree
-  use { 'scrooloose/nerdtree' }
+  use {
+    'scrooloose/nerdtree',
+    config = get_config('nerdtree')
+  }
 
-  -- gql syntax highlighting
+  use { 
+    'neovim/nvim-lspconfig',
+    requires = { { 'jose-elias-alvarez/nvim-lsp-ts-utils' } },
+    config = get_config('lspconfig')
+  }
+
   use { 'jparise/vim-graphql' }
 
-  use { 'neovim/nvim-lspconfig' }
+  -------------- TODO -------------- 
+  use { 'nvim-lua/plenary.nvim' } 
+
+  use { 'sharkdp/fd' }
+
+  -- gql syntax highlighting
+
   use { 'jose-elias-alvarez/null-ls.nvim' }
-  use { 'jose-elias-alvarez/nvim-lsp-ts-utils' }
 
   use { 'hrsh7th/cmp-nvim-lsp' }
   use { 'hrsh7th/cmp-buffer' }

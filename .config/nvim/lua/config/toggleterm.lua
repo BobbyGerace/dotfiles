@@ -16,3 +16,6 @@ end
 
 map("n", "<c-space>", ":ToggleTerm<CR>", {noremap = true, silent = true})
 map("t", "<c-space>", "<c-\\><c-n>:ToggleTerm<CR>", {noremap = true, silent = true})
+
+map("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
+map("n", "<leader>vt", "<cmd>lua _vtop_toggle()<CR>", {noremap = true, silent = true})
