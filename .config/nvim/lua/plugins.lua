@@ -4,14 +4,10 @@ function get_config(name)
 end
 
 require('packer').startup(function(use)
-  use { 'nvim-lua/plenary.nvim' } 
   -- Packer can manage itself
   use { 'wbthomason/packer.nvim' }
 
-  use { 'sharkdp/fd' }
-  use { 'nvim-treesitter/nvim-treesitter' }
-
-  -- themes
+  -- Themes
   use { 'sainnhe/sonokai' }
   use { 'sainnhe/everforest' }
   use { 'crusoexia/vim-dracula' }
@@ -20,6 +16,24 @@ require('packer').startup(function(use)
   use { 'gosukiwi/vim-atom-dark' }
   use { 'mangeshrex/everblush.vim' }
   use { 'EdenEast/nightfox.nvim' }
+
+  -- pickers for search / grep / etc
+  use { 
+    'nvim-telescope/telescope.nvim',
+    requires =  { { 'nvim-lua/plenary.nvim' } },
+    config = get_config('telescope')
+  }
+
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+    config = get_config('treesitter')
+  }
+  
+  -------------- TODO -------------- 
+  use { 'nvim-lua/plenary.nvim' } 
+
+  use { 'sharkdp/fd' }
 
   -- status bar
   use { 'nvim-lualine/lualine.nvim' }
@@ -49,13 +63,6 @@ require('packer').startup(function(use)
 
   -- gql syntax highlighting
   use { 'jparise/vim-graphql' }
-
-  -- file search and grepper
-  use { 
-    'nvim-telescope/telescope.nvim',
-    requires =  { { 'nvim-lua/plenary.nvim' } },
-    config = get_config('telescope')
-  }
 
   use { 'neovim/nvim-lspconfig' }
   use { 'jose-elias-alvarez/null-ls.nvim' }
