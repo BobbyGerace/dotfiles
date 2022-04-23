@@ -1,6 +1,6 @@
 quitOnTopLevelReturn: true
 keybinding:
   universal:
-    quit: '<c-c>'
-    return: 'q' # return to previous menu, will quit if there's nowhere to return
+    quit: 'q' # return to previous menu, will quit if there's nowhere to return
+    return: '<esc>'
     quitWithoutChangingDirectory: 'Q'

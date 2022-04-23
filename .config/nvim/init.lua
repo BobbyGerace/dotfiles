@@ -1,4 +1,7 @@
 require('plugins')
+local util = require('util')
+local map = util.map
+
 -- Color for highlights
 local config = {
   sections = {
@@ -33,33 +36,6 @@ require('tabline').setup({
   }
 })
 
-local actions = require("telescope.actions")
-local make_entry = require("telescope.make_entry")
-
-require('telescope').setup{
-  defaults = {
-    -- wrap_results = true,
-    path_display = {'truncate'},
-    mappings = {
-      i = {
-        ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
-        ["<C-a>"] = actions.send_to_qflist + actions.open_qflist,
-      },
-      n = {
-        ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
-        ["<C-a>"] = actions.send_to_qflist + actions.open_qflist,
-      },
-    }
-  },
-  pickers = {
-    live_grep = {
-      additional_args = function(opts)
-        return {"--hidden"}
-      end
-    },
-  },
-}
-
 require('toggleterm').setup{}
 local Terminal  = require('toggleterm.terminal').Terminal
 local lazygit = Terminal:new({ cmd = "lazygit --use-config-file=$HOME/.config/lazygit/config.yml", hidden = true, direction = 'float' })
@@ -73,13 +49,6 @@ function _vtop_toggle()
   vtop:toggle()
 end
 
-
--- falls back to all files if git not found
-project_files = function()
-  local opts = { hidden = true }
-  local ok = pcall(require"telescope.builtin".git_files, opts)
-  if not ok then require"telescope.builtin".find_files(opts) end
-end
 
 local lspconfig = require("lspconfig")
 local null_ls = require("null-ls")
@@ -268,21 +237,8 @@ g.gitgutter_sign_removed_first_line = '^'
 g.gitgutter_sign_modified_removed = '~-'
 
 -- Find files in project
-function map(mode, keys, cmd, opt) 
-  opt = opt or { noremap = true, silent = true}
-  vim.api.nvim_set_keymap(mode, keys, cmd, opt)
-end
-
 
 -- map('n', '<leader>gg','<CMD>lua lazy_git()<CR>')
--- find files
-map('n', '<leader>p','<CMD>lua project_files()<CR>')
--- Search in files
-map('n','<leader>f', ':lua require("telescope.builtin").live_grep({ hidden = true })<CR>')
--- go to references
-map('n','gr', ':Telescope lsp_references<CR>')
--- go to definition(s)
-map('n','gd', ':Telescope lsp_definitions<CR>')
 -- replace in project (after getting to quickfix window)
 map('n','<leader>R', ':cfdo %s///g | update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>')
 -- replace in current file
@@ -291,12 +247,8 @@ map('n','<leader>r', ':%s///g<Left><Left>')
 map('n','<leader>Rc', ':cfdo %s///gc | update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>')
 -- replace in current file with confirm
 map('n','<leader>rc', ':%s///gc<Left><Left><Left>')
--- List open buffers
-map('n','<leader>l', ':Telescope buffers<CR>')
 -- Flip to previous file
 map('n', '<leader><tab>', ':b#<CR>')
--- File history
-map('n', '<leader>h', ':Telescope oldfiles only_cwd=true<CR>')
 -- Copy to clipboard
 map('n', '<leader>y', '"*y')
 -- Paste from clipboard
@@ -307,19 +259,13 @@ map('n', '<leader>gd', ':DiffviewOpen<CR>')
 map('n', '<leader>gh', ':DiffviewFileHistory<CR>')
 -- Preview hunk
 map('n', '<leader>gp', ':GitGutterPreviewHunk<CR>')
--- Preview hunk
-map('n', '<leader>gs', ':Telescope git_status<CR>')
--- Preview hunk
-map('n', '<leader>gb', ':Telescope git_branches<CR>')
 -- Close tab
 map('n', '<leader>qt', ':tabclose<CR>')
 -- Use K to show documentation in preview window.
-map('n', '<leader>d', ':call <SID>show_documentation()<CR>')
--- show diagnostics
-map('n', '<leader>e', ':Telescope diagnostics<cr>')
+--map('n', '<leader>d', ':call <SID>show_documentation()<CR>')
 
 -- Exit terminal mode
-map('t', '<Esc>', '<C-\\><C-n>')
+-- map('t', '<Esc>', '<C-\\><C-n>')
 map('n', '<esc>', ':noh<cr>', { silent = true })
 
 -- open terminal (shell)

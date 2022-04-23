@@ -195,6 +195,7 @@ _G.packer_plugins = {
     url = "https://github.com/kdheepak/tabline.nvim"
   },
   ["telescope.nvim"] = {
+    config = { 'require("config/telescope")' },
     loaded = true,
     path = "/Users/bobby.gerace/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
@@ -257,6 +258,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+require("config/telescope")
+time([[Config for telescope.nvim]], false)
 if should_profile then save_profiles() end
 
 end)
