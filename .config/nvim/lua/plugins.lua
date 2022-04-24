@@ -58,12 +58,6 @@ require('packer').startup(function(use)
     config = get_config('lualine')
   }
 
-  -- tab bar
-  use { 
-    'kdheepak/tabline.nvim',
-    config = get_config('tabline')
-  }
-
   -- git stuff
   use { 'tpope/vim-fugitive' }
   use { 
@@ -115,6 +109,7 @@ require('packer').startup(function(use)
     config = get_config('cmp')
   }
 
+  -- file tree
   use {
     'kyazdani42/nvim-tree.lua',
     requires = {
@@ -122,6 +117,16 @@ require('packer').startup(function(use)
     },
     config = get_config('nvim-tree')
   }
+
+  -- tab line
+  use {
+    'akinsho/bufferline.nvim',
+    tag = "*",
+    requires = 'kyazdani42/nvim-web-devicons',
+    config = get_config('bufferline')
+  }
+
+  use { 'alec-gibson/nvim-tetris' }
 
 end)
 
