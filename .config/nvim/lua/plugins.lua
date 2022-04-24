@@ -31,9 +31,6 @@ require('packer').startup(function(use)
     config = get_config('treesitter')
   }
 
-  -- icons for filetypes and stuff, mostly for lualine
-  use { 'ryanoasis/vim-devicons' }
-
   -- allows config reload with :Reload
   use { 'famiu/nvim-reload' }
 
@@ -89,12 +86,6 @@ require('packer').startup(function(use)
   -- Make sure . works on plugins
   use { 'tpope/vim-repeat' }
 
-  -- file tree
-  use {
-    'scrooloose/nerdtree',
-    config = get_config('nerdtree')
-  }
-
   -- graphql syntax
   use { 'jparise/vim-graphql' }
 
@@ -122,6 +113,14 @@ require('packer').startup(function(use)
       { 'hrsh7th/vim-vsnip' },
     },
     config = get_config('cmp')
+  }
+
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = {
+      'kyazdani42/nvim-web-devicons',
+    },
+    config = get_config('nvim-tree')
   }
 
 end)
