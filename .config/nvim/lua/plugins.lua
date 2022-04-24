@@ -24,22 +24,27 @@ require('packer').startup(function(use)
     config = get_config('telescope')
   }
 
+  -- syntaxy stuff?
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
     config = get_config('treesitter')
   }
 
+  -- icons for filetypes and stuff, mostly for lualine
   use { 'ryanoasis/vim-devicons' }
 
+  -- allows config reload with :Reload
   use { 'famiu/nvim-reload' }
 
 
+  -- file outline
   use { 
     'simrat39/symbols-outline.nvim',
     config = get_config('symbols-outline')
   }
 
+  -- opens terminals
   use { 
     'akinsho/toggleterm.nvim',
     config = get_config('toggleterm')
@@ -64,7 +69,6 @@ require('packer').startup(function(use)
 
   -- git stuff
   use { 'tpope/vim-fugitive' }
-
   use { 
     'airblade/vim-gitgutter',
     config = get_config('gitgutter')
@@ -74,7 +78,6 @@ require('packer').startup(function(use)
     requires =  { { 'nvim-lua/plenary.nvim' } },
     config = get_config('diffview')
   }
-
   use { 'kdheepak/lazygit.nvim' }
 
   -- commenting lines
@@ -92,30 +95,34 @@ require('packer').startup(function(use)
     config = get_config('nerdtree')
   }
 
+  -- graphql syntax
+  use { 'jparise/vim-graphql' }
+
+  -- language server stuff
   use { 
     'neovim/nvim-lspconfig',
     requires = { { 'jose-elias-alvarez/nvim-lsp-ts-utils' } },
     config = get_config('lspconfig')
   }
+  use {
+    'jose-elias-alvarez/null-ls.nvim',
+    requires =  { { 'nvim-lua/plenary.nvim' } },
+    config = get_config('null-ls')
+  }
 
-  use { 'jparise/vim-graphql' }
-
-  -------------- TODO -------------- 
-  use { 'nvim-lua/plenary.nvim' } 
-
-  use { 'sharkdp/fd' }
-
-  -- gql syntax highlighting
-
-  use { 'jose-elias-alvarez/null-ls.nvim' }
-
-  use { 'hrsh7th/cmp-nvim-lsp' }
-  use { 'hrsh7th/cmp-buffer' }
-  use { 'hrsh7th/cmp-path' }
-  use { 'hrsh7th/cmp-cmdline' }
-  use { 'hrsh7th/nvim-cmp' }
-  use { 'hrsh7th/cmp-vsnip' }
-  use { 'hrsh7th/vim-vsnip' }
+  -- autocomplete
+  use { 
+    'hrsh7th/nvim-cmp',
+    requires = {
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'hrsh7th/cmp-buffer' },
+      { 'hrsh7th/cmp-path' },
+      { 'hrsh7th/cmp-cmdline' },
+      { 'hrsh7th/cmp-vsnip' },
+      { 'hrsh7th/vim-vsnip' },
+    },
+    config = get_config('cmp')
+  }
 
 end)
 
