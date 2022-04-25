@@ -1,8 +1,6 @@
 local map = require('util').map
-local highlights = require('rose-pine.plugins.bufferline')
 
 require('bufferline').setup{
-  highlights = highlights,
   options = {
     separator_style = 'thick',
     max_name_length = 30,

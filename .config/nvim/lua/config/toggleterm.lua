@@ -1,9 +1,6 @@
 local map = require('util').map
-local highlights = require('rose-pine.plugins.toggleterm')
 
-require('toggleterm').setup{
-  highlights = highlights
-}
+require('toggleterm').setup{}
 
 local Terminal  = require('toggleterm.terminal').Terminal
 local lazygit = Terminal:new({ cmd = "lazygit --use-config-file=$HOME/.config/lazygit/config.yml", hidden = true, direction = 'float' })

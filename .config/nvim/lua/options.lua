@@ -41,4 +41,4 @@ o.updatetime = 750
 
 -- when using the tokyonight theme
 g.tokyonight_style = 'night'
-vim.cmd('colorscheme rose-pine')
+vim.cmd('highlight Comment cterm=italic gui=italic')

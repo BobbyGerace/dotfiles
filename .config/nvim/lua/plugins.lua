@@ -7,14 +7,12 @@ require('packer').startup(function(use)
   use { 'wbthomason/packer.nvim' }
 
   -- Themes
-  use { 'EdenEast/nightfox.nvim' }
+  use { 
+    'EdenEast/nightfox.nvim',
+    config = get_config('nightfox')
+  }
   use { 'michaeldyrynda/carbon' }
   use { 'folke/tokyonight.nvim' }
-  use({
-    'rose-pine/neovim',
-    as = 'rose-pine',
-    config = get_config('rose-pine')
-  })
 
   -- pickers for search / grep / etc
   use { 

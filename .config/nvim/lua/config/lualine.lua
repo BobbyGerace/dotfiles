@@ -2,9 +2,6 @@ local config = {
   sections = {
     lualine_c = {'filename'},
   },
-  options = {
-    theme = 'rose-pine'
-  }
 } 
 
 local function ins_left(component)

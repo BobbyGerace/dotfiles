@@ -1,11 +1,7 @@
-local buf_map = require("util").buf_map
+local map = require("util").map
 
-local function bmap(mode, l, r, desc, opts)
-  opts = opts or {}
-  opts.buffer = bufnr
-  map(mode, l, r, desc, opts)
-end
-
+-- here is what a comment looks like
+-- and a ligature => 
 
 local on_attach = function(client, bufnr)
     vim.cmd("command! LspDef lua vim.lsp.buf.definition()")
@@ -27,12 +23,12 @@ local on_attach = function(client, bufnr)
       map(mode, l, r, desc, opts)
     end
 
-    map("n", "gy", ":LspTypeDef<CR>", 'go to type definition')
-    map("n", "K", ":LspHover<CR>", 'show documentation')
-    map("n", "[e", ":LspDiagPrev<CR>", 'next diagnostic')
-    map("n", "]e", ":LspDiagNext<CR>", 'previous diagnostic')
-    map("n", "ga", ":LspCodeAction<CR>", 'go to code action')
-    map("n", "ge", ":LspDiagLine<CR>", 'show diagnostics for line')
+    bmap("n", "gy", ":LspTypeDef<CR>", 'go to type definition')
+    bmap("n", "K", ":LspHover<CR>", 'show documentation')
+    bmap("n", "[e", ":LspDiagPrev<CR>", 'next diagnostic')
+    bmap("n", "]e", ":LspDiagNext<CR>", 'previous diagnostic')
+    bmap("n", "ga", ":LspCodeAction<CR>", 'go to code action')
+    bmap("n", "ge", ":LspDiagLine<CR>", 'show diagnostics for line')
 
     if client.resolved_capabilities.document_formatting then
         vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
