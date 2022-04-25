@@ -3,7 +3,7 @@ local config = {
     lualine_c = {'filename'},
   },
   options = {
-    theme = 'tokyonight'
+    theme = 'rose-pine'
   }
 } 
 

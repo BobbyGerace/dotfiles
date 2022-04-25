@@ -10,6 +10,11 @@ require('packer').startup(function(use)
   use { 'EdenEast/nightfox.nvim' }
   use { 'michaeldyrynda/carbon' }
   use { 'folke/tokyonight.nvim' }
+  use({
+    'rose-pine/neovim',
+    as = 'rose-pine',
+    config = get_config('rose-pine')
+  })
 
   -- pickers for search / grep / etc
   use { 
@@ -53,11 +58,6 @@ require('packer').startup(function(use)
   }
 
   -- git stuff
-  use { 'tpope/vim-fugitive' }
-  use { 
-    'airblade/vim-gitgutter',
-    config = get_config('gitgutter')
-  }
   use {
     'sindrets/diffview.nvim',
     requires =  { { 'nvim-lua/plenary.nvim' } },
@@ -121,10 +121,14 @@ require('packer').startup(function(use)
   }
 
   use { 'alec-gibson/nvim-tetris' }
-
   use {
     "folke/which-key.nvim",
     config = get_config('which-key')
+  }
+
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = get_config('gitsigns')
   }
 end)
 

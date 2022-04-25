@@ -1,5 +1,12 @@
 local buf_map = require("util").buf_map
 
+local function bmap(mode, l, r, desc, opts)
+  opts = opts or {}
+  opts.buffer = bufnr
+  map(mode, l, r, desc, opts)
+end
+
+
 local on_attach = function(client, bufnr)
     vim.cmd("command! LspDef lua vim.lsp.buf.definition()")
     vim.cmd("command! LspFormatting lua vim.lsp.buf.formatting()")
@@ -14,12 +21,18 @@ local on_attach = function(client, bufnr)
     vim.cmd("command! LspDiagLine lua vim.diagnostic.open_float()")
     vim.cmd("command! LspSignatureHelp lua vim.lsp.buf.signature_help()")    
 
-    buf_map(bufnr, "n", "gy", ":LspTypeDef<CR>")
-    buf_map(bufnr, "n", "K", ":LspHover<CR>")
-    buf_map(bufnr, "n", "[e", ":LspDiagPrev<CR>")
-    buf_map(bufnr, "n", "]e", ":LspDiagNext<CR>")
-    buf_map(bufnr, "n", "ga", ":LspCodeAction<CR>")
-    buf_map(bufnr, "n", "ge", ":LspDiagLine<CR>")
+    local function bmap(mode, l, r, desc, opts)
+      opts = opts or {}
+      opts.buffer = bufnr
+      map(mode, l, r, desc, opts)
+    end
+
+    map("n", "gy", ":LspTypeDef<CR>", 'go to type definition')
+    map("n", "K", ":LspHover<CR>", 'show documentation')
+    map("n", "[e", ":LspDiagPrev<CR>", 'next diagnostic')
+    map("n", "]e", ":LspDiagNext<CR>", 'previous diagnostic')
+    map("n", "ga", ":LspCodeAction<CR>", 'go to code action')
+    map("n", "ge", ":LspDiagLine<CR>", 'show diagnostics for line')
 
     if client.resolved_capabilities.document_formatting then
         vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
