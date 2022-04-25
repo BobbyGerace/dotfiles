@@ -128,5 +128,11 @@ require('packer').startup(function(use)
     'lewis6991/gitsigns.nvim',
     config = get_config('gitsigns')
   }
+
+  -- show colors
+  use { 
+    'norcalli/nvim-colorizer.lua',
+    config = get_config('colorizer')
+  }
 end)
 

@@ -38,3 +38,4 @@ o.laststatus = 3
 
 -- time after typing to update plugins
 o.updatetime = 750
+vim.cmd('colorscheme nightfox')

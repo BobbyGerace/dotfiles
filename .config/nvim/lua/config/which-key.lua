@@ -6,5 +6,6 @@ wk.setup {
 
 wk.register {
   ['<leader>g'] = { name = 'git' },
-  ['<leader>t'] = { name = 'tree' }
+  ['<leader>t'] = { name = 'tree' },
+  ['<leader>s'] = { name = 'show' }
 }
