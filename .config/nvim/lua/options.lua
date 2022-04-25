@@ -38,7 +38,3 @@ o.laststatus = 3
 
 -- time after typing to update plugins
 o.updatetime = 750
-
--- when using the tokyonight theme
-g.tokyonight_style = 'night'
-vim.cmd('highlight Comment cterm=italic gui=italic')

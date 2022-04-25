@@ -1,8 +1,5 @@
 local map = require("util").map
 
--- here is what a comment looks like
--- and a ligature => 
-
 local on_attach = function(client, bufnr)
     vim.cmd("command! LspDef lua vim.lsp.buf.definition()")
     vim.cmd("command! LspFormatting lua vim.lsp.buf.formatting()")
