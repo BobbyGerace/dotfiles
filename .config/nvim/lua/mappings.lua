@@ -13,7 +13,7 @@ map(
   'n',
   '<leader>Rc',
   ':cfdo %s///gc | update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>',
-  'repalce in project with confirm'
+  'replace in project with confirm'
 )
 
 map('n','<leader>rc', ':%s///gc<Left><Left><Left>', 'replace in current file with confirm')
@@ -51,3 +51,5 @@ map('n', '<leader>wl', ':wincmd L<CR>', 'swap window to right')
 map('n', '<Leader>=', ':exe "resize " . (winheight(0) * 3/2)<CR>', 'make split bigger')
 map('n', '<Leader>-', ':exe "resize " . (winheight(0) * 2/3)<CR>', 'make split smaller')
 
+-- I accidentally open the command history buffer with this all the time
+map('n', 'q:', '<nop>', nil, { noremap = false })

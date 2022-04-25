@@ -18,4 +18,4 @@ map("n", "<c-space>", ":ToggleTerm<CR>", 'toggle terminal')
 map("t", "<c-space>", "<c-\\><c-n>:ToggleTerm<CR>", 'toggle terminal (from inside)')
 
 map("n", "<leader>gg", _lazygit_toggle, 'open lazygit')
-map("n", "<leader>vt", _vtop_toggle, 'open vtop')
+map("n", "<leader>m", _vtop_toggle, 'system monitor')

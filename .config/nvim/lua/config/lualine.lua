@@ -1,6 +1,9 @@
 local config = {
   sections = {
     lualine_c = {'filename'},
+  },
+  options = {
+    theme = 'tokyonight'
   }
 } 
 

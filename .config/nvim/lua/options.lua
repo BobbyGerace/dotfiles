@@ -36,4 +36,8 @@ g.did_load_filetypes = 0
 -- global statusline
 o.laststatus = 3
 
-vim.cmd('colorscheme nightfox')
+-- time after typing to update plugins
+o.updatetime = 750
+
+g.tokyonight_style = 'night'
+vim.cmd('colorscheme tokyonight')

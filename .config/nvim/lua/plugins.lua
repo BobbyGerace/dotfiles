@@ -7,15 +7,9 @@ require('packer').startup(function(use)
   use { 'wbthomason/packer.nvim' }
 
   -- Themes
-  use { 'sainnhe/sonokai' }
-  use { 'sainnhe/everforest' }
-  use { 'crusoexia/vim-dracula' }
-  use { 'nanotech/jellybeans.vim' }
-  use { 'tomasiser/vim-code-dark' }
-  use { 'gosukiwi/vim-atom-dark' }
-  use { 'mangeshrex/everblush.vim' }
   use { 'EdenEast/nightfox.nvim' }
   use { 'michaeldyrynda/carbon' }
+  use { 'folke/tokyonight.nvim' }
 
   -- pickers for search / grep / etc
   use { 
@@ -128,5 +122,9 @@ require('packer').startup(function(use)
 
   use { 'alec-gibson/nvim-tetris' }
 
+  use {
+    "folke/which-key.nvim",
+    config = get_config('which-key')
+  }
 end)
 
