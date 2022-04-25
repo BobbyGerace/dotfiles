@@ -33,4 +33,7 @@ o.termguicolors = true
 g.do_filetype_lua = 1
 g.did_load_filetypes = 0
 
+-- global statusline
+o.laststatus = 3
+
 vim.cmd('colorscheme nightfox')

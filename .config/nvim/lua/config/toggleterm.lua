@@ -6,16 +6,16 @@ local Terminal  = require('toggleterm.terminal').Terminal
 local lazygit = Terminal:new({ cmd = "lazygit --use-config-file=$HOME/.config/lazygit/config.yml", hidden = true, direction = 'float' })
 local vtop = Terminal:new({ cmd = "vtop", hidden = true, direction = 'float' })
 
-function _lazygit_toggle()
+local function _lazygit_toggle()
   lazygit:toggle()
 end
 
-function _vtop_toggle()
+local function _vtop_toggle()
   vtop:toggle()
 end
 
-map("n", "<c-space>", ":ToggleTerm<CR>", {noremap = true, silent = true})
-map("t", "<c-space>", "<c-\\><c-n>:ToggleTerm<CR>", {noremap = true, silent = true})
+map("n", "<c-space>", ":ToggleTerm<CR>", 'toggle terminal')
+map("t", "<c-space>", "<c-\\><c-n>:ToggleTerm<CR>", 'toggle terminal (from inside)')
 
-map("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
-map("n", "<leader>vt", "<cmd>lua _vtop_toggle()<CR>", {noremap = true, silent = true})
+map("n", "<leader>gg", _lazygit_toggle, 'open lazygit')
+map("n", "<leader>vt", _vtop_toggle, 'open vtop')

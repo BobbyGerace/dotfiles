@@ -29,21 +29,13 @@ telescope.setup{
   },
 }
 
--- Search in files
-map('n','<leader>p', ':Telescope find_files<CR>')
--- go to references
-map('n','gr', ':Telescope lsp_references<CR>')
--- go to definition(s)
-map('n','gd', ':Telescope lsp_definitions<CR>')
--- List open buffers
-map('n','<leader>l', ':Telescope buffers<CR>')
--- File history
-map('n', '<leader>h', ':Telescope oldfiles only_cwd=true<CR>')
--- Preview hunk
-map('n', '<leader>gs', ':Telescope git_status<CR>')
--- Preview hunk
-map('n', '<leader>gb', ':Telescope git_branches<CR>')
--- show diagnostics
-map('n', '<leader>e', ':Telescope diagnostics<cr>')
--- find files
-map('n','<leader>f', ':lua require("telescope.builtin").live_grep({ hidden = true })<CR>')
+map('n','<leader>p', ':Telescope find_files<CR>', 'find files')
+map('n','gr', ':Telescope lsp_references<CR>', 'go to references')
+map('n','gd', ':Telescope lsp_definitions<CR>', 'go to definitions')
+map('n','<leader>l', ':Telescope buffers<CR>', 'view open buffers')
+map('n', '<leader>h', ':Telescope oldfiles only_cwd=true<CR>', 'view file history')
+map('n', '<leader>gs', ':Telescope git_status<CR>', 'view git status')
+map('n', '<leader>gb', ':Telescope git_branches<CR>', 'view git branches')
+map('n', '<leader>e', ':Telescope diagnostics<cr>', 'view diagnostics')
+map('n','<leader>f', ':lua require("telescope.builtin").live_grep({ hidden = true })<CR>', 'find in files')
+map('n','<leader>c', ':lua require("telescope.builtin").keymaps', 'find in files')

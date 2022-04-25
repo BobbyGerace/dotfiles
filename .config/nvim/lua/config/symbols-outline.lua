@@ -5,5 +5,5 @@ vim.g.symbols_outline = {
     auto_close = true,
 }
 
-map('n', '<leader>o', ':SymbolsOutline<CR>')
+map('n', '<leader>o', ':SymbolsOutline<CR>', 'open outline')
 

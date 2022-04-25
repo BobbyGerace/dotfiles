@@ -1,8 +1,9 @@
 local M = {}
 
-M.map = function(mode, keys, cmd, opt) 
+M.map = function(mode, keys, cmd, desc, opt) 
   opt = opt or { noremap = true, silent = true}
-  vim.api.nvim_set_keymap(mode, keys, cmd, opt)
+  opt.desc = desc
+  vim.keymap.set(mode, keys, cmd, opt)
 end
 
 M.buf_map = function(bufnr, mode, lhs, rhs, opts)

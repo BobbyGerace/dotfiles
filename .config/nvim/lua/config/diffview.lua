@@ -5,6 +5,6 @@ require('diffview').setup{}
 vim.cmd('command! -nargs=* Diff :DiffviewOpen <args>')
 vim.cmd("command! -nargs=1 DiffBase :execute 'DiffviewOpen' trim(system('git merge-base --fork-point '.<f-args>))")
 -- Open changed files preview
-map('n', '<leader>gd', ':DiffviewOpen<CR>')
+map('n', '<leader>gd', ':DiffviewOpen<CR>', 'open working tree diff')
 -- Show file history
-map('n', '<leader>gh', ':DiffviewFileHistory<CR>')
+map('n', '<leader>gh', ':DiffviewFileHistory<CR>', 'open file history')

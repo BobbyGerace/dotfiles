@@ -17,6 +17,6 @@ g.nvim_tree_git_hl = 1 -- 0 by default, will enable file highlight for git attri
 g.nvim_tree_highlight_opened_files = 1 -- 0 by default, will enable folder and file icon highlight for opened files/directories.
 
 -- Toggle nerd tree
-map('n', '<leader>tt', ':NvimTreeFindFileToggle<cr>')
+map('n', '<leader>tt', ':NvimTreeFindFileToggle<cr>', 'toggle tree')
 -- Reload the file list
-map('n', '<leader>tr', ':NvimTreeRefresh<cr>')
+map('n', '<leader>tr', ':NvimTreeRefresh<cr>', 'refresh tree')

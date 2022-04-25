@@ -9,4 +9,4 @@ g.gitgutter_sign_removed_first_line = '^'
 g.gitgutter_sign_modified_removed = '~-'
 
 -- Preview hunk
-map('n', '<leader>gp', ':GitGutterPreviewHunk<CR>')
+map('n', '<leader>gp', ':GitGutterPreviewHunk<CR>', 'preview git hunk')
