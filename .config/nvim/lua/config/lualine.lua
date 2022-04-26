@@ -1,4 +1,7 @@
 local config = {
+  options = {
+    theme = vim.g._theme
+  },
   sections = {
     lualine_c = {'filename'},
   },

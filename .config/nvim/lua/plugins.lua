@@ -13,6 +13,11 @@ require('packer').startup(function(use)
   }
   use { 'michaeldyrynda/carbon' }
   use { 'folke/tokyonight.nvim' }
+  use({
+    "catppuccin/nvim",
+    as = "catppuccin",
+    config = get_config('catppuccin')
+  })
 
   -- pickers for search / grep / etc
   use { 
@@ -141,4 +146,3 @@ require('packer').startup(function(use)
     config = get_config('colorizer')
   }
 end)
-

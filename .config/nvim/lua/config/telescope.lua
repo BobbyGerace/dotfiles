@@ -37,4 +37,4 @@ map('n', '<leader>h', ':Telescope oldfiles only_cwd=true<CR>', 'view file histor
 map('n', '<leader>gs', ':Telescope git_status<CR>', 'view git status')
 map('n', '<leader>e', ':Telescope diagnostics<cr>', 'view diagnostics')
 map('n','<leader>f', ':lua require("telescope.builtin").live_grep({ hidden = true })<CR>', 'find in files')
-map('n','<leader>c', ':lua require("telescope.builtin").keymaps<CR>', 'show keymaps')
+map('n','<leader>c', ':lua require("telescope.builtin").commands()<CR>', 'show commands')

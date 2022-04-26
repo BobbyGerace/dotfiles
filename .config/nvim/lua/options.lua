@@ -39,5 +39,7 @@ o.laststatus = 3
 -- time after typing to update plugins
 o.updatetime = 750
 
+-- store this in a global for easy switching
+vim.g._theme = 'catppuccin'
 -- redundant, but necessary to keep colorscheme during :Reload
-vim.cmd('colorscheme nightfox')
+vim.cmd('colorscheme ' .. vim.g._theme)
