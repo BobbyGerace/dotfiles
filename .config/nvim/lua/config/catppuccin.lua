@@ -3,21 +3,23 @@ local c = require('catppuccin')
 
 local cp = require'catppuccin.api.colors'.get_colors()
 c.remap({ 
+  -- Lots of bold stuff that I really don't want... messes up my ligatures and cursive
   Visual = { bg = cp.black4, style = "NONE" }, -- Visual mode selection
   VisualNOS = { bg = cp.black4, style = "NONE" }, -- Visual mode selection when vim is "Not Owning the Selection".
+  TSKeywordOperator = { fg = cp.sky, style = "NONE" },
+  TSPunctSpecial = { fg = cp.maroon, style = "NONE" },
+  TSOperator = { fg = cp.sky, style = "NONE" },
+  TSConditional = { fg = cp.mauve, style = "NONE" },
+  TSRepeat = { fg = cp.mauve, style = "NONE" },
+
   -- There's a bug where the italics aren't respected for treesitter objects...
   -- everything below is the workaround for now
   ErrorMsg = { fg = cp.red, style = "bold" },
   TSProperty = { fg = cp.yellow, style = "NONE" },
   TSInclude = { fg = cp.teal, style = "NONE" },
-  TSOperator = { fg = cp.sky, style = "bold" },
--- TSKeywordOperator = { fg = cp.sky, style = "bold" },
-  TSPunctSpecial = { fg = cp.maroon, style = "bold" },
   TSFloat = { fg = cp.peach, style = "bold" },
   TSNumber = { fg = cp.peach, style = "bold" },
   TSBoolean = { fg = cp.peach, style = "bold" },
-  TSConditional = { fg = cp.mauve, style = "bold" },
-  TSRepeat = { fg = cp.mauve, style = "bold" },
   TSException = { fg = cp.peach, style = "NONE" },
   TSConstBuiltin = { fg = cp.lavender, style = "NONE" },
   TSFuncBuiltin = { fg = cp.peach, style = "NONE" },

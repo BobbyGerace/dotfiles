@@ -25,6 +25,9 @@ telescope.setup{
     },
     find_files = {
       hidden = true
+    },
+    lsp_references = {
+      layout_strategy = 'vertical'
     }
   },
 }
