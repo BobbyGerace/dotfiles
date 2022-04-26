@@ -1,10 +1,16 @@
 local map = require('util').map
 local telescope = require('telescope')
+local builtin = require('telescope.builtin')
 local actions = require('telescope.actions')
 
 telescope.setup{
   defaults = {
     layout_strategy = 'flex',
+    layout_config = { 
+      flex = {
+        flip_columns = 180
+      }
+    },
     path_display = {'truncate'},
     mappings = {
       i = {
@@ -32,12 +38,13 @@ telescope.setup{
   },
 }
 
-map('n','<leader>p', ':Telescope find_files<CR>', 'find files')
-map('n','gr', ':Telescope lsp_references<CR>', 'go to references')
-map('n','gd', ':Telescope lsp_definitions<CR>', 'go to definitions')
-map('n','<leader>l', ':Telescope buffers<CR>', 'view open buffers')
-map('n', '<leader>h', ':Telescope oldfiles only_cwd=true<CR>', 'view file history')
-map('n', '<leader>gs', ':Telescope git_status<CR>', 'view git status')
-map('n', '<leader>e', ':Telescope diagnostics<cr>', 'view diagnostics')
-map('n','<leader>f', ':lua require("telescope.builtin").live_grep({ hidden = true })<CR>', 'find in files')
-map('n','<leader>c', ':lua require("telescope.builtin").commands()<CR>', 'show commands')
+map('n','<leader>p', function() builtin.find_files() end, 'find files')
+map('n','gr', function() builtin.lsp_references() end, 'go to references')
+map('n','gd', function() builtin.lsp_definitions() end, 'go to definitions')
+map('n','<leader>l', function() builtin.buffers() end, 'view open buffers')
+map('n', '<leader>h', function() builtin.oldfiles({ only_cwd = true }) end, 'view file history')
+map('n', '<leader>gs', function() builtin.git_status() end, 'view git status')
+map('n', '<leader>e', function() builtin.diagnostics() end, 'view diagnostics')
+map('n','<leader>f', function() builtin.live_grep({ hidden = true }) end, 'find in files')
+map('n','<leader>c', function() builtin.commands() end, 'show commands')
+map('n','<leader>c', function() builtin.marks() end, 'show marks')
