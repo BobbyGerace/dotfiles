@@ -15,9 +15,6 @@ M.map = function(mode, keys, cmd, desc, opt)
   else
     vim.keymap.set(mode, keys, cmd, opt)
   end
-
-
-
 end
 
 M.buf_map = function(bufnr, mode, lhs, rhs, opts)
@@ -25,7 +22,6 @@ M.buf_map = function(bufnr, mode, lhs, rhs, opts)
         silent = true,
     })
 end
-
 
 return M
 

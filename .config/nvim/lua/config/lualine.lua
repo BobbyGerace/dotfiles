@@ -8,7 +8,7 @@ local function ins_left(component)
   table.insert(config.sections.lualine_c, component)
 end
 
-
+-- inject lsp progress indicator
 ins_left {
 	'lsp_progress',
 	separators = {

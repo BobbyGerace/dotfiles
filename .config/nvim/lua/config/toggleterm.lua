@@ -1,8 +1,8 @@
 local map = require('util').map
+local Terminal  = require('toggleterm.terminal').Terminal
 
 require('toggleterm').setup{}
 
-local Terminal  = require('toggleterm.terminal').Terminal
 local lazygit = Terminal:new({ cmd = "lazygit --use-config-file=$HOME/.config/lazygit/config.yml", hidden = true, direction = 'float' })
 local vtop = Terminal:new({ cmd = "vtop", hidden = true, direction = 'float' })
 

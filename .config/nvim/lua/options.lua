@@ -38,4 +38,6 @@ o.laststatus = 3
 
 -- time after typing to update plugins
 o.updatetime = 750
+
+-- redundant, but necessary to keep colorscheme during :Reload
 vim.cmd('colorscheme nightfox')

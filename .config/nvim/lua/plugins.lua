@@ -55,13 +55,21 @@ require('packer').startup(function(use)
     config = get_config('lualine')
   }
 
-  -- git stuff
+  -- view diffs
   use {
     'sindrets/diffview.nvim',
     requires =  { { 'nvim-lua/plenary.nvim' } },
     config = get_config('diffview')
   }
+
+  -- tui for git
   use { 'kdheepak/lazygit.nvim' }
+
+  -- signs and blame
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = get_config('gitsigns')
+  }
 
   -- commenting lines
   use { 'chrisbra/vim-commentary' }
@@ -118,15 +126,13 @@ require('packer').startup(function(use)
     config = get_config('bufferline')
   }
 
+  -- because why not?
   use { 'alec-gibson/nvim-tetris' }
+
+  -- keymap help dialog
   use {
     "folke/which-key.nvim",
     config = get_config('which-key')
-  }
-
-  use {
-    'lewis6991/gitsigns.nvim',
-    config = get_config('gitsigns')
   }
 
   -- show colors

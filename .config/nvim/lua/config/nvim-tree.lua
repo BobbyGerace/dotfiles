@@ -11,12 +11,10 @@ require('nvim-tree').setup{
   }
 }
 
-local g = vim.g
+-- enable file highlight for git attributes (can be used without the icons).
+vim.g.nvim_tree_git_hl = 1
+-- enable folder and file icon highlight for opened files/directories.
+vim.g.nvim_tree_highlight_opened_files = 1 
 
-g.nvim_tree_git_hl = 1 -- 0 by default, will enable file highlight for git attributes (can be used without the icons).
-g.nvim_tree_highlight_opened_files = 1 -- 0 by default, will enable folder and file icon highlight for opened files/directories.
-
--- Toggle nerd tree
 map('n', '<leader>tt', ':NvimTreeFindFileToggle<cr>', 'toggle tree')
--- Reload the file list
 map('n', '<leader>tr', ':NvimTreeRefresh<cr>', 'refresh tree')
