@@ -13,3 +13,11 @@ vim.cmd([[
       autocmd QuickFixCmdPost l* lwindow
   augroup END
 ]])
+
+-- autoformat
+vim.cmd([[
+  augroup fmt
+    autocmd!
+    autocmd BufWritePre * undojoin | Neoformat
+  augroup END
+]])

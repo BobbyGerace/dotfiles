@@ -1,0 +1,13 @@
+git
+node
+neovim
+ranger
+ripgrep
+prettier
+prettierd
+packer
+lazygit
+Operator Mono Lig
+kitty
+vtop
+typescript-language-server

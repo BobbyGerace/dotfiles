@@ -94,11 +94,6 @@ require('packer').startup(function(use)
     requires = { { 'jose-elias-alvarez/nvim-lsp-ts-utils' } },
     config = get_config('lspconfig')
   }
-  use {
-    'jose-elias-alvarez/null-ls.nvim',
-    requires =  { { 'nvim-lua/plenary.nvim' } },
-    config = get_config('null-ls')
-  }
 
   -- autocomplete
   use { 
@@ -144,5 +139,10 @@ require('packer').startup(function(use)
   use { 
     'norcalli/nvim-colorizer.lua',
     config = get_config('colorizer')
+  }
+
+  -- autoformat
+  use {
+    'sbdchd/neoformat'
   }
 end)
