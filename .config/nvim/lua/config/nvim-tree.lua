@@ -11,6 +11,9 @@ require('nvim-tree').setup{
   },
   git = {
     ignore = false
+  },
+  view = {
+    width = 40
   }
 }
 
@@ -21,3 +24,5 @@ vim.g.nvim_tree_highlight_opened_files = 1
 
 map('n', '<leader>tt', ':NvimTreeFindFileToggle<cr>', 'toggle tree')
 map('n', '<leader>tr', ':NvimTreeRefresh<cr>', 'refresh tree')
+map('n', '<leader>t=', ':NvimTreeResize +10<cr>', 'make tree wider')
+map('n', '<leader>t-', ':NvimTreeResize -10<cr>', 'make tree narrower')
