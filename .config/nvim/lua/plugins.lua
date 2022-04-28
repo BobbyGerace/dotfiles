@@ -38,9 +38,9 @@ require('packer').startup(function(use)
 
 
   -- file outline
-  use { 
-    'simrat39/symbols-outline.nvim',
-    config = get_config('symbols-outline')
+  use {
+    'stevearc/aerial.nvim',
+    config = get_config('aerial')
   }
 
   -- opens terminals
