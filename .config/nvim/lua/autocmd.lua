@@ -18,6 +18,6 @@ vim.cmd([[
 vim.cmd([[
   augroup fmt
     autocmd!
-    autocmd BufWritePre * undojoin | Neoformat
+    au BufWritePre * try | undojoin | Neoformat | catch /E790/ | Neoformat | endtry
   augroup END
 ]])
