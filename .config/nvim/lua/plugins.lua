@@ -18,6 +18,10 @@ require('packer').startup(function(use)
     as = "catppuccin",
     config = get_config('catppuccin')
   })
+  use {
+    'rmehri01/onenord.nvim',
+    config = get_config('onenord')
+  }
 
   -- pickers for search / grep / etc
   use { 
@@ -35,7 +39,6 @@ require('packer').startup(function(use)
 
   -- allows config reload with :Reload
   use { 'famiu/nvim-reload' }
-
 
   -- file outline
   use {
@@ -145,4 +148,10 @@ require('packer').startup(function(use)
   use {
     'sbdchd/neoformat'
   }
+
+  -- tmux
+  use({
+    "aserowy/tmux.nvim",
+    config = get_config('tmux')
+	})
 end)

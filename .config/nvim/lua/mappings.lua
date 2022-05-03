@@ -13,27 +13,29 @@ map(
   'n',
   '<leader>Rc',
   ':cfdo %s///gc | update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>',
-  'replace in project with confirm'
+  'replace in project with confirm',
+  { silent = false }
 )
 
 map('n','<leader>rc', ':%s///gc<Left><Left><Left>', 'replace in current file with confirm')
 
 map('n', '<leader><tab>', ':b#<CR>', 'previous file')
 
-map('v', '<leader>y', '"*y', 'copy to clipboard')
+map('x', 'Y', '"*y', 'copy to clipboard')
 
-map('n', '<leader>v', '"*p', 'paste from clipboard')
+map('n', 'P', '"*p', 'paste from clipboard')
 
 map('n', '<leader>qt', ':tabclose<CR>', 'quit/close tab')
 
 map('n', '<esc>', ':noh<cr>', 'clear highlights')
 
-map('n', '<leader>qb', ':bp<bar>sp<bar>bn<bar>bd<CR>', 'close buffer')
+map('n', '<leader>x', ':bp<bar>sp<bar>bn<bar>bd<CR>', 'close buffer')
 
-map('n', '<c-k>', ':wincmd k<CR>', 'switch to upper split')
-map('n', '<c-j>', ':wincmd j<CR>', 'switch to lower split')
-map('n', '<c-h>', ':wincmd h<CR>', 'switch to left split')
-map('n', '<c-l>', ':wincmd l<CR>', 'switch to right split')
+-- These are off because the conflict with the tmux extension
+-- map('n', '<c-k>', ':wincmd k<CR>', 'switch to upper split')
+-- map('n', '<c-j>', ':wincmd j<CR>', 'switch to lower split')
+-- map('n', '<c-h>', ':wincmd h<CR>', 'switch to left split')
+-- map('n', '<c-l>', ':wincmd l<CR>', 'switch to right split')
 
 -- Switch to window from terminal
 map('t', '<c-k>', '<c-\\><c-n>:wincmd k<CR>', 'switch to upper split (terminal)')

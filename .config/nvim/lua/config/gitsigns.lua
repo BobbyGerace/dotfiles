@@ -34,7 +34,6 @@ require('gitsigns').setup{
     bmap('n', '<leader>gp', gs.preview_hunk, 'preview git hunk')
     bmap('n', '<leader>gb', function() gs.blame_line{full=true} end, 'line blame')
     bmap('n', '<leader>gt', gs.toggle_current_line_blame, 'toggle line blame')
-    bmap('n', '<leader>gd', gs.diffthis, 'diff this file')
   end
 }
 

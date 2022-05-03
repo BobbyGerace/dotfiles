@@ -19,9 +19,6 @@ local function _node_toggle()
   node:toggle()
 end
 
-map("n", "<c-space>", ":ToggleTerm<CR>", 'toggle terminal')
-map("t", "<c-space>", "<c-\\><c-n>:ToggleTerm<CR>", 'toggle terminal (from inside)')
-
 map("n", "<leader>gg", _lazygit_toggle, 'open lazygit')
 map("n", "<leader>sm", _vtop_toggle, 'system monitor')
 map("n", "<leader>sn", _node_toggle, 'system monitor')

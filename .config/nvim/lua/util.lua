@@ -23,5 +23,11 @@ M.buf_map = function(bufnr, mode, lhs, rhs, opts)
     })
 end
 
+M.apply_theme = function(theme) 
+  if (vim.g._theme == theme) then
+    vim.cmd('colorscheme ' .. theme)
+  end
+end
+
 return M
 

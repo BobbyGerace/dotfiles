@@ -1,3 +1,4 @@
+tmux
 git
 node
 neovim

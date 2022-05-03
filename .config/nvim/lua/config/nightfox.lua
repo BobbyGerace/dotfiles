@@ -1,3 +1,5 @@
+local apply_theme = require('util').apply_theme
+
 require('nightfox').setup{
   options = {
     styles = {
@@ -6,7 +8,4 @@ require('nightfox').setup{
   }
 }
 
-local theme = vim.g._theme
-if (theme == 'nightfox') then 
-  vim.cmd('colorscheme ' .. theme)
-end
+apply_theme('nightfox')

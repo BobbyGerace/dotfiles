@@ -11,7 +11,7 @@ telescope.setup{
         flip_columns = 180
       },
     },
-    file_ignore_patterns = { "node_modules", '.git' },
+    file_ignore_patterns = { "node_modules", '.git/' },
     path_display = {'truncate'},
     mappings = {
       i = {

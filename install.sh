@@ -10,6 +10,7 @@ dotfiles=(
   .config/lazygit
   .gitconfig
   .zshrc
+  .tmux.conf
 )
 
 # Symlink all dotfiles listed above to the right spot

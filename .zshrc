@@ -19,3 +19,5 @@ theme() {
 if [ -f ~/.zshrc_local ]; then
     source ~/.zshrc_local
 fi
+
+# export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
