@@ -8,7 +8,7 @@ require('onenord').setup({
     keywords = "italic", -- Style that is applied to keywords: see `highlight-args` for options
     functions = "NONE", -- Style that is applied to functions: see `highlight-args` for options
     variables = "NONE", -- Style that is applied to variables: see `highlight-args` for options
-    diagnostics = "underline", -- Style that is applied to diagnostics: see `highlight-args` for options
+    diagnostics = "undercurl", -- Style that is applied to diagnostics: see `highlight-args` for options
   },
 })
 
