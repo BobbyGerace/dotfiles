@@ -1,7 +1,7 @@
 local map = require('util').map
 
-require('gitsigns').setup{
-  signs = { 
+require('gitsigns').setup {
+  signs = {
     add = { text = '+' },
     change = { text = '~' },
     delete = { text = '-' },
@@ -23,17 +23,16 @@ require('gitsigns').setup{
       if vim.wo.diff then return ']c' end
       vim.schedule(function() gs.next_hunk() end)
       return '<Ignore>'
-    end, {expr=true})
+    end, { expr = true })
 
     bmap('n', '[c', function()
       if vim.wo.diff then return '[c' end
       vim.schedule(function() gs.prev_hunk() end)
       return '<Ignore>'
-    end, {expr=true})
+    end, { expr = true })
 
     bmap('n', '<leader>gp', gs.preview_hunk, 'preview git hunk')
-    bmap('n', '<leader>gb', function() gs.blame_line{full=true} end, 'line blame')
+    bmap('n', '<leader>gb', function() gs.blame_line { full = true } end, 'line blame')
     bmap('n', '<leader>gt', gs.toggle_current_line_blame, 'toggle line blame')
   end
 }
-

@@ -1,5 +1,5 @@
-function get_config(name)
-	return string.format('require("config/%s")', name)
+local function get_config(name)
+  return string.format('require("config/%s")', name)
 end
 
 require('packer').startup(function(use)
@@ -7,7 +7,7 @@ require('packer').startup(function(use)
   use { 'wbthomason/packer.nvim' }
 
   -- Themes
-  use { 
+  use {
     'EdenEast/nightfox.nvim',
     config = get_config('nightfox')
   }
@@ -24,9 +24,9 @@ require('packer').startup(function(use)
   }
 
   -- pickers for search / grep / etc
-  use { 
+  use {
     'nvim-telescope/telescope.nvim',
-    requires =  { { 'nvim-lua/plenary.nvim' } },
+    requires = { { 'nvim-lua/plenary.nvim' } },
     config = get_config('telescope')
   }
 
@@ -47,7 +47,7 @@ require('packer').startup(function(use)
   }
 
   -- opens terminals
-  use { 
+  use {
     'akinsho/toggleterm.nvim',
     config = get_config('toggleterm')
   }
@@ -55,10 +55,10 @@ require('packer').startup(function(use)
   -- status bar
   use {
     'nvim-lualine/lualine.nvim',
-    requires = { 
+    requires = {
       'BobbyGerace/lualine-lsp-progress',
-      'kyazdani42/nvim-web-devicons', 
-      opt = true 
+      'kyazdani42/nvim-web-devicons',
+      opt = true
     },
     config = get_config('lualine')
   }
@@ -66,7 +66,7 @@ require('packer').startup(function(use)
   -- view diffs
   use {
     'sindrets/diffview.nvim',
-    requires =  { { 'nvim-lua/plenary.nvim' } },
+    requires = { { 'nvim-lua/plenary.nvim' } },
     config = get_config('diffview')
   }
 
@@ -92,14 +92,14 @@ require('packer').startup(function(use)
   use { 'jparise/vim-graphql' }
 
   -- language server stuff
-  use { 
+  use {
     'neovim/nvim-lspconfig',
     requires = { { 'jose-elias-alvarez/nvim-lsp-ts-utils' } },
     config = get_config('lspconfig')
   }
 
   -- autocomplete
-  use { 
+  use {
     'hrsh7th/nvim-cmp',
     requires = {
       { 'hrsh7th/cmp-nvim-lsp' },
@@ -139,7 +139,7 @@ require('packer').startup(function(use)
   }
 
   -- show colors
-  use { 
+  use {
     'norcalli/nvim-colorizer.lua',
     config = get_config('colorizer')
   }
@@ -153,5 +153,5 @@ require('packer').startup(function(use)
   use({
     "aserowy/tmux.nvim",
     config = get_config('tmux')
-	})
+  })
 end)

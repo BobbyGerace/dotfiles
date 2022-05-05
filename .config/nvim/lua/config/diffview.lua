@@ -1,11 +1,13 @@
 local map = require('util').map
-require('diffview').setup{}
+require('diffview').setup {}
 
-local get_fork_point = function (base)
+local get_fork_point = function(base)
   local handle = io.popen('git merge-base --fork-point ' .. base)
-  local result = handle:read("*a")
-  handle:close()
-  return result:gsub("%s+", "")
+  if (handle ~= nil) then
+    local result = handle:read("*a")
+    handle:close()
+    return result:gsub("%s+", "")
+  end
 end
 
 local diff_base = function(opts)
@@ -16,7 +18,7 @@ end
 
 -- open Diffview with arguments – e.g., :DiffviewOpen origin/development...HEAD
 vim.api.nvim_create_user_command('Diff', 'DiffviewOpen <args>', { nargs = '*' })
-vim.api.nvim_create_user_command('DiffBase', diff_base , { nargs = 1 })
+vim.api.nvim_create_user_command('DiffBase', diff_base, { nargs = 1 })
 
 -- Open changed files preview
 map('n', '<leader>gd', ':DiffviewOpen<CR>', 'open working tree diff')

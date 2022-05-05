@@ -3,9 +3,9 @@ local config = {
     theme = vim.g._theme
   },
   sections = {
-    lualine_c = {'filename'},
+    lualine_c = { 'filename' },
   },
-} 
+}
 
 local function ins_left(component)
   table.insert(config.sections.lualine_c, component)
@@ -13,15 +13,14 @@ end
 
 -- inject lsp progress indicator
 ins_left {
-	'lsp_progress',
-	separators = {
-		message = { pre = '', post = ''},
-	},
+  'lsp_progress',
+  separators = {
+    message = { pre = '', post = '' },
+  },
   message = { commenced = 'Initializing', completed = 'Ready' },
-	display_components = { 'lsp_client_name', { 'message' }, 'spinner'},
-	timer = {progress_enddelay = 0, spinner = 100, lsp_client_name_enddelay = 0 },
-  spinner_symbols = {'⠈', '⠐', '⠠', '⢀', '⡀', '⠄', '⠂', '⠁'},
+  display_components = { 'lsp_client_name', { 'message' }, 'spinner' },
+  timer = { progress_enddelay = 0, spinner = 100, lsp_client_name_enddelay = 0 },
+  spinner_symbols = { '⠈', '⠐', '⠠', '⢀', '⡀', '⠄', '⠂', '⠁' },
 }
 
 require('lualine').setup(config)
-

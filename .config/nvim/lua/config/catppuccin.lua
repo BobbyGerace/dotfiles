@@ -2,10 +2,10 @@ vim.g.hello = 'world'
 local apply_theme = require('util').apply_theme
 local c = require('catppuccin')
 
-local cp = require'catppuccin.api.colors'.get_colors()
+local cp = require 'catppuccin.api.colors'.get_colors()
 
 if (vim.g._theme == 'catppuccin') then
-  c.remap({ 
+  c.remap({
     -- Lots of bold stuff that I really don't want... messes up my ligatures and cursive
     Visual = { bg = cp.black4, style = "NONE" }, -- Visual mode selection
     VisualNOS = { bg = cp.black4, style = "NONE" }, -- Visual mode selection when vim is "Not Owning the Selection".
@@ -30,8 +30,8 @@ if (vim.g._theme == 'catppuccin') then
     TSVariableBuiltin = { fg = cp.teal, style = "NONE" },
     TSFunction = { fg = cp.blue, style = "NONE" },
     TSParameter = { fg = cp.rosewater, style = "NONE" },
-  -- TSKeywordFunction = { fg = cp.maroon, style = "NONE" },
-  -- TSKeyword = { fg = cp.red, style = "NONE" },
+    -- TSKeywordFunction = { fg = cp.maroon, style = "NONE" },
+    -- TSKeyword = { fg = cp.red, style = "NONE" },
     TSMethod = { fg = cp.blue, style = "NONE" },
     TSNamespace = { fg = cp.rosewater, style = "NONE" },
     TSStringRegex = { fg = cp.peach, style = "NONE" },
@@ -59,4 +59,3 @@ if (vim.g._theme == 'catppuccin') then
 end
 
 apply_theme('catppuccin')
-

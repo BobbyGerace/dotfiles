@@ -1,13 +1,13 @@
 local map = require('util').map
 
 map(
-'n',
-'<leader>R',
-':cfdo %s///g | update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>', 
-'replace in project (from qf)'
+  'n',
+  '<leader>R',
+  ':cfdo %s///g | update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>',
+  'replace in project (from qf)'
 )
 
-map('n','<leader>r', ':%s///g<Left><Left>', 'replace in current file')
+map('n', '<leader>r', ':%s///g<Left><Left>', 'replace in current file')
 
 map(
   'n',
@@ -17,7 +17,7 @@ map(
   { silent = false }
 )
 
-map('n','<leader>rc', ':%s///gc<Left><Left><Left>', 'replace in current file with confirm')
+map('n', '<leader>rc', ':%s///gc<Left><Left><Left>', 'replace in current file with confirm')
 
 map('n', '<leader><tab>', ':b#<CR>', 'previous file')
 
