@@ -80,7 +80,10 @@ require('packer').startup(function(use)
   }
 
   -- commenting lines
-  use { 'chrisbra/vim-commentary' }
+  use { 
+    'numToStr/Comment.nvim',
+    config = get_config('comment')
+  }
 
   -- Surround characters
   use { 'tpope/vim-surround' }
