@@ -26,7 +26,10 @@ require('packer').startup(function(use)
   -- pickers for search / grep / etc
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { { 'nvim-lua/plenary.nvim' } },
+    requires = { 
+      { 'nvim-lua/plenary.nvim' }, 
+      { 'nvim-telescope/telescope-live-grep-raw.nvim'} 
+    },
     config = get_config('telescope')
   }
 

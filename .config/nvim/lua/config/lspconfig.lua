@@ -4,15 +4,23 @@ local on_attach = require("config/shared/on_attach")
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 lspconfig.tsserver.setup({
-  init_options = {
-    preferences = {
-      importModuleSpecifierPreference = "relative",
-    },
-  },
+  init_options = vim.tbl_deep_extend(
+    'force',
+    require("nvim-lsp-ts-utils").init_options,
+    {
+      preferences = {
+        importModuleSpecifierPreference = "relative",
+      },
+    }
+  ),
   capabilities,
   on_attach = function(client, bufnr)
     client.resolved_capabilities.document_formatting = false
     client.resolved_capabilities.document_range_formatting = false
+
+    local ts_utils = require("nvim-lsp-ts-utils")
+    ts_utils.setup {}
+    ts_utils.setup_client(client)
 
     on_attach(client, bufnr)
   end,
