@@ -26,9 +26,10 @@ require('packer').startup(function(use)
   -- pickers for search / grep / etc
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { 
-      { 'nvim-lua/plenary.nvim' }, 
-      { 'nvim-telescope/telescope-live-grep-raw.nvim'} 
+    requires = {
+      { 'nvim-lua/plenary.nvim' },
+      { 'nvim-telescope/telescope-live-grep-raw.nvim' },
+      { 'nvim-telescope/telescope-ui-select.nvim' }
     },
     config = get_config('telescope')
   }
@@ -83,7 +84,7 @@ require('packer').startup(function(use)
   }
 
   -- commenting lines
-  use { 
+  use {
     'numToStr/Comment.nvim',
     config = get_config('comment')
   }

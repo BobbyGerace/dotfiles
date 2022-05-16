@@ -3,8 +3,6 @@ local telescope = require('telescope')
 local builtin = require('telescope.builtin')
 local actions = require('telescope.actions')
 
-telescope.load_extension("live_grep_raw")
-
 telescope.setup {
   defaults = {
     layout_strategy = 'flex',
@@ -18,8 +16,7 @@ telescope.setup {
     mappings = {
       i = {
         ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
-        ["<C-a>"] = actions.send_to_qflist + actions.open_qflist,
-      },
+        ["<C-a>"] = actions.send_to_qflist + actions.open_qflist, },
       n = {
         ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
         ["<C-a>"] = actions.send_to_qflist + actions.open_qflist,
@@ -39,7 +36,15 @@ telescope.setup {
       layout_strategy = 'vertical'
     }
   },
+  extensions = {
+    ["ui-select"] = require('telescope.themes').get_cursor {
+      initial_mode = 'normal'
+    }
+  },
 }
+
+telescope.load_extension("live_grep_raw")
+telescope.load_extension("ui-select")
 
 local function custom_live_grep_raw(opts)
   local defaults = {
