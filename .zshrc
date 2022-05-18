@@ -16,8 +16,14 @@ theme() {
   kitty @ set-colors --all --configured ~/.config/kitty/kitty.conf
 }
 
+# local settings
 if [ -f ~/.zshrc_local ]; then
     source ~/.zshrc_local
+fi
+
+# zsh theme
+if [ -f ~/.zsh_theme.sh ]; then
+    source ~/.zsh_theme.sh
 fi
 
 # export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket

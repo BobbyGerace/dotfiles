@@ -10,6 +10,7 @@ dotfiles=(
   .config/lazygit
   .gitconfig
   .zshrc
+  .zsh_theme.sh
   .tmux.conf
 )
 
