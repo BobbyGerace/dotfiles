@@ -31,3 +31,6 @@ fi
 alias luamake=/Users/bobby.gerace/tools/lua-language-server/3rd/luamake/luamake
 
 export PATH="$HOME/tools/lua-language-server/bin:$PATH"
+
+# added by Snowflake SnowSQL installer v1.2
+export PATH=/Applications/SnowSQL.app/Contents/MacOS:$PATH
