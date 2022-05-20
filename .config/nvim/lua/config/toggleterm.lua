@@ -31,14 +31,14 @@ end
 local function _dbt_run()
   local rel_path = vim.fn.expand('%:p:~:.')
   local cmd = 'dbt run | less +F -rK'
-  local term = Terminal:new({ cmd = cmd, hidden = true, direction = 'float', close_on_exit = false })
+  local term = Terminal:new({ cmd = cmd, hidden = true, direction = 'float', })
   term:open()
 end
 
 local function _dbt_run_file()
   local rel_path = vim.fn.expand('%:p:~:.')
   local cmd = 'dbt run -m ' .. rel_path .. ' | less +F -rK'
-  local term = Terminal:new({ cmd = cmd, hidden = true, direction = 'float', close_on_exit = false })
+  local term = Terminal:new({ cmd = cmd, hidden = true, direction = 'float', })
   term:open()
 end
 
