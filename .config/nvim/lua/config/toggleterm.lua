@@ -23,13 +23,12 @@ local function _dbt_preview()
   local rel_path = vim.fn.expand('%:p:~:.')
   local target = 'target/compiled/analytics/' .. rel_path
 
-  local cmd = 'dbt compile -m ' .. rel_path .. ' && echo "select * from ($(cat ' .. target .. ')) limit 100;" | snowsql | less +F -S'
+  local cmd = 'dbt compile -m ' .. rel_path .. ' && echo "select * from ($(cat ' .. target .. ')) limit 100;" | snowsql | less -S'
   local term = Terminal:new({ cmd = cmd, hidden = true, direction = 'float' })
   term:open()
 end
 
 local function _dbt_run()
-  local rel_path = vim.fn.expand('%:p:~:.')
   local cmd = 'dbt run | less +F -rK'
   local term = Terminal:new({ cmd = cmd, hidden = true, direction = 'float', })
   term:open()
@@ -48,10 +47,17 @@ local function _dbt_show_compiled()
   vim.cmd('e ' .. target)
 end
 
+local function _dbt_parse()
+  local cmd = 'dbt parse | less +F -rK'
+  local term = Terminal:new({ cmd = cmd, hidden = true, direction = 'float', })
+  term:open()
+end
+
 vim.api.nvim_create_user_command('DbtRun', _dbt_run, { nargs = '*' })
 vim.api.nvim_create_user_command('DbtRunFile', _dbt_run_file, { nargs = '*' })
 vim.api.nvim_create_user_command('DbtPreview', _dbt_preview, { nargs = '*' })
 vim.api.nvim_create_user_command('DbtShowCompiled', _dbt_show_compiled, { nargs = '*' })
+vim.api.nvim_create_user_command('DbtParse', _dbt_parse, { nargs = '*' })
 
 map("n", "<leader>gg", _lazygit_toggle, 'open lazygit')
 map("n", "<leader>sm", _vtop_toggle, 'system monitor')
