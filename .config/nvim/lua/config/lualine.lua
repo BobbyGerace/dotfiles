@@ -1,6 +1,14 @@
+local function get_theme_name()
+  if vim.g._theme == 'dracula' then
+    return 'dracula-nvim'
+  else
+    return vim.g._theme
+  end
+end
+
 local config = {
   options = {
-    theme = vim.g._theme
+    theme = get_theme_name()
   },
   sections = {
     lualine_c = { 'filename' },

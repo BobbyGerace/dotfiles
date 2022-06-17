@@ -22,6 +22,10 @@ require('packer').startup(function(use)
     'rmehri01/onenord.nvim',
     config = get_config('onenord')
   }
+  use {
+    'Mofiqul/dracula.nvim',
+    config = get_config('dracula')
+  }
 
   -- pickers for search / grep / etc
   use {

@@ -4,8 +4,9 @@ local g = vim.g
 
 g.mapleader = ' ' -- use the spacebar as leader key
 o.completeopt = 'menu,menuone,noselect'
-o.signcolumn = 'number' -- put signs in the number column
+o.signcolumn = 'yes'
 o.number = true -- show line numbers
+o.relativenumber = true -- show line numbers
 o.ignorecase = true -- ignore case when searching
 o.smartcase = true -- unless the search has a capital letter
 
@@ -40,7 +41,7 @@ o.laststatus = 3
 o.updatetime = 750
 
 -- store this in a global for easy switching
-vim.g._theme = 'onenord'
+vim.g._theme = 'dracula'
 -- redundant, but necessary to keep colorscheme during :Reload
 vim.cmd('colorscheme ' .. vim.g._theme)
 
