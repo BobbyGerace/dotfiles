@@ -1,6 +1,6 @@
 local map = require('util').map
 
-require('bufferline').setup{
+require('bufferline').setup {
   options = {
     separator_style = 'thick',
     max_name_length = 30,
@@ -22,7 +22,7 @@ map('n', ']b', ':BufferLineCycleNext<CR>', 'next tab')
 map('n', '<leader>[b', ':BufferLineMovePrev<CR>', 'move tab left')
 map('n', '<leader>]b', ':BufferLineMoveNext<CR>', 'move tab right')
 
-map('n', 'gb', ':BufferLinePick<CR>', 'select a tab')
+map('n', '<leader>b', ':BufferLinePick<CR>', 'select a tab')
 
 map('n', '<leader>1', '<Cmd>BufferLineGoToBuffer 1<CR>')
 map('n', '<leader>2', '<Cmd>BufferLineGoToBuffer 2<CR>')

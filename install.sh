@@ -12,6 +12,7 @@ dotfiles=(
   .zshrc
   .zsh_theme.sh
   .tmux.conf
+  .tmux_colors.conf
 )
 
 # Symlink all dotfiles listed above to the right spot
