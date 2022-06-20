@@ -8,7 +8,9 @@ end
 
 local config = {
   options = {
-    theme = get_theme_name()
+    theme = get_theme_name(),
+    component_separators = { left = '', right = '' },
+    section_separators = { left = '', right = '' },
   },
   sections = {
     lualine_c = { 'filename' },
