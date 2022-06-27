@@ -60,6 +60,10 @@ lspconfig.sumneko_lua.setup {
   },
 }
 
+lspconfig.hls.setup {
+  on_attach = on_attach
+}
+
 vim.diagnostic.config({ severity_sort = true })
 
 local signs = { Error = ">>", Warn = ">>", Hint = ">>", Info = ">>" }
