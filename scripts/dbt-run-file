@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+FILE=$(find models -iname '*.sql'| fzf);
+
+echo "Running file: $FILE";
+
+dbt run -m $FILE;

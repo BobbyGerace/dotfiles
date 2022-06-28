@@ -7,6 +7,8 @@ alias tabname="kitty @ set-tab-title"
 
 alias confedit="nvim ~/dotfiles"
 
+export PATH="$HOME/scripts:$PATH"
+
 alias :q="exit"
 
 alias lazygit="lazygit --use-config-file=$HOME/.config/lazygit/config.yml"
@@ -34,3 +36,4 @@ export PATH="$HOME/tools/lua-language-server/bin:$PATH"
 
 # added by Snowflake SnowSQL installer v1.2
 export PATH=/Applications/SnowSQL.app/Contents/MacOS:$PATH
+

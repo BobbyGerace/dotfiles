@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
+# IMPORTANT — This only works if it's run from the dotfiles dir
+
 set -e
 
 dotfiles=(
-  bin
+  scripts
   .config/nvim
   .config/kitty
   .config/ranger
