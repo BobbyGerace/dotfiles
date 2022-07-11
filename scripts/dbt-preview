@@ -4,5 +4,5 @@ FILE=$(find models -iname '*.sql'| fzf);
 
 echo "Compiling model: $FILE";
 
-dbt compile -m $FILE && echo "select * from ($(cat target/compiled/analytics/$FILE)) limit 100;" | snowsql | less -S;
+dbt compile -m $FILE && echo "select * from ($(cat target/compiled/analytics/$FILE)\n) limit 100;" | snowsql | less -S;
 

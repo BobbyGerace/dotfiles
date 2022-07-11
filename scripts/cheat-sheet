@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+FILE=$(ls ~/cheat-sheets | fzf --preview='less ~/cheat-sheets/{}');
+
+echo "$(tput bold)\033[96m$FILE$(tput sgr0)"
+cat ~/cheat-sheets/$FILE
+

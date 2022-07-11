@@ -23,7 +23,7 @@ local function _dbt_preview()
   local rel_path = vim.fn.expand('%:p:~:.')
   local target = 'target/compiled/analytics/' .. rel_path
 
-  local cmd = 'dbt compile -m ' .. rel_path .. ' && echo "select * from ($(cat ' .. target .. ')) limit 100;" | snowsql | less -S'
+  local cmd = 'dbt compile -m ' .. rel_path .. ' && echo "select * from ($(cat ' .. target .. ')\n) limit 100;" | snowsql | less -S'
   local term = Terminal:new({ cmd = cmd, hidden = true, direction = 'float' })
   term:open()
 end
