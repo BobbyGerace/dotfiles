@@ -43,10 +43,10 @@ telescope.setup {
   },
 }
 
-telescope.load_extension("live_grep_raw")
+telescope.load_extension("live_grep_args")
 telescope.load_extension("ui-select")
 
-local function custom_live_grep_raw(opts)
+local function custom_live_grep_args(opts)
   local defaults = {
     vimgrep_arguments = {
       "rg",
@@ -60,7 +60,7 @@ local function custom_live_grep_raw(opts)
     }
   }
   opts = vim.tbl_extend("force", defaults, opts or {})
-  require('telescope').extensions.live_grep_raw.live_grep_raw(opts)
+  require('telescope').extensions.live_grep_args.live_grep_args(opts)
 end
 
 map('n', '<leader>p', function() builtin.find_files() end, 'find files')
@@ -71,6 +71,6 @@ map('n', '<leader>h', function() builtin.oldfiles({ only_cwd = true }) end, 'vie
 map('n', '<leader>gs', function() builtin.git_status() end, 'view git status')
 map('n', '<leader>e', function() builtin.diagnostics() end, 'view diagnostics')
 -- map('n', '<leader>f', function() builtin.live_grep({ hidden = true }) end, 'find in files')
-map('n', '<leader>f', custom_live_grep_raw, 'find in files')
+map('n', '<leader>f', custom_live_grep_args, 'find in files')
 map('n', '<leader>c', function() builtin.commands() end, 'show commands')
 map('n', '<leader>c', function() builtin.marks() end, 'show marks')

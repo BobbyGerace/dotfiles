@@ -30,7 +30,7 @@ fi
 
 # export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 
-alias luamake=/Users/bobby.gerace/tools/lua-language-server/3rd/luamake/luamake
+alias luamake=$HOME/tools/lua-language-server/3rd/luamake/luamake
 
 export PATH="$HOME/tools/lua-language-server/bin:$PATH"
 

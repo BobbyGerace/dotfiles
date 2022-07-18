@@ -13,11 +13,6 @@ require('packer').startup(function(use)
   }
   use { 'michaeldyrynda/carbon' }
   use { 'folke/tokyonight.nvim' }
-  use({
-    "catppuccin/nvim",
-    as = "catppuccin",
-    config = get_config('catppuccin')
-  })
   use {
     'rmehri01/onenord.nvim',
     config = get_config('onenord')
@@ -32,7 +27,7 @@ require('packer').startup(function(use)
     'nvim-telescope/telescope.nvim',
     requires = {
       { 'nvim-lua/plenary.nvim' },
-      { 'nvim-telescope/telescope-live-grep-raw.nvim' },
+      { 'nvim-telescope/telescope-live-grep-args.nvim' },
       { 'nvim-telescope/telescope-ui-select.nvim' }
     },
     config = get_config('telescope')
