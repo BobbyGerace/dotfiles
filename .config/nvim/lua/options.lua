@@ -30,10 +30,6 @@ o.grepformat = '%f:%l:%c:%m,%f:%l:%m'
 -- true colors
 o.termguicolors = true
 
--- I don't totally understand this, but should improve perf
-g.do_filetype_lua = 1
-g.did_load_filetypes = 0
-
 -- global statusline
 o.laststatus = 3
 

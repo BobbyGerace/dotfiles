@@ -138,11 +138,6 @@ require('packer').startup(function(use)
   -- because why not?
   use { 'alec-gibson/nvim-tetris' }
 
-  -- keymap help dialog
-  use {
-    "folke/which-key.nvim",
-    config = get_config('which-key')
-  }
 
   -- show colors
   use {
@@ -150,14 +145,21 @@ require('packer').startup(function(use)
     config = get_config('colorizer')
   }
 
-  -- autoformat
-  use {
-    'sbdchd/neoformat'
-  }
 
   -- tmux
   use({
     "aserowy/tmux.nvim",
     config = get_config('tmux')
   })
+
+  -- keymap help dialog
+  use {
+    "folke/which-key.nvim",
+    config = get_config('which-key')
+  }
+
+  -- autoformat
+  use {
+    'sbdchd/neoformat'
+  }
 end)
