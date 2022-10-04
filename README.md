@@ -45,3 +45,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
 Then press `<prefix> + I` to install plugins
+
+## System Settings
+
+Disable Mission Control shortcuts to move left, right (conficts with tmux bindings)

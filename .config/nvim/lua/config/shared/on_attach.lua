@@ -29,7 +29,7 @@ local on_attach = function(client, bufnr)
     bmap("n", "ga", ":LspCodeAction<CR>", 'go to code action')
     bmap("n", "ge", ":LspDiagLine<CR>", 'show diagnostics for line')
 
-    if client.resolved_capabilities.document_formatting then
+    if client.server_capabilities.document_formatting then
         vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
     end
 end
