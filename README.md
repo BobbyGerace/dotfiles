@@ -6,18 +6,23 @@ First install homebrew, node, and kitty
 
 ## Homebrew dependencies
 
-tmux
-neovim
-ranger
-ripgrep
-prettier
-fsouza/prettierd/prettierd
-jesseduffield/lazygit/lazygit
+- tmux
+- neovim
+- ranger
+- ripgrep
+- prettier
+- fsouza/prettierd/prettierd
+- jesseduffield/lazygit/lazygit
 
 ## npm dependencies
 
-vtop
-typescript-language-server
+- vtop
+- typescript-language-server
+
+## ruby dependencies
+
+- solargraph
+- rubocop
 
 ## Install config files
 

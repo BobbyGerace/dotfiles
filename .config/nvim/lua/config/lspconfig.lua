@@ -60,6 +60,8 @@ lspconfig.sumneko_lua.setup {
   },
 }
 
+lspconfig.solargraph.setup{}
+
 lspconfig.hls.setup {
   on_attach = on_attach
 }
