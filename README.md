@@ -26,6 +26,8 @@ First install homebrew, node, and kitty
 
 ## Install config files
 
+IMPORTANT: Make sure nothing you care about will be overwritten by this command. Check zshrc, bashrc, config files, etc
+
 Run `./install.sh` inside this repo
 
 ## Install Packer

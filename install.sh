@@ -16,6 +16,7 @@ dotfiles=(
   .tmux.conf
   .tmux_colors.conf
   .commonrc
+  .bashrc
 )
 
 # Symlink all dotfiles listed above to the right spot
