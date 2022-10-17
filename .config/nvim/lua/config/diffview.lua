@@ -23,4 +23,4 @@ vim.api.nvim_create_user_command('DiffBase', diff_base, { nargs = 1 })
 -- Open changed files preview
 map('n', '<leader>gd', ':DiffviewOpen<CR>', 'open working tree diff')
 -- Show file history
-map('n', '<leader>gh', ':DiffviewFileHistory<CR>', 'open file history')
+map('n', '<leader>gh', ':DiffviewFileHistory %<CR>', 'open file history')
