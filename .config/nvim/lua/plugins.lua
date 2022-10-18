@@ -158,8 +158,9 @@ require('packer').startup(function(use)
     config = get_config('which-key')
   }
 
-  -- autoformat
+  -- formatting
   use {
-    'sbdchd/neoformat'
+    'sbdchd/neoformat',
+    config = get_config('neoformat')
   }
 end)
