@@ -23,13 +23,13 @@ require('gitsigns').setup {
       if vim.wo.diff then return ']c' end
       vim.schedule(function() gs.next_hunk() end)
       return '<Ignore>'
-    end, { expr = true })
+    end, 'next change', { expr = true })
 
     bmap('n', '[c', function()
       if vim.wo.diff then return '[c' end
       vim.schedule(function() gs.prev_hunk() end)
       return '<Ignore>'
-    end, { expr = true })
+    end, 'previous change', { expr = true })
 
     bmap('n', '<leader>gp', gs.preview_hunk, 'preview git hunk')
     bmap('n', '<leader>gb', function() gs.blame_line { full = true } end, 'line blame')
