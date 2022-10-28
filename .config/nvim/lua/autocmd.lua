@@ -14,10 +14,10 @@ vim.cmd([[
   augroup END
 ]])
 
--- autoformat -- disabled for now
--- vim.cmd([[
---   augroup fmt
---     autocmd!
---     au BufWritePre * try | undojoin | Neoformat | catch /E790/ | Neoformat | endtry
---   augroup END
--- ]])
+-- autoformat
+vim.cmd([[
+  augroup fmt
+    autocmd!
+    au BufWritePre *.js,*.tsx,*.ts,*.jsx,*.css,*.scss,*.html,*.json,*.yml,*.md try | undojoin | Neoformat | catch /E790/ | Neoformat | endtry
+  augroup END
+]])
