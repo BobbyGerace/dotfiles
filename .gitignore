@@ -1,2 +1,5 @@
 .config/nvim/plugin/packer_compiled.lua
 lazygit
+.config/ranger/bookmarks
+.config/ranger/history
+.config/ranger/tagged
