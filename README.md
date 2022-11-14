@@ -1,28 +1,35 @@
 # Setup Instructions
 
+Note: these instructions assume you're using macOS. They work with other environments too, but you're on your own when it comes to getting all the dependencies installed
+
 ## Dependencies
 
 First install homebrew, node, and kitty
 
 ## Homebrew dependencies
 
-- tmux
-- neovim
-- ranger
-- ripgrep
-- prettier
-- fsouza/prettierd/prettierd
-- jesseduffield/lazygit/lazygit
+```bash
+brew install \
+tmux \
+neovim \
+ranger \
+ripgrep \
+prettier \
+fsouza/prettierd/prettierd \
+jesseduffield/lazygit/lazygit
+```
 
 ## npm dependencies
 
-- vtop
-- typescript-language-server
+```bash
+npm install -g vtop typescript typescript-language-server
+```
 
 ## ruby dependencies
 
-- solargraph
-- rubocop
+```bash
+gem install solargraph rubocop
+```
 
 ## Install config files
 
