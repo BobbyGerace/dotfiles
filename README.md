@@ -22,33 +22,33 @@ jesseduffield/lazygit/lazygit
 ## npm dependencies
 
 ```bash
-npm install -g vtop typescript typescript-language-server
+sudo npm install -g vtop typescript typescript-language-server
 ```
 
 ## ruby dependencies
 
 ```bash
-gem install solargraph rubocop
+sudo gem install solargraph rubocop
 ```
 
 ## Install config files
 
 IMPORTANT: Make sure nothing you care about will be overwritten by this command. Check zshrc, bashrc, config files, etc
 
-Run `./install.sh` inside this repo
+cd into this repo and run `./install.sh`
 
 ## Install Packer
 
 ```
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
-~/.local/share/nvim/site/pack/packer/start/packer.nvim
+git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 ```
 
 Then run `:PackerSync` inside neovim to install plugins
 
 ## Fonts
 
-Install Operator Mono Lig and a Nerd Font. Since Operator Mono is proprietary, you'll have to generate the ligatures yourself
+- Install Operator Mono Lig. Since Operator Mono is proprietary, you'll have to generate the ligatures yourself
+- Install a [nerd font](https://www.nerdfonts.com/font-downloads)
 
 ## Install tmux plugins
 
