@@ -48,7 +48,7 @@ Then run `:PackerSync` inside neovim to install plugins
 ## Fonts
 
 - Install Operator Mono Lig. Since Operator Mono is proprietary, you'll have to generate the ligatures yourself
-- Install a [nerd font](https://www.nerdfonts.com/font-downloads)
+- Install a [nerd font](https://www.nerdfonts.com/font-downloads) (Hack seems to work)
 
 ## Install tmux plugins
 
