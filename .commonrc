@@ -10,9 +10,6 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 alias confurl="curl -K"
 
-alias vim="nvim"
-alias gvim="nvim-qt&!"
-
 alias tabname="kitty @ set-tab-title"
 
 alias confedit="nvim ~/dotfiles"
