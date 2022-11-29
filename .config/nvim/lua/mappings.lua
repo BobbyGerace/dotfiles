@@ -21,7 +21,7 @@ map('n', '<leader>rc', ':%s///gc<Left><Left><Left>', 'replace in current file wi
 
 map('n', '<leader><tab>', ':b#<CR>', 'previous file')
 
-map('x', 'Y', '"*y', 'copy to clipboard')
+map('x', 'Y', require('osc52').copy_visual, 'copy to clipboard')
 
 map('n', 'P', '"*p', 'paste from clipboard')
 

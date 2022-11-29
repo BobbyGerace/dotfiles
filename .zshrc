@@ -13,3 +13,5 @@ if [ -f ~/.commonrc ]; then
     source ~/.commonrc
 fi
 
+bindkey "^[[1;3C" forward-word
+bindkey "^[[1;3D" backward-word

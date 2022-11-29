@@ -163,4 +163,7 @@ require('packer').startup(function(use)
     'sbdchd/neoformat',
     config = get_config('neoformat')
   }
+
+  -- copy to clipboard over ssh
+  use {'ojroques/nvim-osc52'}
 end)
