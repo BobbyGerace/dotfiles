@@ -7,9 +7,12 @@ require('packer').startup(function(use)
   use { 'wbthomason/packer.nvim' }
 
   -- Themes
+  -- To switch themes
+  --  1. uncomment the get_config line (if there is one)
+  --  2. change g._theme variable in options.lua
   use {
     'EdenEast/nightfox.nvim',
-    config = get_config('nightfox')
+    -- config = get_config('nightfox')
   }
   use { 'michaeldyrynda/carbon' }
   use { 'folke/tokyonight.nvim' }
@@ -19,7 +22,7 @@ require('packer').startup(function(use)
   }
   use {
     'Mofiqul/dracula.nvim',
-    config = get_config('dracula')
+    -- config = get_config('dracula')
   }
 
   -- pickers for search / grep / etc

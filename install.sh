@@ -6,6 +6,7 @@ set -e
 
 dotfiles=(
   scripts
+  tmux_colors
   .config/nvim
   .config/kitty
   .config/ranger
@@ -14,7 +15,7 @@ dotfiles=(
   .zshrc
   .zsh_theme.sh
   .tmux.conf
-  .tmux_colors.conf
+  .tmux_colors.sh
   .commonrc
   .bashrc
 )

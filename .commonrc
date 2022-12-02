@@ -27,6 +27,9 @@ alias luamake=$HOME/tools/lua-language-server/3rd/luamake/luamake
 
 theme() {
   cp ~/.config/kitty/themes/"$1".conf ~/.config/kitty/current-theme.conf
+  cp ~/tmux_colors/"$1".sh ~/.tmux_colors.sh
   kitty @ set-colors --all --configured ~/.config/kitty/kitty.conf
+  echo "shell needs to be restarted or sourced before tmux colors apply"
 }
 
+source ~/.tmux_colors.sh
