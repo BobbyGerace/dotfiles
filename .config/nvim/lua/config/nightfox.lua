@@ -1,11 +1,14 @@
 local apply_theme = require('util').apply_theme
 
-require('nightfox').setup{
+require('nightfox').setup({
   options = {
     styles = {
-      comments = 'italic'
+      comments = "italic",
+      keywords = "italic",
     }
   }
-}
+})
 
-apply_theme('nightfox')
+-- test 123 hello
+
+apply_theme('carbonfox')

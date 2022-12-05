@@ -12,8 +12,6 @@ require('packer').startup(function(use)
     'EdenEast/nightfox.nvim',
     config = get_config('nightfox')
   }
-  use { 'michaeldyrynda/carbon' }
-  use { 'folke/tokyonight.nvim' }
   use {
     'rmehri01/onenord.nvim',
     config = get_config('onenord')
@@ -24,7 +22,7 @@ require('packer').startup(function(use)
   }
   use { "catppuccin/nvim", 
     as = "catppuccin",
-    config = get_config('catppucin')
+    config = get_config('catppuccin')
   }
 
   -- pickers for search / grep / etc
