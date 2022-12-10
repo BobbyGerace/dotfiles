@@ -7,12 +7,11 @@ require('packer').startup(function(use)
   use { 'wbthomason/packer.nvim' }
 
   -- Themes
+  -- To switch themes, change g._theme variable in options.lua
   use {
     'EdenEast/nightfox.nvim',
     config = get_config('nightfox')
   }
-  use { 'michaeldyrynda/carbon' }
-  use { 'folke/tokyonight.nvim' }
   use {
     'rmehri01/onenord.nvim',
     config = get_config('onenord')
@@ -20,6 +19,10 @@ require('packer').startup(function(use)
   use {
     'Mofiqul/dracula.nvim',
     config = get_config('dracula')
+  }
+  use { "catppuccin/nvim", 
+    as = "catppuccin",
+    config = get_config('catppuccin')
   }
 
   -- pickers for search / grep / etc
@@ -163,4 +166,7 @@ require('packer').startup(function(use)
     'sbdchd/neoformat',
     config = get_config('neoformat')
   }
+
+  -- copy to clipboard over ssh
+  use {'ojroques/nvim-osc52'}
 end)
