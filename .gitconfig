@@ -1,5 +1,6 @@
 [core]
   pager = delta
+	editor = vim
 [user]
 	name = Bobby Gerace
 	email = bobby.gerace@world50.com
@@ -20,5 +21,6 @@
 [mergetool]
 	keepBackup = false
   keepTemporaries = false
-[core]
-	editor = vim
+[status]
+  short = true
+  branch = true
