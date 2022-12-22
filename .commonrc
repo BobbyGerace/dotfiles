@@ -22,7 +22,7 @@ alias lazygit="lazygit --use-config-file=$HOME/.config/lazygit/config.yml"
 
 alias luamake=$HOME/tools/lua-language-server/3rd/luamake/luamake
 
-export BAT_THEME="Visual Studio Dark+"
+export BAT_THEME=base16
 
 theme() {
   cp ~/.config/kitty/themes/"$1".conf ~/.config/kitty/current-theme.conf
