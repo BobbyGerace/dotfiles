@@ -1,16 +1,22 @@
-# This is Git's per-user configuration file.
+[core]
+  pager = delta
 [user]
-# Please adapt and uncomment the following lines:
 	name = Bobby Gerace
 	email = bobby.gerace@world50.com
+[interactive]
+  diffFilter = delta --color-only
 [diff]
-    tool = nvimdiff
+  colorMoved = default
+[delta]
+  navigate = true    # use n and N to move between diff sections
+  light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+  line-numbers = true
 [merge]
-    tool = nvimdiff
+  conflictstyle = diff3
 [init]
 	defaultBranch = main
 [include]
-      path = ~/.gitconfig_local
+  path = ~/.gitconfig_local
 [mergetool]
 	keepBackup = false
   keepTemporaries = false

@@ -13,6 +13,8 @@ First install homebrew, node, and kitty
 - prettier
 - fsouza/prettierd/prettierd
 - jesseduffield/lazygit/lazygit
+- bat
+- git-delta
 
 ## npm dependencies
 
