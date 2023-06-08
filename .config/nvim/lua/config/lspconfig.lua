@@ -26,15 +26,15 @@ lspconfig.tsserver.setup({
   end,
 })
 
-local sumneko_binary_path = vim.fn.exepath('lua-language-server')
-local sumneko_root_path = vim.fn.fnamemodify(sumneko_binary_path, ':h')
+local lua_ls_binary_path = vim.fn.exepath('lua-language-server')
+local lua_ls_root_path = vim.fn.fnamemodify(lua_ls_binary_path, ':h')
 
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
-lspconfig.sumneko_lua.setup {
-  cmd = { sumneko_binary_path, "-E", sumneko_root_path .. "/main.lua" };
+lspconfig.lua_ls.setup {
+  cmd = { lua_ls_binary_path, "-E", lua_ls_root_path .. "/main.lua" };
   on_attach = on_attach,
   settings = {
     Lua = {

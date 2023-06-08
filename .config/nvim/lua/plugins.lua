@@ -148,7 +148,6 @@ require('packer').startup(function(use)
     config = get_config('colorizer')
   }
 
-
   -- tmux
   use({
     "aserowy/tmux.nvim",
