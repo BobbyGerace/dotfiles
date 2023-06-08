@@ -13,10 +13,6 @@ require('packer').startup(function(use)
     config = get_config('nightfox')
   }
   use {
-    'rmehri01/onenord.nvim',
-    config = get_config('onenord')
-  }
-  use {
     'Mofiqul/dracula.nvim',
     config = get_config('dracula')
   }
