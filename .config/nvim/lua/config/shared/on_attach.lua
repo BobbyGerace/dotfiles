@@ -1,8 +1,6 @@
 local map = require("util").map
 
 local on_attach = function(client, bufnr)
-    require("aerial").on_attach(client, bufnr)
-
     vim.cmd("command! LspDef lua vim.lsp.buf.definition()")
     vim.cmd("command! LspFormatting lua vim.lsp.buf.formatting()")
     vim.cmd("command! LspCodeAction lua vim.lsp.buf.code_action()")
