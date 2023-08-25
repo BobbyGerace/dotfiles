@@ -20,6 +20,24 @@ alias :q="exit"
 
 alias lazygit="lazygit --use-config-file=$HOME/.config/lazygit/config.yml"
 
+# open up a temporary scratchpad
+scratch() {
+    local editor="nvim"
+    local file="/tmp/scratch.md"
+
+    # Parse arguments
+    while [[ "$#" -gt 0 ]]; do
+        case $1 in
+            -e|--editor) editor="$2"; shift ;; # Sets the editor
+            *) file="/tmp/$1" ;;                # Sets the file name (always in /tmp)
+        esac
+        shift
+    done
+
+    $editor "$file"
+}
+
+
 alias history_all="cat ~/.zsh_history"
 
 alias luamake=$HOME/tools/lua-language-server/3rd/luamake/luamake
