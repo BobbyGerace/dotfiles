@@ -24,6 +24,7 @@ require('packer').startup(function(use)
     as = "catppuccin",
     config = get_config('catppuccin')
   }
+  use { 'rose-pine/neovim', name = 'rose-pine', config = get_config('rose-pine') }
 
   -- pickers for search / grep / etc
   use {
