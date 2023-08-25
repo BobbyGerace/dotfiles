@@ -127,13 +127,13 @@ require('packer').startup(function(use)
     config = get_config('nvim-tree')
   }
 
-  -- tab line
-  use {
-    'akinsho/bufferline.nvim',
-    tag = "*",
-    requires = 'kyazdani42/nvim-web-devicons',
-    config = get_config('bufferline')
-  }
+  -- tab line (temporarily disabled to see if I even miss it)
+  -- use {
+  --   'akinsho/bufferline.nvim',
+  --   tag = "*",
+  --   requires = 'kyazdani42/nvim-web-devicons',
+  --   config = get_config('bufferline')
+  -- }
 
   -- because why not?
   use { 'alec-gibson/nvim-tetris' }
