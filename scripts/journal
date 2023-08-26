@@ -1,0 +1,11 @@
+#!/bin/bash
+
+JOURNAL_FILE=~/notes/journal.md
+DATE=$(date "+%Y-%m-%d")
+
+if ! grep -q "## $DATE" "$JOURNAL_FILE"; then
+    echo -e "\n## $DATE\n" >> "$JOURNAL_FILE"
+fi
+
+nvim +"/## $DATE" "$JOURNAL_FILE"
+

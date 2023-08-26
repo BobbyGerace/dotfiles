@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Check if an argument is provided
+if [ -z "$1" ]; then
+    echo "Please provide a note name."
+    exit 1
+fi
+
+# Normalize the note name
+normalized_name=$(echo "$1" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9 ]//g' | tr ' ' '-')
+
+# Create the file name with the timestamp
+timestamp=$(date "+%Y%m%d%H%M%S")
+filename="${timestamp}-${normalized_name}.md"
+
+# Directory to save the notes
+dir=~/notes
+
+# Create the directory if it doesn't exist
+mkdir -p "$dir"
+
+# Open the file with nvim
+nvim "$dir/$filename"

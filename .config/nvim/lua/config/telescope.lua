@@ -24,6 +24,13 @@ telescope.setup {
     }
   },
   pickers = {
+    buffers = {
+      mappings = {
+        n = {
+          ["dd"] = "delete_buffer",
+        }
+      }
+    },
     live_grep = {
       additional_args = function()
         return { "--hidden" }

@@ -13,10 +13,6 @@ require('packer').startup(function(use)
     config = get_config('nightfox')
   }
   use {
-    'rmehri01/onenord.nvim',
-    config = get_config('onenord')
-  }
-  use {
     'Mofiqul/dracula.nvim',
     config = get_config('dracula')
   }
@@ -24,6 +20,7 @@ require('packer').startup(function(use)
     as = "catppuccin",
     config = get_config('catppuccin')
   }
+  use { 'rose-pine/neovim', name = 'rose-pine', config = get_config('rose-pine') }
 
   -- pickers for search / grep / etc
   use {
@@ -130,13 +127,13 @@ require('packer').startup(function(use)
     config = get_config('nvim-tree')
   }
 
-  -- tab line
-  use {
-    'akinsho/bufferline.nvim',
-    tag = "*",
-    requires = 'kyazdani42/nvim-web-devicons',
-    config = get_config('bufferline')
-  }
+  -- tab line (temporarily disabled to see if I even miss it)
+  -- use {
+  --   'akinsho/bufferline.nvim',
+  --   tag = "*",
+  --   requires = 'kyazdani42/nvim-web-devicons',
+  --   config = get_config('bufferline')
+  -- }
 
   -- because why not?
   use { 'alec-gibson/nvim-tetris' }
@@ -147,7 +144,6 @@ require('packer').startup(function(use)
     'norcalli/nvim-colorizer.lua',
     config = get_config('colorizer')
   }
-
 
   -- tmux
   use({
