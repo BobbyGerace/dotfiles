@@ -169,4 +169,7 @@ require('packer').startup(function(use)
 
   -- copy to clipboard over ssh
   use {'ojroques/nvim-osc52'}
+
+  -- copilot
+  use {'github/copilot.vim'}
 end)
