@@ -12,4 +12,4 @@ fi
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 # Some other nice prompt characters:  ➜ λ
 export PATH="$PATH:$HOME/.rvm/bin"
-export PS1='\n\[\033[34m\]\w\[\033[35m\]$(__git_ps1 " %s") \[\033[90m\]\t\n`if [ $? = 0 ]; then echo "\[\033[01;32m\]"; else echo "\[\033[01;31m\]λ"; fi`\[\033[00m\] '
+export PS1='\n\[\033[34m\]\w\[\033[35m\]$(__git_ps1 " %s") \[\033[90m\]\t\n`if [ $? = 0 ]; then echo "\[\033[01;32m\]λ"; else echo "\[\033[01;31m\]λ"; fi`\[\033[00m\] '
