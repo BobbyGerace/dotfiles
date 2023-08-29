@@ -25,9 +25,14 @@ if [[ -f /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
 fi
 
 setopt PROMPT_SUBST  # Allows for command substitution in the prompt
+# Check if in an SSH session, and if so, prepend hostname
+local ssh_prefix=""
+if [[ -n $SSH_CLIENT ]]; then
+    ssh_prefix="%F{cyan}%m %f"
+fi
 
 PROMPT='
-%F{blue}%~%F{magenta}$(__git_ps1 " %s") %F{darkgray}%*
+'$ssh_prefix'%F{blue}%~%F{magenta}$(__git_ps1 " %s") %F{8}%*
 %(?.%F{green}.%F{red})λ%f '
 
 # Some other nice prompt characters:  ➜ λ
