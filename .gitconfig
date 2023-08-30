@@ -3,7 +3,7 @@
 	editor = vim
 [user]
 	name = Bobby Gerace
-	email = bobby.gerace@world50.com
+	email = rfgerace@gmail.com
 [interactive]
   diffFilter = delta --color-only
 [diff]
