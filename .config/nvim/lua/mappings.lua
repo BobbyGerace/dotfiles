@@ -55,3 +55,7 @@ map('n', '<Leader>-', ':exe "resize " . (winheight(0) * 2/3)<CR>', 'make split s
 
 -- I accidentally open the command history buffer with this all the time
 map('n', 'q:', '<nop>', nil, { noremap = false })
+
+map('n', '<leader>n', function() 
+  vim.wo.relativenumber = not vim.wo.relativenumber
+end, 'toggle relative numbers')
