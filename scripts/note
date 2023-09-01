@@ -7,7 +7,7 @@ if [ -z "$1" ]; then
 fi
 
 # Normalize the note name
-normalized_name=$(echo "$1" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9 ]//g' | tr ' ' '-')
+normalized_name=$(echo "$1" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9_-]//g' | tr ' ' '-')
 
 # Create the file name with the timestamp
 timestamp=$(date "+%Y%m%d%H%M%S")
