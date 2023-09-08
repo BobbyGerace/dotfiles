@@ -40,15 +40,6 @@ require('packer').startup(function(use)
     config = get_config('treesitter')
   }
 
-  -- allows config reload with :Reload
-  use { 'famiu/nvim-reload' }
-
-  -- file outline
-  use {
-    'stevearc/aerial.nvim',
-    config = get_config('aerial')
-  }
-
   -- opens terminals
   use {
     'akinsho/toggleterm.nvim',
@@ -65,16 +56,6 @@ require('packer').startup(function(use)
     },
     config = get_config('lualine')
   }
-
-  -- view diffs
-  use {
-    'sindrets/diffview.nvim',
-    requires = { { 'nvim-lua/plenary.nvim' } },
-    config = get_config('diffview')
-  }
-
-  -- tui for git
-  use { 'kdheepak/lazygit.nvim' }
 
   -- signs and blame
   use {
@@ -93,9 +74,6 @@ require('packer').startup(function(use)
 
   -- Make sure . works on plugins
   use { 'tpope/vim-repeat' }
-
-  -- graphql syntax
-  use { 'jparise/vim-graphql' }
 
   -- language server stuff
   use {
@@ -126,18 +104,6 @@ require('packer').startup(function(use)
     },
     config = get_config('nvim-tree')
   }
-
-  -- tab line (temporarily disabled to see if I even miss it)
-  -- use {
-  --   'akinsho/bufferline.nvim',
-  --   tag = "*",
-  --   requires = 'kyazdani42/nvim-web-devicons',
-  --   config = get_config('bufferline')
-  -- }
-
-  -- because why not?
-  use { 'alec-gibson/nvim-tetris' }
-
 
   -- show colors
   use {

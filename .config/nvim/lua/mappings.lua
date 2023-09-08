@@ -9,6 +9,8 @@ map(
 
 map('n', '<leader>r', ':%s///g<Left><Left>', 'replace in current file')
 
+map('n', '<leader>n', ':rnu!<CR>', 'toggle line numbers')
+
 map(
   'n',
   '<leader>Rc',
