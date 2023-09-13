@@ -22,6 +22,8 @@ syn match gymParen /[\)]/ containedin=gymExId contained
 syn match gymTag "\w\+" contained
 syn match gymTagValue ":\zs[^,}\s]\+" contained
 
+highlight ExerciseInfo cterm=underline gui=undercurl
+highlight Error cterm=underline gui=undercurl
 hi def link metaBlock PreProc
 hi def link gymTagBlock Special
 hi def link metaBlockDelimiter Delimiter
@@ -40,4 +42,5 @@ hi def link gymParen Delimiter
 hi def link gymTag Keyword
 hi def link gymTagValue Special
 
+hi def link ExerciseInfo Function
 
