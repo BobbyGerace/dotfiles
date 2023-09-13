@@ -7,4 +7,4 @@ export light_text=color7
 export time_bg="#403d52"
 export time_fg=color7
 export highlight=color6
-export status_bg="#161320"
+export status_bg="#191724"

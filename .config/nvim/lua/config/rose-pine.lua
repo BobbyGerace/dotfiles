@@ -7,3 +7,4 @@ require('rose-pine').setup({
 })
 
 apply_theme('rose-pine')
+apply_theme('rose-pine-moon')

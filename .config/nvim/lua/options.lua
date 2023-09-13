@@ -37,7 +37,7 @@ o.laststatus = 3
 o.updatetime = 750
 
 -- store this in a global for easy switching
-vim.g._theme = 'rose-pine'
+vim.g._theme = 'rose-pine-moon'
 -- redundant, but necessary to keep colorscheme during :Reload
 vim.cmd('colorscheme ' .. vim.g._theme)
 
