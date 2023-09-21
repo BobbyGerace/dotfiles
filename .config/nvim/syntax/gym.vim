@@ -11,6 +11,7 @@ syn match gymMetaLabel "^\zs[^:]\+\ze:" containedin=metaBlock contained
 syn match gymMetaValue /:\zs.*$/ containedin=metaBlock contains=gymMetaComment contained
 syn match gymMetaComment /#.*/ containedin=metaBlock contained
 
+syn match gymPlaceholderValue "?"
 syn match gymDistance /\c\ft\|mi\|m\|km/ 
 syn match gymComment /#.*$/
 syn match gymNumber /\d\(\.\)\?/
@@ -41,6 +42,7 @@ hi def link gymOp Operator
 hi def link gymParen Delimiter
 hi def link gymTag Keyword
 hi def link gymTagValue Special
+hi def link gymPlaceholderValue Todo 
 
 hi def link ExerciseInfo Function
 
