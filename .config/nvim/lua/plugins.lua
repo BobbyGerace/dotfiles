@@ -133,5 +133,8 @@ require('packer').startup(function(use)
   use {'ojroques/nvim-osc52'}
 
   -- copilot
-  use {'github/copilot.vim'}
+  use {
+    'github/copilot.vim',
+    config = get_config('copilot')
+  }
 end)

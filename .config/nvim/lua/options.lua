@@ -6,7 +6,6 @@ g.mapleader = ' ' -- use the spacebar as leader key
 o.completeopt = 'menu,menuone,noselect'
 o.signcolumn = 'yes'
 o.number = true -- show line numbers
-o.relativenumber = true -- show relative line numbers
 o.ignorecase = true -- ignore case when searching
 o.smartcase = true -- unless the search has a capital letter
 
