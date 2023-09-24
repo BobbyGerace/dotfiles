@@ -9,6 +9,10 @@ require('packer').startup(function(use)
   -- Themes
   -- To switch themes, change g._theme variable in options.lua
   use {
+    'folke/tokyonight.nvim',
+    config = get_config('tokyonight')
+  }
+  use {
     'EdenEast/nightfox.nvim',
     config = get_config('nightfox')
   }

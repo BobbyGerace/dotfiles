@@ -7,12 +7,12 @@ syn region gymTagBlock start="{" end="}" contains=gymTag,gymTagValue
 
 syn match metaBlockDelimiter "---" containedin=metaBlock contained
 syn match gymMetaOp /q/ containedin=metaBlock contained
-syn match gymMetaLabel "^\zs[^:]\+\ze:" containedin=metaBlock contained
+syn match gymMetaLabel "^\zs[0-9a-zA-Z_-]\+\ze:" containedin=metaBlock contained
 syn match gymMetaValue /:\zs.*$/ containedin=metaBlock contains=gymMetaComment contained
 syn match gymMetaComment /#.*/ containedin=metaBlock contained
 
 syn match gymPlaceholderValue "?"
-syn match gymDistance /\c\ft\|mi\|m\|km/ 
+syn match gymDistance /\c\ft\|mi\|m\|km\|in\|cm\|lb\|kg/ 
 syn match gymComment /#.*$/
 syn match gymNumber /\d\(\.\)\?/
 syn match gymBodyweight "\(b\|B\)\(W\|w\)"
@@ -20,7 +20,7 @@ syn match gymExId /^\zs\d\+[a-z]\?\ze)/
 syn match gymExName /[\)]\s*\(.*\)/ contains=gymComment,gymParen
 syn match gymOp /[\*\:x,@]/
 syn match gymParen /[\)]/ containedin=gymExId contained
-syn match gymTag "\w\+" contained
+syn match gymTag "[0-9a-zA-Z_-]\+" contained
 syn match gymTagValue ":\zs[^,}\s]\+" contained
 
 highlight ExerciseInfo cterm=underline gui=undercurl
