@@ -2,7 +2,7 @@ if exists("b:current_syntax")
     finish
 endif
 
-syn region metaBlock start="^---" end="^---" keepend
+syn region metaBlock start="---" end="---" keepend
 syn region gymTagBlock start="{" end="}" contains=gymTag,gymTagValue
 
 syn match metaBlockDelimiter "---" containedin=metaBlock contained
@@ -15,7 +15,7 @@ syn match gymDistance /\c\ft\|mi\|m\|km/
 syn match gymComment /#.*$/
 syn match gymNumber /\d\(\.\)\?/
 syn match gymBodyweight "\(b\|B\)\(W\|w\)"
-syn match gymExId /^\zs\d\+[a-z]\?\ze)/
+syn match gymExId /^\s*\zs\d\+[a-z]\?\ze)/
 syn match gymExName /[\)]\s*\(.*\)/ contains=gymComment,gymParen
 syn match gymOp /[\*\:x,@]/
 syn match gymParen /[\)]/ containedin=gymExId contained
