@@ -9,6 +9,10 @@ require('packer').startup(function(use)
   -- Themes
   -- To switch themes, change g._theme variable in options.lua
   use {
+    'folke/tokyonight.nvim',
+    config = get_config('tokyonight')
+  }
+  use {
     'EdenEast/nightfox.nvim',
     config = get_config('nightfox')
   }
@@ -133,5 +137,8 @@ require('packer').startup(function(use)
   use {'ojroques/nvim-osc52'}
 
   -- copilot
-  use {'github/copilot.vim'}
+  use {
+    'github/copilot.vim',
+    config = get_config('copilot')
+  }
 end)
