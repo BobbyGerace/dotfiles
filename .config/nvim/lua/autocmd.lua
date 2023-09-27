@@ -56,7 +56,6 @@ vim.cmd([=[
   function! HighlightNewExercises()
       " Clear previous highlighting to avoid duplicates
       call clearmatches()
-      call nvim_buf_clear_namespace(0, s:exercise_namespace, 0, -1)
 
       " Get exercise list from Lua
       let l:exercises = luaeval('require"exercise_completion".exercise_names')
@@ -72,9 +71,6 @@ vim.cmd([=[
               " Check if the word is a new exercise
               if index(map(l:exercises, 'tolower(v:val)'), l:word) == -1 " Highlight the word with a squiggly underline
                   call matchadd('ExerciseInfo', '\c' . l:word)
-                  
-                  " Add virtual text annotation
-                  call nvim_buf_set_virtual_text(0, s:exercise_namespace, l:lnum - 1, [['New Exercise', 'WarningMsg']], {})
               endif
           endif
       endfor
