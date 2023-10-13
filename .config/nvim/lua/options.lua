@@ -9,6 +9,10 @@ o.number = true -- show line numbers
 o.ignorecase = true -- ignore case when searching
 o.smartcase = true -- unless the search has a capital letter
 
+-- highlight the number of the current line
+o.cursorline = true
+o.cursorlineopt = 'number'
+
 -- 2 spaces instead of tabs
 o.tabstop = 2
 o.softtabstop = 2
