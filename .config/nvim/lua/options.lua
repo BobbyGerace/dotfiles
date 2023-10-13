@@ -44,6 +44,7 @@ vim.g._theme = 'rose-pine-moon'
 -- redundant, but necessary to keep colorscheme during :Reload
 vim.cmd('colorscheme ' .. vim.g._theme)
 
+-- if git wants to open an editor, do it in this nvim instance
 vim.cmd [[
   let $GIT_EDITOR = 'nvr -cc split --remote-wait'
 ]]
