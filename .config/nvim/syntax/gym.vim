@@ -9,8 +9,10 @@ syn region gymStringBlock start="\"" end="\""
 
 syn match metaBlockDelimiter "---" containedin=metaBlock contained
 syn match gymMetaOp /:/ containedin=metaBlock contained
-syn match gymMetaLabel "^\zs[a-zA-Z_][0-9a-zA-Z_-]*\ze:" containedin=metaBlock contained
-syn match gymMetaValue /:\s*\zs.\+$/ containedin=metaBlock contains=gymMetaComment contained
+syn match gymMetaLabel "^\s*\zs[a-zA-Z_][0-9a-zA-Z_-]*" containedin=metaBlock contained
+syn match gymMetaValue /:\s*.\+$/ containedin=metaBlock contains=gymMetaComment,gymMetaOp contained
+"syn match gymMetaLabel "^\zs[a-zA-Z_][0-9a-zA-Z_-]*\ze:" containedin=metaBlock contained
+"syn match gymMetaValue /:\s*\zs.\+$/ containedin=metaBlock contains=gymMetaComment contained
 syn match gymMetaComment /\/\/.*/ containedin=metaBlock contained
 
 syn match gymNumber /-\?\d\(\.\)\?\d*/
@@ -21,7 +23,7 @@ syn match gymNumber /\d\(\.\)\?/
 syn match gymBodyweight "\(b\|B\)\(W\|w\)"
 " syn match gymExName /[\)]\s*\([^\#{}"]*\)/ contains=gymComment,gymParen,gymString
 syn match gymExIndicator /^\s*[\#\&]\?\ze/ containedin=gymExName contained
-syn match gymExName /[\#\&]\s*\(.*\)/ contains=gymComment,gymExIndicator
+syn match gymExName /^\s*[\#\&]\s*\(.*\)/ contains=gymComment,gymExIndicator
 syn match gymOp /[\*\:x,@]/
 syn match gymParen /[\)]/ containedin=gymExId contained
 syn match gymTag "[a-zA-Z_][0-9a-zA-Z_-]*" contained
