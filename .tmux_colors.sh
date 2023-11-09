@@ -1,10 +1,12 @@
 export color_wait=magenta
 export color_copy=yellow
 export color_sync=red
-export color_tmux=color6
+export color_tmux=color4
 export dark_text=color0
 export light_text=color7
-export time_bg="#44415a"
-export time_fg=color7
-export highlight=color6
-export status_bg="#232136"
+export time_bg=color4
+export time_fg=color0
+export highlight=color4
+export status_bg=color0
+
+
