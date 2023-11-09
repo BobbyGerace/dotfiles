@@ -3,6 +3,8 @@ local function get_theme_name()
     return 'dracula-nvim'
   elseif vim.g._theme == 'rose-pine-moon' then
     return 'rose-pine'
+  elseif vim.g._theme == 'tokyonight-night' then
+    return 'tokyonight'
   else
     return vim.g._theme
   end
