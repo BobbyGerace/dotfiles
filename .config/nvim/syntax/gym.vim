@@ -17,7 +17,7 @@ syn match gymMetaComment /\/\/.*/ containedin=metaBlock contained
 
 syn match gymNumber /-\?\d\(\.\)\?\d*/
 syn match gymPlaceholderValue "?"
-syn match gymDistance /\c\ft\|mi\|m\|km\|in\|cm\|lb\|kg/ 
+syn match gymDistance /\c\ft\|mi\|m\|km\|in\|cm\|lb\|kg\|sets\|set/ 
 syn match gymComment /\/\/.*$/
 syn match gymNumber /\d\(\.\)\?/
 syn match gymBodyweight "\(b\|B\)\(W\|w\)"
@@ -41,7 +41,7 @@ hi def link gymMetaComment Comment
 hi def link gymDistance Type
 hi def link gymComment Comment
 hi def link gymNumber Number
-hi def link gymBodyweight SpecialChar
+hi def link gymBodyweight Number
 hi def link gymExName Function
 hi def link gymOp Operator
 hi def link gymTagValue String
