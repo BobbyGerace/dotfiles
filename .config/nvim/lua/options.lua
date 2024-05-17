@@ -39,6 +39,10 @@ o.laststatus = 3
 -- time after typing to update plugins
 o.updatetime = 750
 
+o.foldmethod = "expr"
+o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+o.foldlevel = 99
+
 -- store this in a global for easy switching
 vim.g._theme = 'tokyonight-night'
 -- redundant, but necessary to keep colorscheme during :Reload

@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-word = %w[dt aeiou bp rl aeiou xyz].map {|x| x[rand(x.size)] }.join('')
+word = %w[dt aeiou bp rl aeiou xyz].map { _1.split('').sample }.join('')
 punctuation = Array.new(rand(4)+1).map { rand(2).zero? ? '!' : '?' }.join('')
-env = ARGV[0] ? " #{ARGV[0]}" : ''
+env = ARGV[0] ? ' ' + ARGV[0] : ''
 puts word + env + punctuation
