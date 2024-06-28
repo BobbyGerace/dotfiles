@@ -109,6 +109,12 @@ require('packer').startup(function(use)
     config = get_config('nvim-tree')
   }
 
+  -- file outline
+  use {
+    'stevearc/aerial.nvim',
+    config = get_config('aerial')
+  }
+
   -- show colors
   use {
     'norcalli/nvim-colorizer.lua',
