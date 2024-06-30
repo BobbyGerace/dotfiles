@@ -61,6 +61,7 @@ cmp.setup({
         luasnip = "[LuaSnip]",
         nvim_lua = "[Lua]",
         latex_symbols = "[LaTeX]",
+        gym_exercises = "[Exercise]",
       })[entry.source.name]
       return vim_item
     end
@@ -91,3 +92,38 @@ cmp.setup.cmdline(':', {
     { name = 'cmdline' }
   })
 })
+
+local source = {}
+
+source.new = function()
+  return setmetatable({}, { __index = source })
+end
+
+source.complete = function(self, request, callback)
+  local exercises = vim.fn.systemlist("gym exercise list")
+  local items = {}
+  for _, exercise in ipairs(exercises) do
+    table.insert(items, { label = exercise })
+  end
+  callback({ items = items, isIncomplete = false })
+end
+
+cmp.register_source('gym_exercises', source.new())
+
+vim.api.nvim_create_autocmd("CursorMovedI", {
+  callback = function()
+    local col = vim.fn.col('.') - 1
+    local synID = vim.fn.synID(vim.fn.line('.'), col, 1)
+    local synName = vim.fn.synIDattr(synID, 'name')
+    if synName == 'gymExName' then
+      cmp.setup.buffer({
+        sources = cmp.config.sources({
+          { name = 'gym_exercises' },
+        })
+      })
+    end
+  end
+})
+
+-- TODO: Make autocomplete not work if theres an error... probably display the error in the command bar
+-- TODO: Fix the root directory problem

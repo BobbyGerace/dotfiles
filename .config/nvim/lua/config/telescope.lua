@@ -81,3 +81,76 @@ map('n', '<leader>e', function() builtin.diagnostics() end, 'view diagnostics')
 map('n', '<leader>f', custom_live_grep_args, 'find in files')
 map('n', '<leader>c', function() builtin.commands() end, 'show commands')
 map('n', '<leader>c', function() builtin.marks() end, 'show marks')
+
+local pickers = require "telescope.pickers"
+local previewers = require "telescope.previewers"
+local finders = require "telescope.finders"
+local conf = require("telescope.config").values
+
+local get_current_exercise_name = function()
+  -- run `gym workout parse <filename>` on the current file
+  handle = io.popen("gym workout parse " .. vim.fn.expand("%:p"))
+  result = handle:read("*a")
+  handle:close()
+
+  -- decode the JSON response inside a try/catch block
+  local ok, response = pcall(vim.fn.json_decode, result)
+
+  if not ok then
+    return nil
+  end
+
+  -- search through response.exercises to find where lineStart and lineEnd contain cursor position
+  for _, exercise in ipairs(response.exercises) do
+    if exercise.lineStart <= vim.fn.line(".") and exercise.lineEnd >= vim.fn.line(".") then
+      return exercise.name
+    end
+  end
+
+  return nil
+end
+
+-- if we get a name, get the history. Otherwise just return an empty list
+local get_current_exercise_history = function()
+  local name = get_current_exercise_name()
+  if name == nil then
+    return {}
+  end
+
+  return vim.fn.systemlist("gym exercise history --locations-only \"" .. name .. "\"")
+
+end
+
+
+local colors = function(opts)
+  opts = opts or {}
+  pickers.new(opts, {
+    prompt_title = "colors",
+    finder = finders.new_table {
+      results = get_current_exercise_history(),
+      entry_maker = function(entry)
+        local filename, lineno = string.match(entry, "(.*):(%d+)")
+        return {
+          value = entry,
+          display = entry,
+          ordinal = entry,
+          filename = filename,
+          lineno = tonumber(lineno),
+        }
+      end
+    },
+    previewer = previewers.new_buffer_previewer({
+      define_preview = function(self, entry, status)
+        local bufnr = self.state.bufnr
+        vim.api.nvim_buf_set_option(bufnr, 'filetype', 'gym')
+        vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, vim.fn.readfile(entry.filename))
+        vim.fn.setpos('.', {bufnr, 8, 0, 0})
+        vim.cmd('normal! zz')
+        vim.api.nvim_buf_add_highlight(bufnr, -1, 'Search', entry.lineno - 1, 0, -1)
+      end,
+    }),
+    sorter = conf.file_sorter(opts),
+  }):find()
+end
+
+map('n', '<leader>wt', colors, 'show marks')

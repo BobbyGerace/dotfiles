@@ -22,65 +22,68 @@ vim.cmd([[
   augroup END
 ]])
 
-vim.cmd([[
-  function! ExerciseCompletion(findstart, base)
-      if a:findstart
-          " locate the start of the word
-          let line = getline('.')
-          let start = col('.') - 1
-          while start > 0 && line[start - 1] =~ '\a'
-              let start -= 1
-          endwhile
-          return start
-      else
-          let matches = luaeval('require"exercise_completion".exercise_names')
-          call filter(matches, 'v:val =~ "^" . a:base')
-          return matches
-      endif
-  endfunction
-]])
+-- use  `gym exercise list` to get the list of exercises
+function _G.get_exercise_names()
+  local handle = io.popen('gym exercise list')
+  local result = handle:read('*a')
+  handle:close()
+  return vim.split(result, '\n')
+end
+
+-- vim.cmd([[
+--   function! ExerciseCompletion(findstart, base)
+--       if a:findstart
+--           " locate the start of the word
+--           let line = getline('.')
+--           let start = col('.') - 1
+--           while start > 0 && line[start - 1] =~ '\a'
+--               let start -= 1
+--           endwhile
+--           return start
+--       else
+--           let matches = luaeval('get_exercise_names()')
+--           call filter(matches, 'v:val =~ "^" . a:base')
+--           return matches
+--       endif
+--   endfunction
+-- ]])
 
 vim.cmd('au BufRead,BufNewFile *.gym set filetype=gym')
-vim.cmd('au BufRead,BufNewFile *.gym setlocal completefunc=ExerciseCompletion')
+-- vim.cmd('au BufRead,BufNewFile *.gym setlocal completefunc=ExerciseCompletion')
 
-vim.cmd([[
-augroup ExerciseAutoComplete
-    autocmd!
-    autocmd InsertCharPre * if synIDattr(synID(line('.'), col('.') - 1, 1), "name") == 'gymExName' | call feedkeys("\<C-x>\<C-u>", 'n') | endif
-augroup END
-]])
+-- vim.cmd([[
+-- augroup ExerciseAutoComplete
+--     autocmd!
+--     autocmd InsertCharPre * if synIDattr(synID(line('.'), col('.') - 1, 1), "name") == 'gymExName' | call feedkeys("\<C-x>\<C-u>", 'n') | endif
+-- augroup END
+-- ]])
 
-vim.cmd([=[
-  let s:exercise_namespace = nvim_create_namespace('exercise_warnings')
+-- local function highlight_unmatched_exercises()
+--   local exercises = vim.fn.systemlist("gym exercise list")
+--   local exercise_set = {}
+--   for _, exercise in ipairs(exercises) do
+--     exercise_set[exercise:lower()] = true
+--   end
 
-  function! HighlightNewExercises()
-      " Clear previous highlighting to avoid duplicates
-      call clearmatches()
+--   local bufnr = vim.api.nvim_get_current_buf()
+--   local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+--   for lineno, line in ipairs(lines) do
+--     local start_pos, end_pos = line:find("%S+")
+--     while start_pos do
+--       local word = line:sub(start_pos, end_pos)
+--       if vim.fn.synIDattr(vim.fn.synID(lineno, start_pos, 1), "name") == "gymExName" then
+--         if not exercise_set[word:lower()] then
+--           vim.api.nvim_buf_add_highlight(bufnr, -1, "UnmatchedExercise", lineno - 1, start_pos - 1, end_pos)
+--         end
+--       end
+--       start_pos, end_pos = line:find("%S+", end_pos + 1)
+--     end
+--   end
+-- end
 
-      " Get exercise list from Lua
-      let l:exercises = luaeval('require"exercise_completion".exercise_names')
-
-      " Iterate over each line in the file
-      for l:lnum in range(1, line('$'))
-          let l:line = getline(l:lnum)
-
-          " Check if this line contains a gymExName syntax item
-          if synIDattr(synID(l:lnum, col([l:lnum, matchend(l:line, ')\s*\zs\S.\{-}\ze\s*\(#\|$\)')]), 1), "name") == 'gymExName'
-              let l:word = tolower(matchstr(l:line, ')\s*\zs\S.\{-}\ze\s*\(#\|$\)'))
-              
-              " Check if the word is a new exercise
-              if index(map(l:exercises, 'tolower(v:val)'), l:word) == -1 " Highlight the word with a squiggly underline
-                  call matchadd('ExerciseInfo', '\c' . l:word)
-              endif
-          endif
-      endfor
-  endfunction
-]=])
-
-vim.cmd([[
-  augroup ExerciseHighlighting
-      autocmd!
-      autocmd BufReadPost,BufEnter,InsertLeave,TextChanged * call HighlightNewExercises()
-  augroup END
-]])
+-- vim.api.nvim_create_autocmd({"BufEnter", "TextChanged", "InsertLeave"}, {
+--   callback = function()
+--     highlight_unmatched_exercises()
+--   end
+-- })
 
