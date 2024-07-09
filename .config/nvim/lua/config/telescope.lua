@@ -122,10 +122,10 @@ local get_current_exercise_history = function()
 end
 
 
-local colors = function(opts)
+local exercise_history = function(opts)
   opts = opts or {}
   pickers.new(opts, {
-    prompt_title = "colors",
+    prompt_title = "Exercise History",
     finder = finders.new_table {
       results = get_current_exercise_history(),
       entry_maker = function(entry)

@@ -6,6 +6,8 @@ require('packer').startup(function(use)
   -- Packer can manage itself
   use { 'wbthomason/packer.nvim' }
 
+  use { '~/programming/gym.nvim' }
+
   -- Themes
   -- To switch themes, change g._theme variable in options.lua
   use {
