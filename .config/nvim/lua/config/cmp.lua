@@ -124,6 +124,3 @@ vim.api.nvim_create_autocmd("CursorMovedI", {
     end
   end
 })
-
--- TODO: Make autocomplete not work if theres an error... probably display the error in the command bar
--- TODO: Fix the root directory problem
