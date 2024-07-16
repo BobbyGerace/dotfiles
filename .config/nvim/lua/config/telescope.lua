@@ -83,4 +83,3 @@ map('n', '<leader>f', custom_live_grep_args, 'find in files')
 map('n', '<leader>c', function() builtin.commands() end, 'show commands')
 map('n', '<leader>c', function() builtin.marks() end, 'show marks')
 
-map('n', '<leader>wh', function() telescope.extensions.gym.exercise_history() end, 'Exercise History')

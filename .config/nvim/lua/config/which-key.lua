@@ -4,8 +4,8 @@ wk.setup {
   ignore_missing = true
 }
 
-wk.register {
-  ['<leader>g'] = { name = 'git' },
-  ['<leader>t'] = { name = 'tree' },
-  ['<leader>s'] = { name = 'show' }
+wk.add {
+  { '<leader>g', group = 'git' },
+  { '<leader>t', group = 'tree' },
+  { '<leader>s', group = 'show' }
 }

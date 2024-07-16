@@ -7,10 +7,8 @@ M.map = function(mode, keys, cmd, desc, opt)
   opt.desc = desc
 
   if (mode == 'n' and desc ~= nil) then
-    local registerTable = { cmd, desc }
-    for k, v in pairs(opt) do registerTable[k] = v end
-    wk.register({
-      [keys] = { cmd, desc }
+    wk.add({
+      { keys, cmd, desc = desc, mode = mode}
     })
   else
     vim.keymap.set(mode, keys, cmd, opt)
