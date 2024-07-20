@@ -7,7 +7,7 @@ require('packer').startup(function(use)
   use { 'wbthomason/packer.nvim' }
 
   use {
-    '~/programming/gym.nvim',
+    'BobbyGerace/gym.nvim',
     config = get_config('gym')
   }
 
