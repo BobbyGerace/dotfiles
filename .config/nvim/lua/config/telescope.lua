@@ -1,16 +1,11 @@
 local map = require('util').map
 local telescope = require('telescope')
+local themes = require('telescope.themes')
 local builtin = require('telescope.builtin')
 local actions = require('telescope.actions')
 
 telescope.setup {
-  defaults = {
-    layout_strategy = 'flex',
-    layout_config = {
-      flex = {
-        flip_columns = 180
-      },
-    },
+  defaults = themes.get_dropdown({
     file_ignore_patterns = { "node_modules", '.git/' },
     path_display = { 'truncate' },
     mappings = {
@@ -22,7 +17,7 @@ telescope.setup {
         ["<C-a>"] = actions.send_to_qflist + actions.open_qflist,
       },
     }
-  },
+  }),
   pickers = {
     buffers = {
       mappings = {
@@ -41,12 +36,20 @@ telescope.setup {
     },
     lsp_references = {
       layout_strategy = 'vertical'
-    }
+    },
   },
   extensions = {
-    ["ui-select"] = require('telescope.themes').get_cursor {
+    ["ui-select"] = themes.get_cursor {
       initial_mode = 'normal'
-    }
+    },
+    gym = {
+      exercises = {
+        theme = "dropdown",
+      },
+      workouts = {
+        theme = "dropdown",
+      },
+    },
   },
 }
 

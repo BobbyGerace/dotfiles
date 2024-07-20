@@ -1,4 +1,5 @@
 local gym = require('gym')
+local gym = require('gym.workout')
 local telescope = require('telescope')
 local map = require('util').map
 
@@ -9,3 +10,5 @@ map('n', '<leader>gel', function() telescope.extensions.gym.exercises() end, 'Ex
 map('n', '<leader>gwh', function() telescope.extensions.gym.workout_history() end, 'Workout History')
 map('n', '<leader>gwn', function() telescope.extensions.gym.current_workout_name_history() end, 'Named Workout History')
 map('n', '<leader>gep', function() telescope.extensions.gym.prs() end, 'Exercise PRs')
+
+-- TODO: Add mappings for calc and workout commands
