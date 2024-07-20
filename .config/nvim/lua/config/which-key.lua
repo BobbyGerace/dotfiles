@@ -1,7 +1,6 @@
 local wk = require("which-key")
 
 wk.setup {
-  ignore_missing = true
 }
 
 wk.add {

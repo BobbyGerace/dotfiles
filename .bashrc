@@ -18,5 +18,10 @@ else
     ssh_prefix=""
 fi
 
+if [ -f ~/.bash_git ]; then
+  source ~/.bash_git
+fi
+
 # Some other nice prompt characters:  ➜ λ
 export PS1='\n'$ssh_prefix'\[\033[34m\]\w\[\033[35m\]$(__git_ps1 " %s") \[\033[90m\]\t\n`if [ $? = 0 ]; then echo "\[\033[01;32m\]λ"; else echo "\[\033[01;31m\]λ"; fi`\[\033[00m\] '
+
