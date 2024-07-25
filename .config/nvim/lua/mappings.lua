@@ -27,8 +27,6 @@ map('x', 'Y', require('osc52').copy_visual, 'copy to clipboard')
 
 map('n', 'P', '"*p', 'paste from clipboard')
 
-map('n', '<leader>qt', ':tabclose<CR>', 'quit/close tab')
-
 map('n', '<esc>', ':noh<cr>', 'clear highlights')
 
 map('n', '<leader>x', ':bp<bar>sp<bar>bn<bar>bd<CR>', 'close buffer')
