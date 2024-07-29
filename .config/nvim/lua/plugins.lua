@@ -37,7 +37,8 @@ require('packer').startup(function(use)
     requires = {
       { 'nvim-lua/plenary.nvim' },
       { 'nvim-telescope/telescope-live-grep-args.nvim' },
-      { 'nvim-telescope/telescope-ui-select.nvim' }
+      { 'nvim-telescope/telescope-ui-select.nvim' },
+      { "nvim-telescope/telescope-file-browser.nvim" }
     },
     config = get_config('telescope')
   }
@@ -103,15 +104,6 @@ require('packer').startup(function(use)
       { 'hrsh7th/vim-vsnip' },
     },
     config = get_config('cmp')
-  }
-
-  -- file tree
-  use {
-    'kyazdani42/nvim-tree.lua',
-    requires = {
-      'kyazdani42/nvim-web-devicons',
-    },
-    config = get_config('nvim-tree')
   }
 
   -- file outline
