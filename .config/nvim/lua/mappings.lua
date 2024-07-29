@@ -31,6 +31,9 @@ map('n', '<esc>', ':noh<cr>', 'clear highlights')
 
 map('n', '<leader>x', ':bp<bar>sp<bar>bn<bar>bd<CR>', 'close buffer')
 
+map('n', ']q', ':cnext<CR>', 'next quickfix')
+map('n', '[q', ':cprev<CR>', 'previous quickfix')
+
 -- These are off because the conflict with the tmux extension
 -- map('n', '<c-k>', ':wincmd k<CR>', 'switch to upper split')
 -- map('n', '<c-j>', ':wincmd j<CR>', 'switch to lower split')
