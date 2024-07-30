@@ -7,6 +7,11 @@ local fb_actions = require("telescope._extensions.file_browser.actions")
 
 telescope.setup {
   defaults = themes.get_ivy({
+    borderchars = {
+      prompt = { "─", " ", " ", " ", "─", "─", " ", " " },
+      results = { " " },
+      preview = { " ", " ", " ", "", " ", " ", " ", " " }, -- │
+    },
     file_ignore_patterns = { "node_modules", '.git/' },
     path_display = { 'filename_first' },
     mappings = {

@@ -10,11 +10,22 @@ local function get_theme_name()
   end
 end
 
+local theme = require('lualine.themes.' .. get_theme_name())
+
+for _, mode in pairs(theme) do
+  mode.a.fg = mode.a.bg
+  mode.a.gui = ""
+
+  for _, section in pairs (mode) do
+    section.bg = nil
+  end
+end
+
 local config = {
   options = {
-    theme = get_theme_name(),
+    theme = theme,
     component_separators = { left = '', right = '' },
-    section_separators = { left = '', right = '' },
+    section_separators = { left = ' ', right = ' ' },
   },
   sections = {
     lualine_c = { 'filename' },
