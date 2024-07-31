@@ -111,11 +111,12 @@ map('n', 'gd', function() builtin.lsp_definitions() end, 'go to definitions')
 map('n', '<leader>l', function() builtin.buffers() end, 'view open buffers')
 map('n', '<leader>j', function() builtin.oldfiles({ only_cwd = true }) end, 'view file history')
 map('n', '<leader>gs', function() builtin.git_status() end, 'view git status')
-map('n', '<leader>gs', function() builtin.git_bcommits() end, 'view buffer commit history')
+map('n', '<leader>gh', function() builtin.git_bcommits() end, 'view buffer commit history')
 map('n', '<leader>e', function() builtin.diagnostics() end, 'view diagnostics')
 -- map('n', '<leader>f', function() builtin.live_grep({ hidden = true }) end, 'find in files')
 map('n', '<leader>f', custom_live_grep_args, 'find in files')
 map('n', '<leader>q', function() builtin.quickfix() end, 'show quickfix list')
+map('n', '<leader>o', function() builtin.lsp_document_symbols() end, 'symbol outline')
 
 local curr_dir_args = { select_buffer = true, path = "%:p:h" }
 map(

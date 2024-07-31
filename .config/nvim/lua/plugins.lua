@@ -50,12 +50,6 @@ require('packer').startup(function(use)
     config = get_config('treesitter')
   }
 
-  -- opens terminals
-  use {
-    'akinsho/toggleterm.nvim',
-    config = get_config('toggleterm')
-  }
-
   -- status bar
   use {
     'nvim-lualine/lualine.nvim',
@@ -104,12 +98,6 @@ require('packer').startup(function(use)
       { 'hrsh7th/vim-vsnip' },
     },
     config = get_config('cmp')
-  }
-
-  -- file outline
-  use {
-    'stevearc/aerial.nvim',
-    config = get_config('aerial')
   }
 
   -- show colors

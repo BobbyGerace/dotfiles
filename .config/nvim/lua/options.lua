@@ -43,8 +43,6 @@ o.foldmethod = "expr"
 o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 o.foldlevel = 99
 
-o.cmdheight = 0
-
 -- store this in a global for easy switching
 vim.g._theme = 'duskfox'
 -- redundant, but necessary to keep colorscheme during :Reload
