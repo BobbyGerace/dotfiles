@@ -1,4 +1,5 @@
 local map = require("util").map
+local navic = require("nvim-navic")
 
 local on_attach = function(client, bufnr)
     vim.cmd("command! LspDef lua vim.lsp.buf.definition()")
@@ -28,7 +29,11 @@ local on_attach = function(client, bufnr)
     bmap("n", "ge", ":LspDiagLine<CR>", 'show diagnostics for line')
 
     if client.server_capabilities.document_formatting then
-        vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+      vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+    end
+
+    if client.server_capabilities.documentSymbolProvider then
+      navic.attach(client, bufnr)
     end
 end
 

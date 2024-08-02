@@ -55,7 +55,6 @@ require('packer').startup(function(use)
     'nvim-lualine/lualine.nvim',
     requires = {
       'kyazdani42/nvim-web-devicons',
-      opt = true
     },
     config = get_config('lualine')
   }
@@ -64,6 +63,12 @@ require('packer').startup(function(use)
   use {
     'lewis6991/gitsigns.nvim',
     config = get_config('gitsigns')
+  }
+
+  -- code breadcrumbs
+  use {
+    "SmiteshP/nvim-navic",
+    requires = "neovim/nvim-lspconfig"
   }
 
   -- commenting lines
