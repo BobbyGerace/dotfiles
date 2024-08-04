@@ -9,6 +9,4 @@ require('nightfox').setup({
   }
 })
 
--- test 123 hello
-
-apply_theme('carbonfox')
+apply_theme('duskfox')

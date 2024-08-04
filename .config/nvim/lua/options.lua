@@ -43,11 +43,6 @@ o.foldmethod = "expr"
 o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 o.foldlevel = 99
 
--- store this in a global for easy switching
-vim.g._theme = 'duskfox'
--- redundant, but necessary to keep colorscheme during :Reload
-vim.cmd('colorscheme ' .. vim.g._theme)
-
 -- if git wants to open an editor, do it in this nvim instance
 vim.cmd [[
   let $GIT_EDITOR = 'nvr -cc split --remote-wait'
