@@ -9,6 +9,9 @@ end
 require('lazy').setup({
   {
     'BobbyGerace/gym.nvim',
+    dependencies = {
+      'nvim-telescope/telescope.nvim',
+    },
     config = get_config('gym')
   },
 
@@ -45,11 +48,11 @@ require('lazy').setup({
   {
     'nvim-telescope/telescope.nvim',
     dependencies = {
-      { 'nvim-lua/plenary.nvim' },
-      { 'nvim-telescope/telescope-live-grep-args.nvim' },
-      { 'nvim-telescope/telescope-ui-select.nvim' },
-      { "nvim-telescope/telescope-file-browser.nvim" },
-      { "BobbyGerace/gym.nvim" },
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope-live-grep-args.nvim',
+      'nvim-telescope/telescope-ui-select.nvim',
+      'mollerhoj/telescope-recent-files.nvim',
+      "BobbyGerace/gym.nvim"
     },
     config = get_config('telescope')
   },
@@ -81,7 +84,7 @@ require('lazy').setup({
   {
     "SmiteshP/nvim-navic",
     dependencies = {
-      { "neovim/nvim-lspconfig" }
+      "neovim/nvim-lspconfig"
     }
   },
 
@@ -101,8 +104,8 @@ require('lazy').setup({
   {
     'neovim/nvim-lspconfig',
     dependencies = { 
-      { 'jose-elias-alvarez/nvim-lsp-ts-utils' },
-      { 'nvim-cmp' }
+      'jose-elias-alvarez/nvim-lsp-ts-utils',
+      'nvim-cmp'
     },
     config = get_config('lspconfig')
   },
@@ -111,12 +114,12 @@ require('lazy').setup({
   {
     'hrsh7th/nvim-cmp',
     dependencies = {
-      { 'hrsh7th/cmp-nvim-lsp' },
-      { 'hrsh7th/cmp-buffer' },
-      { 'hrsh7th/cmp-path' },
-      { 'hrsh7th/cmp-cmdline' },
-      { 'hrsh7th/cmp-vsnip' },
-      { 'hrsh7th/vim-vsnip' },
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
+      'hrsh7th/cmp-vsnip',
+      'hrsh7th/vim-vsnip',
     },
     config = get_config('cmp')
   },
@@ -125,6 +128,22 @@ require('lazy').setup({
   {
     'norcalli/nvim-colorizer.lua',
     config = get_config('colorizer')
+  },
+  
+  { 
+    'francoiscabrol/ranger.vim',
+    init = function() vim.g.ranger_map_keys = 0 end,
+    dependencies = {
+      'rbgrouleff/bclose.vim'
+    },
+    config = get_config('ranger')
+  },
+
+  -- indent guides
+  { 
+    'echasnovski/mini.indentscope', 
+    version = false, 
+    config = get_config('mini-indentscope')
   },
 
   -- tmux
