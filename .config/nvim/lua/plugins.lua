@@ -60,6 +60,9 @@ require('lazy').setup({
   -- syntaxy stuff?
   {
     'nvim-treesitter/nvim-treesitter',
+    dependencies = {
+      'RRethy/nvim-treesitter-endwise'
+    },
     version = nil,
     build = ':TSUpdate',
     config = get_config('treesitter')
