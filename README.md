@@ -4,18 +4,15 @@ Note: these instructions assume you're using macOS. They work with other environ
 
 ## Dependencies
 
-First install homebrew, node, and kitty
+First install homebrew, node, kitty, and neovim. (You may need to install the latest Neovim from source for all the plugins to work)
 
 ## Homebrew dependencies
 
 ```bash
 brew install \
 tmux \
-neovim \
 ranger \
 ripgrep \
-prettier \
-fsouza/prettierd/prettierd \
 jesseduffield/lazygit/lazygit \
 bat \
 git-delta
@@ -24,7 +21,7 @@ git-delta
 ## npm dependencies
 
 ```bash
-sudo npm install -g vtop typescript typescript-language-server
+sudo npm install -g vtop typescript typescript-language-server prettier @fsouza/prettierd
 ```
 
 ## ruby dependencies
@@ -39,14 +36,6 @@ IMPORTANT: Make sure nothing you care about will be overwritten by this command.
 
 cd into this repo and run `./install.sh`
 
-## Install Packer
-
-```
-git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-```
-
-Then run `:PackerSync` inside neovim to install plugins
-
 ## Fonts
 
 - install FiraCode Nerd Font Mono
@@ -59,7 +48,7 @@ Install tpm
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
-Then press `<prefix> + I` to install plugins
+Then start tmux and press `<prefix> + I` to install plugins
 
 ## System Settings
 
