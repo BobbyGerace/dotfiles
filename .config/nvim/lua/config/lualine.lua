@@ -1,19 +1,7 @@
 local utils = require("util")
 
-local function get_theme_name()
-  if vim.g._theme == "dracula" then
-    return "dracula-nvim"
-  elseif vim.g._theme == "rose-pine-moon" then
-    return "rose-pine"
-  elseif vim.g._theme == "tokyonight-night" then
-    return "tokyonight"
-  else
-    return vim.g._theme
-  end
-end
-
 -- Load the theme and clone it to avoid modifying the original theme
-local original = require("lualine.themes." .. get_theme_name())
+local original = require("lualine.themes." .. vim.g._lualine_theme)
 local theme = vim.deepcopy(original)
 
 for _, mode in pairs(theme) do

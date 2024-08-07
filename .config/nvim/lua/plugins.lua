@@ -1,3 +1,4 @@
+local colorschemes = require('config/colorscheme')
 require('config/lazy')
 
 local function get_config(name)
@@ -6,7 +7,7 @@ local function get_config(name)
   end
 end
 
-require('lazy').setup({
+local lazy_specs = {
   {
     'BobbyGerace/gym.nvim',
     dependencies = {
@@ -15,35 +16,6 @@ require('lazy').setup({
     config = get_config('gym')
   },
 
-  -- Themes
-  -- To change, set vim.g._theme in init.lua
-  -- {
-  --   'folke/tokyonight.nvim',
-  --   config = get_config('tokyonight')
-  -- },
-
-  {
-    'EdenEast/nightfox.nvim',
-    config = get_config('nightfox')
-  },
-
-  -- {
-  --   'Mofiqul/dracula.nvim',
-  --   config = get_config('dracula')
-  -- },
-
-  -- {
-  --   "catppuccin/nvim", 
-  --   as = "catppuccin",
-  --   config = get_config('catppuccin')
-  -- },
-
-  -- { 
-  --   'rose-pine/neovim', 
-  --   name = 'rose-pine',
-  --   config = get_config('rose-pine') 
-  -- },
-
   -- pickers for search / grep / etc
   {
     'nvim-telescope/telescope.nvim',
@@ -51,7 +23,6 @@ require('lazy').setup({
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope-live-grep-args.nvim',
       'nvim-telescope/telescope-ui-select.nvim',
-      'mollerhoj/telescope-recent-files.nvim',
       "BobbyGerace/gym.nvim"
     },
     config = get_config('telescope')
@@ -175,4 +146,8 @@ require('lazy').setup({
     'github/copilot.vim',
     config = get_config('copilot')
   },
-})
+}
+
+table.move(colorschemes, 1, #colorschemes, #lazy_specs + 1, lazy_specs)
+
+require('lazy').setup(lazy_specs);

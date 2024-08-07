@@ -4,20 +4,6 @@ local themes = require('telescope.themes')
 local builtin = require('telescope.builtin')
 local actions = require('telescope.actions')
 
-local fd_opts = function(initial_mode)
-  return {
-    hidden = true,
-    initial_mode = initial_mode or 'insert',
-    find_command = {
-      'rg',
-      '--files',
-      '--color=never',
-      "--no-ignore",
-      "--ignore-file=.gitignore",
-    }
-  }
-end
-
 telescope.setup {
   defaults = themes.get_ivy({
     borderchars = {
@@ -50,7 +36,17 @@ telescope.setup {
         return { "--hidden" }
       end
     },
-    find_files = fd_opts(),
+    find_files = {
+      hidden = true,
+      initial_mode = initial_mode or 'insert',
+      find_command = {
+        'rg',
+        '--files',
+        '--color=never',
+        "--no-ignore",
+        "--ignore-file=.gitignore",
+      }
+    },
     oldfiles = {
       initial_mode = 'normal',
     },
@@ -73,7 +69,6 @@ telescope.setup {
 telescope.load_extension("live_grep_args")
 telescope.load_extension("ui-select")
 telescope.load_extension("gym")
-telescope.load_extension("recent-files")
 
 local function custom_live_grep_args(opts)
   local defaults = {
@@ -94,18 +89,11 @@ local function custom_live_grep_args(opts)
   require('telescope').extensions.live_grep_args.live_grep_args(opts)
 end
 
-map('n', '<leader>p', function() telescope.extensions['recent-files'].recent_files(fd_opts()) end, 'find files')
+map('n', '<leader>p', function() builtin.find_files() end, 'find files')
 map('n', 'gr', function() builtin.lsp_references() end, 'go to references')
 map('n', 'gd', function() builtin.lsp_definitions() end, 'go to definitions')
 map('n', '<leader>l', function() builtin.buffers() end, 'view open buffers')
-map(
-  'n',
-  '<leader>j',
-  function() 
-    telescope.extensions['recent-files'].recent_files(fd_opts('normal'))
-  end,
-  'recent files'
-)
+map('n', '<leader>j', function() builtin.oldfiles() end, 'file history')
 map('n', '<leader>gs', function() builtin.git_status() end, 'view git status')
 map('n', '<leader>gh', function() builtin.git_bcommits() end, 'view buffer commit history')
 map('n', '<leader>e', function() builtin.diagnostics() end, 'view diagnostics')
