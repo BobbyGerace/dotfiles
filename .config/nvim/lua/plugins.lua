@@ -104,13 +104,15 @@ local lazy_specs = {
     config = get_config('colorizer')
   },
   
-  { 
-    'francoiscabrol/ranger.vim',
-    init = function() vim.g.ranger_map_keys = 0 end,
+  -- ranger-like file explorer
+  {
+    'simonmclean/triptych.nvim',
+    event = 'VeryLazy',
     dependencies = {
-      'rbgrouleff/bclose.vim'
+      'nvim-lua/plenary.nvim', -- required
+      'nvim-tree/nvim-web-devicons', -- optional
     },
-    config = get_config('ranger')
+    config = get_config('triptych')
   },
 
   -- indent guides

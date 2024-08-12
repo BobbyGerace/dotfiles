@@ -50,6 +50,11 @@ telescope.setup {
     oldfiles = {
       initial_mode = 'normal',
     },
+    buffers = {
+      sort_mru = true,
+      show_all_buffers = true,
+      ignore_current_buffer = true,
+    },
   },
   extensions = {
     ["ui-select"] = themes.get_cursor {
