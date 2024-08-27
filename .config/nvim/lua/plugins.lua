@@ -28,6 +28,14 @@ local lazy_specs = {
     config = get_config('telescope')
   },
 
+  {
+    "cbochs/grapple.nvim",
+    dependencies = {
+        { "nvim-tree/nvim-web-devicons", lazy = true }
+    },
+    config = get_config('grapple')
+  },
+
   -- syntaxy stuff?
   {
     'nvim-treesitter/nvim-treesitter',
@@ -150,6 +158,7 @@ local lazy_specs = {
   },
 }
 
+-- Add colorschemes to the end
 table.move(colorschemes, 1, #colorschemes, #lazy_specs + 1, lazy_specs)
 
 require('lazy').setup(lazy_specs);

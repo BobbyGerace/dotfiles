@@ -69,13 +69,25 @@ local config = {
           return utils.get_hlgroup("Normal")
         end,
         separator = "",
-        padding = {left = 2, right = 0}
+        padding = {left = 2, }
       },
       {
         "filename",
-        padding = {left = 0, right = 2},
+        -- padding = {left = 0, right = 0},
         fmt = function(name)
           return name
+        end
+      },
+      {
+        function()
+          return require("grapple").name_or_index()
+        end,
+        cond = function()
+          return package.loaded["grapple"] and require("grapple").exists()
+        end,
+        padding = { left = 0 },
+        fmt = function(name)
+          return "[" .. name .. "]"
         end
       }
     },
