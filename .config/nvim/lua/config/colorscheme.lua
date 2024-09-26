@@ -12,6 +12,9 @@ local themes = {
     -- theme_name = 'duskfox',
     -- theme_name = 'terafox',
   },
+  nordic = {
+    'AlexvZyl/nordic.nvim',
+  },
   ['night-owl'] = { 
     "oxfist/night-owl.nvim",
   },
@@ -49,7 +52,7 @@ local themes = {
   }
 }
 
-local theme_name = 'neomodern'
+local theme_name = 'nordic'
 local current_theme = themes[theme_name]
 
 local default_config = function() require(theme_name).setup({}) end

@@ -17,6 +17,7 @@
   "neomodern.nvim": { "branch": "main", "commit": "843698e7e3e6199da3e7c89ab9b3d8807d7be69a" },
   "night-owl.nvim": { "branch": "main", "commit": "87486a7157d49bc9ed43aab89432672deaf03110" },
   "nightfox.nvim": { "branch": "main", "commit": "d3e8b1acc095baf57af81bb5e89fe7c4359eb619" },
+  "nordic.nvim": { "branch": "main", "commit": "1ee4044077059b34eacd18d93613495a602c131f" },
   "nvim": { "branch": "main", "commit": "05206bbb6d500a339cd55a9486532c3871a4455e" },
   "nvim-cmp": { "branch": "main", "commit": "ae644feb7b67bf1ce4260c231d1d4300b19c6f30" },
   "nvim-colorizer.lua": { "branch": "master", "commit": "a065833f35a3a7cc3ef137ac88b5381da2ba302e" },
