@@ -1,8 +1,8 @@
 local themes = {
   tokyonight = {
     'folke/tokyonight.nvim',
-    theme_name = 'tokyonight-storm',
-    -- theme_name = 'tokyonight-night',
+    -- theme_name = 'tokyonight-storm',
+    theme_name = 'tokyonight-night',
     -- theme_name = 'tokyonight-moon',
   },
   nightfox = {
@@ -52,7 +52,7 @@ local themes = {
   }
 }
 
-local theme_name = 'nordic'
+local theme_name = 'tokyonight'
 local current_theme = themes[theme_name]
 
 local default_config = function() require(theme_name).setup({}) end

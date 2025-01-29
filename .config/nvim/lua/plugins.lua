@@ -112,15 +112,11 @@ local lazy_specs = {
     config = get_config('colorizer')
   },
   
-  -- ranger-like file explorer
+  -- file explorer
   {
-    'simonmclean/triptych.nvim',
-    event = 'VeryLazy',
-    dependencies = {
-      'nvim-lua/plenary.nvim', -- required
-      'nvim-tree/nvim-web-devicons', -- optional
-    },
-    config = get_config('triptych')
+    'stevearc/oil.nvim',
+    dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+    config = get_config('oil')
   },
 
   -- indent guides
