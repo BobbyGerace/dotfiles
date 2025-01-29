@@ -12,7 +12,6 @@
   "gym.nvim": { "branch": "main", "commit": "a58747bd72afd8df0d55d883e5cdeb0e6ac5ca55" },
   "lazy.nvim": { "branch": "main", "commit": "077102c5bfc578693f12377846d427f49bc50076" },
   "lualine.nvim": { "branch": "master", "commit": "544dd1583f9bb27b393f598475c89809c4d5e86b" },
-  "mini.icons": { "branch": "main", "commit": "54686be7d58807906cb2c8c2216e0bf9c044f19a" },
   "mini.indentscope": { "branch": "main", "commit": "1222393d9c5e8d92b913ccab6701a7164b21781c" },
   "neoformat": { "branch": "master", "commit": "b3b38589b39038dc12c2f5a59a828ed43439363a" },
   "neomodern.nvim": { "branch": "main", "commit": "843698e7e3e6199da3e7c89ab9b3d8807d7be69a" },
