@@ -3,7 +3,7 @@ local on_attach = require("config/shared/on_attach")
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-lspconfig.tsserver.setup({
+lspconfig.ts_ls.setup({
   init_options = vim.tbl_deep_extend(
     'force',
     require("nvim-lsp-ts-utils").init_options,
