@@ -146,12 +146,6 @@ local lazy_specs = {
 
   -- copy to clipboard over ssh
   {'ojroques/nvim-osc52'},
-
-  -- copilot
-  {
-    'github/copilot.vim',
-    config = get_config('copilot')
-  },
 }
 
 -- Add colorschemes to the end
