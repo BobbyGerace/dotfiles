@@ -16,6 +16,7 @@ dotfiles=(
   .tmux.conf
   .commonrc
   .bashrc
+  .wezterm.lua
 )
 
 # Symlink all dotfiles listed above to the right spot

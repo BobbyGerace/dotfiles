@@ -3,6 +3,18 @@ local on_attach = require("config/shared/on_attach")
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
+vim.diagnostic.config({
+  -- Use the default configuration
+  virtual_lines = true
+
+  -- Alternatively, customize specific options
+  -- virtual_lines = {
+  --  -- Only show virtual line diagnostics for the current cursor line
+  --  current_line = true,
+  -- },
+})
+
+
 lspconfig.ts_ls.setup({
   init_options = vim.tbl_deep_extend(
     'force',

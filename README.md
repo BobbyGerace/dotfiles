@@ -4,7 +4,7 @@ Note: these instructions assume you're using macOS. They work with other environ
 
 ## Dependencies
 
-First install homebrew, node, kitty, and neovim. (You may need to install the latest Neovim from source for all the plugins to work)
+First install homebrew, node, wezterm, and neovim. (You may need to install the latest Neovim from source for all the plugins to work)
 
 ## Homebrew dependencies
 
