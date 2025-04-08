@@ -102,3 +102,6 @@ map('n', '<leader>e', function() builtin.diagnostics() end, 'view diagnostics')
 map('n', '<leader>f', custom_live_grep_args, 'find in files')
 map('n', '<leader>q', function() builtin.quickfix() end, 'show quickfix list')
 map('n', '<leader>o', function() builtin.lsp_document_symbols() end, 'symbol outline')
+
+-- for easy colorscheme switching
+map('n', '<leader>C', function() builtin.colorscheme({ ignore_builtins = true, enable_preview = true }) end, 'colorscheme switching')

@@ -52,7 +52,7 @@ local themes = {
   }
 }
 
-local theme_name = 'tokyonight'
+local theme_name = 'night-owl'
 local current_theme = themes[theme_name]
 
 local default_config = function() require(theme_name).setup({}) end
