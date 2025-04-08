@@ -36,13 +36,25 @@ function M.get_hlgroup(name, fallback)
     local group = vim.api.nvim_get_hl(0, { name = name })
 
     local hl = {
-      fg = group.fg == nil and "NONE" or M.parse_hex(group.fg),
-      bg = group.bg == nil and "NONE" or M.parse_hex(group.bg),
+      fg = group.fg == nil and "background" or M.parse_hex(group.fg),
+      bg = group.bg == nil and "background" or M.parse_hex(group.bg),
     }
 
     return hl
   end
   return fallback or {}
 end
+
+function M.with_transparent_bg(name)
+  local group = vim.api.nvim_get_hl(0, { name = name })
+
+  local hl = {
+    fg = group.fg == nil and "background" or M.parse_hex(group.fg),
+    bg = "background"
+  }
+
+  return hl
+end
+
 
 return M

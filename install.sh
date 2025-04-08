@@ -7,7 +7,6 @@ set -e
 dotfiles=(
   scripts
   .config/nvim
-  .config/kitty
   .config/ranger
   .config/lazygit
   .gitconfig

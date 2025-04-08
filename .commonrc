@@ -10,8 +10,6 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 alias confurl="curl -K"
 
-alias tabname="kitty @ set-tab-title"
-
 alias confedit="nvim ~/dotfiles"
 
 export PATH="$HOME/scripts:$PATH"
@@ -43,11 +41,6 @@ alias history_all="cat ~/.zsh_history"
 alias luamake=$HOME/tools/lua-language-server/3rd/luamake/luamake
 
 export BAT_THEME=base16
-
-theme() {
-  cp ~/.config/kitty/themes/"$1".conf ~/.config/kitty/current-theme.conf
-  kitty @ set-colors --all --configured ~/.config/kitty/kitty.conf
-}
 
 # Load git prompt if it exists
 # We're going to need to change this if we ever use a different OS

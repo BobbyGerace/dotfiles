@@ -9,7 +9,7 @@ for _, mode in pairs(theme) do
   mode.a.gui = ""
 
   for _, section in pairs(mode) do
-    section.bg = nil
+    section.bg = 'background'
   end
 end
 
@@ -64,7 +64,7 @@ local config = {
         color = function()
           local _, hl = require("nvim-web-devicons").get_icon(vim.fn.expand("%:t"))
           if hl then
-            return hl
+            return utils.with_transparent_bg(hl)
           end
           return utils.get_hlgroup("Normal")
         end,

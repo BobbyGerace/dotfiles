@@ -75,8 +75,6 @@ if lua_ls_binary_path ~= "" then
   }
 end
 
-lspconfig.solargraph.setup{}
-
 lspconfig.hls.setup {
   on_attach = on_attach
 }

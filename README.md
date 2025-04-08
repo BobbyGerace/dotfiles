@@ -24,12 +24,6 @@ git-delta
 sudo npm install -g vtop typescript typescript-language-server prettier @fsouza/prettierd
 ```
 
-## ruby dependencies
-
-```bash
-sudo gem install solargraph rubocop
-```
-
 ## Install config files
 
 IMPORTANT: Make sure nothing you care about will be overwritten by this command. Check zshrc, bashrc, config files, etc

@@ -94,7 +94,7 @@ end
 map('n', '<leader>p', function() builtin.find_files() end, 'find files')
 map('n', 'gr', function() builtin.lsp_references() end, 'go to references')
 map('n', 'gd', function() builtin.lsp_definitions() end, 'go to definitions')
-map('n', '<leader>h', function() builtin.oldfiles() end, 'file history')
+map('n', '<leader>h', function() builtin.oldfiles({ only_cwd = true }) end, 'file history')
 map('n', '<leader>gs', function() builtin.git_status() end, 'view git status')
 map('n', '<leader>gh', function() builtin.git_bcommits() end, 'view buffer commit history')
 map('n', '<leader>e', function() builtin.diagnostics() end, 'view diagnostics')
