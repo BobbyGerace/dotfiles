@@ -34,6 +34,10 @@ lspconfig.ts_ls.setup({
   end,
 })
 
+lspconfig.rust_analyzer.setup{
+  on_attach = on_attach
+}
+
 local lua_ls_binary_path = vim.fn.exepath('lua-language-server')
 -- The config will break if we try to set this up without lls actually installed
 if lua_ls_binary_path ~= "" then
