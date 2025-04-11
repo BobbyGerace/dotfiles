@@ -75,6 +75,8 @@ lspconfig.hls.setup {
   on_attach = on_attach
 }
 
+lspconfig.tailwindcss.setup{}
+
 vim.diagnostic.config({ severity_sort = true })
 
 local signs = { Error = ">>", Warn = ">>", Hint = ">>", Info = ">>" }

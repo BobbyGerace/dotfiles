@@ -21,7 +21,13 @@ git-delta
 ## npm dependencies
 
 ```bash
-sudo npm install -g vtop typescript typescript-language-server prettier @fsouza/prettierd
+sudo npm install -g \
+vtop \
+typescript \
+typescript-language-server \
+prettier \
+@fsouza/prettierd \
+@tailwindcss/language-server
 ```
 
 ## Install config files
