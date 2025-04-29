@@ -2,6 +2,8 @@ local wk = require('which-key')
 
 local M = {}
 
+-- TODO: Move utils into helpers folder
+
 M.map = function(mode, keys, cmd, desc, opt)
   opt = opt or { noremap = true, silent = true }
   opt.desc = desc
@@ -55,6 +57,5 @@ function M.with_transparent_bg(name)
 
   return hl
 end
-
 
 return M

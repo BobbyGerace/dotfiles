@@ -1,3 +1,5 @@
+local create_lualine_theme = require('lib/theme').create_lualine_theme
+
 local themes = {
   tokyonight = {
     'folke/tokyonight.nvim',
@@ -49,10 +51,32 @@ local themes = {
       require('neomodern').load()
     end,
     lualine_name = 'neomodern'
-  }
+  },
+  ['no-clown-fiesta'] = {
+    "aktersnurra/no-clown-fiesta.nvim",
+    theme_config = function()
+      local palette = require("no-clown-fiesta.palette")
+
+      create_lualine_theme("no-clown-fiesta", {
+        normal = palette.blue,
+        insert = palette.green,
+        visual = palette.purple,
+        replace = palette.red,
+        command = palette.yellow,
+        bg = palette.bg,
+        fg = palette.fg,
+        alt_bg = palette.alt_bg,
+        alt_fg = palette.medium_gray,
+      })
+    end
+  },
+  ['kanagawa-paper'] = {
+    'thesimonho/kanagawa-paper.nvim',
+    lualine_name = 'kanagawa-paper-ink'
+  },
 }
 
-local theme_name = 'night-owl'
+local theme_name = 'kanagawa-paper'
 local current_theme = themes[theme_name]
 
 local default_config = function() require(theme_name).setup({}) end

@@ -5,6 +5,7 @@ local g = vim.g
 g.mapleader = ' ' -- use the spacebar as leader key
 o.completeopt = 'menu,menuone,noselect'
 o.signcolumn = 'yes'
+o.number = true -- relativenumber
 o.relativenumber = true -- relativenumber
 o.ignorecase = true -- ignore case when searching
 o.smartcase = true -- unless the search has a capital letter

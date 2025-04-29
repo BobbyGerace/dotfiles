@@ -1,6 +1,6 @@
 local map = require('util').map
 
-require('colorizer').setup({}, {
+require('colorizer').setup({ '*' }, {
   css = true
 })
 

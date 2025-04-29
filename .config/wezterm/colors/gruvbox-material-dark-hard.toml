@@ -1,0 +1,66 @@
+[colors]
+foreground = "#d4be98"
+background = "#1d2021"
+cursor_bg = "#d4be98"
+cursor_border = "#d4be98"
+cursor_fg = "#1d2021"
+selection_bg = "#3c3836"
+selection_fg = "#d4be98"
+split = "#504945"
+compose_cursor = "#ea6962"
+scrollbar_thumb = "#504945"
+
+ansi = [
+  "#1d2021", # black (bg0)
+  "#ea6962", # red
+  "#a9b665", # green
+  "#d8a657", # yellow
+  "#7daea3", # blue
+  "#d3869b", # magenta
+  "#89b482", # cyan
+  "#d4be98", # white (fg)
+]
+
+brights = [
+  "#282828", # bright black (bg1)
+  "#ea6962", # bright red
+  "#a9b665", # bright green
+  "#d8a657", # bright yellow
+  "#7daea3", # bright blue
+  "#d3869b", # bright magenta
+  "#89b482", # bright cyan
+  "#d4be98", # bright white
+]
+
+[colors.tab_bar]
+inactive_tab_edge = "#504945"
+background = "#1d2021"
+
+[colors.tab_bar.active_tab]
+fg_color = "#d4be98"
+bg_color = "#282828"
+
+[colors.tab_bar.inactive_tab]
+fg_color = "#928374"
+bg_color = "#1d2021"
+
+[colors.tab_bar.inactive_tab_hover]
+fg_color = "#928374"
+bg_color = "#282828"
+
+[colors.tab_bar.new_tab_hover]
+fg_color = "#d4be98"
+bg_color = "#282828"
+intensity = "Bold"
+
+[colors.tab_bar.new_tab]
+fg_color = "#d4be98"
+bg_color = "#1d2021"
+
+[metadata]
+aliases = []
+name = "Gruvbox Material Dark Hard"
+url = "https://github.com/sainnhe/gruvbox-material"
+upstream = "${upstream}"
+author = "Generated from palette"
+

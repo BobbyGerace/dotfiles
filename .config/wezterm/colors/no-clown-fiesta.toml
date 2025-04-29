@@ -1,0 +1,66 @@
+[colors]
+foreground = "#E1E1E1"
+background = "#151515"
+cursor_bg = "#D0D0D0"
+cursor_border = "#D0D0D0"
+cursor_fg = "#151515"
+selection_bg = "#202020"
+selection_fg = "#E1E1E1"
+split = "#373737"
+compose_cursor = "#AA759F"
+scrollbar_thumb = "#373737"
+
+ansi = [
+  "#151515", # black
+  "#b46958", # red
+  "#90A959", # green
+  "#F4BF75", # yellow
+  "#BAD7FF", # blue
+  "#AA759F", # magenta
+  "#88afa2", # cyan
+  "#E1E1E1", # white
+]
+
+brights = [
+  "#373737", # bright black
+  "#b46958", # bright red
+  "#90A959", # bright green
+  "#F4BF75", # bright yellow
+  "#BAD7FF", # bright blue
+  "#AA759F", # bright magenta
+  "#88afa2", # bright cyan
+  "#E1E1E1", # bright white
+]
+
+[colors.tab_bar]
+inactive_tab_edge = "#373737"
+background = "#151515"
+
+[colors.tab_bar.active_tab]
+fg_color = "#E1E1E1"
+bg_color = "#202020"
+
+[colors.tab_bar.inactive_tab]
+fg_color = "#727272"
+bg_color = "#171717"
+
+[colors.tab_bar.inactive_tab_hover]
+fg_color = "#727272"
+bg_color = "#171717"
+
+[colors.tab_bar.new_tab_hover]
+fg_color = "#E1E1E1"
+bg_color = "#202020"
+intensity = "Bold"
+
+[colors.tab_bar.new_tab]
+fg_color = "#E1E1E1"
+bg_color = "#151515"
+
+[metadata]
+aliases = []
+name = "No Clown Fiesta"
+url = "https://github.com/your-repo/no-clown-fiesta"
+upstream = "${upstream}"
+author = "Generated from your palette"
+
