@@ -76,7 +76,7 @@ local themes = {
   },
 }
 
-local theme_name = 'kanagawa-paper'
+local theme_name = 'nightfox'
 local current_theme = themes[theme_name]
 
 local default_config = function() require(theme_name).setup({}) end

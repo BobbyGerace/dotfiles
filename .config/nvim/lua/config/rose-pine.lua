@@ -1,4 +1,4 @@
-local apply_theme = require('util').apply_theme
+local apply_theme = require('lib/theme').apply_theme
 require('rose-pine').setup({
   disable_italics = true,
   highlight_groups = {

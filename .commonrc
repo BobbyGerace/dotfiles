@@ -49,3 +49,11 @@ if [[ -f /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
  ]]; then
     source /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
 fi
+
+# easier filtering
+pnpmf() {
+  local pkg_prefix=$1
+  shift
+  pnpm --filter "${pkg_prefix}*" "$@"
+}
+

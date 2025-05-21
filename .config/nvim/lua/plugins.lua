@@ -82,6 +82,9 @@ local lazy_specs = {
   -- Make sure . works on plugins
   { 'tpope/vim-repeat' },
 
+  -- Nice git stuff
+  { 'tpope/vim-fugitive' },
+
   -- language server stuff
   {
     'neovim/nvim-lspconfig',
@@ -146,6 +149,24 @@ local lazy_specs = {
 
   -- copy to clipboard over ssh
   {'ojroques/nvim-osc52'},
+
+  {
+    "yetone/avante.nvim",
+    event = "VeryLazy",
+    version = false, -- Never set this value to "*"! Never!
+    opts = {
+      provider = "claude",
+    },
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "stevearc/dressing.nvim",
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      --- The below dependencies are optional,
+      "nvim-telescope/telescope.nvim",
+      "hrsh7th/nvim-cmp",
+    },
+  }
 }
 
 -- Add colorschemes to the end

@@ -1,4 +1,4 @@
-local utils = require("util")
+local theme_util = require("lib/theme")
 
 -- Load the theme and clone it to avoid modifying the original theme
 local original = require("lualine.themes." .. vim.g._lualine_theme)
@@ -33,7 +33,7 @@ local config = {
         cond = function()
           return package.loaded["nvim-navic"] and require("nvim-navic").is_available()
         end,
-        color = utils.get_hlgroup("Comment", nil)
+        color = theme_util.get_hlgroup("Comment", nil)
       }
     },
     lualine_x = {
@@ -64,9 +64,9 @@ local config = {
         color = function()
           local _, hl = require("nvim-web-devicons").get_icon(vim.fn.expand("%:t"))
           if hl then
-            return utils.with_transparent_bg(hl)
+            return theme_util.with_transparent_bg(hl)
           end
-          return utils.get_hlgroup("Normal")
+          return theme_util.get_hlgroup("Normal")
         end,
         separator = "",
         padding = {left = 2, }
