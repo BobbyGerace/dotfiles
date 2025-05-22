@@ -9,7 +9,7 @@ local config = wezterm.config_builder()
 config.color_scheme = 'Everforest Dark (Gogh)'
 
 -- Ligature test: => === 
-config.font = wezterm.font 'FiraCode Nerd Font Mono'
+config.font = wezterm.font 'Maple Mono NF'
 
 config.enable_tab_bar = false
 

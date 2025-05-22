@@ -38,7 +38,7 @@ cd into this repo and run `./install.sh`
 
 ## Fonts
 
-- install FiraCode Nerd Font Mono
+- install Maple Mono NF
 
 ## Install tmux plugins
 
