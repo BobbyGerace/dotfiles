@@ -9,10 +9,11 @@ local themes = {
   },
   nightfox = {
     'EdenEast/nightfox.nvim',
-    theme_name = 'nordfox',
+    -- theme_name = 'nordfox',
     -- theme_name = 'carbonfox',
     -- theme_name = 'duskfox',
     -- theme_name = 'terafox',
+    theme_name = 'dawnfox',
   },
   nordic = {
     'AlexvZyl/nordic.nvim',
@@ -70,13 +71,20 @@ local themes = {
       })
     end
   },
-  ['kanagawa-paper'] = {
-    'thesimonho/kanagawa-paper.nvim',
-    lualine_name = 'kanagawa-paper-ink'
+  kanso = {
+    "webhooked/kanso.nvim",
+    -- theme_name = "kanso-ink",
+    theme_name = "kanso-zen",
+    lualine_name = "kanso"
   },
+  everforest = { 
+    "neanias/everforest-nvim",
+    theme_config = function() 
+    end,
+  }
 }
 
-local theme_name = 'nightfox'
+local theme_name = 'everforest'
 local current_theme = themes[theme_name]
 
 local default_config = function() require(theme_name).setup({}) end
