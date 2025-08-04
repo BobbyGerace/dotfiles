@@ -73,8 +73,9 @@ local themes = {
   },
   kanso = {
     "webhooked/kanso.nvim",
-    -- theme_name = "kanso-ink",
-    theme_name = "kanso-zen",
+    -- theme_name = "kanso-mist",
+    -- theme_name = "kanso-zen",
+    theme_name = "kanso-ink",
     lualine_name = "kanso"
   },
   everforest = { 
@@ -84,7 +85,7 @@ local themes = {
   }
 }
 
-local theme_name = 'everforest'
+local theme_name = 'kanso'
 local current_theme = themes[theme_name]
 
 local default_config = function() require(theme_name).setup({}) end
