@@ -22,6 +22,7 @@ merge_tables(config, require('themes.kanso-ink'))
 config.font = wezterm.font 'Maple Mono NF'
 
 config.enable_tab_bar = false
+config.line_height = 1.2
 
 
 return config
