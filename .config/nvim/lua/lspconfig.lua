@@ -1,6 +1,4 @@
-local lspconfig = require("lspconfig")
 local on_attach = require("config/shared/on_attach")
-
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 vim.diagnostic.config({
@@ -10,46 +8,26 @@ vim.diagnostic.config({
   },
 })
 
-
-lspconfig.ts_ls.setup({
-  init_options = vim.tbl_deep_extend(
-    'force',
-    require("nvim-lsp-ts-utils").init_options,
-    {
-      preferences = {
-        importModuleSpecifierPreference = "relative",
-      },
-    }
-  ),
-  capabilities,
-  on_attach = function(client, bufnr)
-    client.server_capabilities.document_formatting = false
-    client.server_capabilities.document_range_formatting = false
-
-    local ts_utils = require("nvim-lsp-ts-utils")
-    ts_utils.setup {}
-    ts_utils.setup_client(client)
-
-    on_attach(client, bufnr)
-  end,
-})
-
-lspconfig.rust_analyzer.setup{
-  on_attach = on_attach
+-- Rust
+vim.lsp.config.rust_analyzer = {
+  cmd = { 'rust-analyzer' },
+  filetypes = { 'rust' },
+  on_attach = on_attach,
+  capabilities = capabilities,
 }
 
+-- Lua Language Server
 local lua_ls_binary_path = vim.fn.exepath('lua-language-server')
--- The config will break if we try to set this up without lls actually installed
 if lua_ls_binary_path ~= "" then
-  local lua_ls_root_path = vim.fn.fnamemodify(lua_ls_binary_path, ':h')
-
   local runtime_path = vim.split(package.path, ';')
   table.insert(runtime_path, "lua/?.lua")
   table.insert(runtime_path, "lua/?/init.lua")
 
-  lspconfig.lua_ls.setup {
-    cmd = { lua_ls_binary_path, "-E", lua_ls_root_path .. "/main.lua" };
+  vim.lsp.config.lua_ls = {
+    cmd = { lua_ls_binary_path },
+    filetypes = { 'lua' },
     on_attach = on_attach,
+    capabilities = capabilities,
     settings = {
       Lua = {
         runtime = {
@@ -75,13 +53,27 @@ if lua_ls_binary_path ~= "" then
   }
 end
 
-lspconfig.eslint.setup {}
-
-lspconfig.hls.setup {
-  on_attach = on_attach
+-- ESLint
+vim.lsp.config.eslint = {
+  cmd = { 'vscode-eslint-language-server', '--stdio' },
+  filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+  capabilities = capabilities,
 }
 
-lspconfig.tailwindcss.setup{}
+-- Haskell
+vim.lsp.config.hls = {
+  cmd = { 'haskell-language-server-wrapper', '--lsp' },
+  filetypes = { 'haskell', 'lhaskell' },
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+-- Tailwind CSS
+vim.lsp.config.tailwindcss = {
+  cmd = { 'tailwindcss-language-server', '--stdio' },
+  filetypes = { 'css', 'scss', 'sass', 'html', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+  capabilities = capabilities,
+}
 
 vim.diagnostic.config({ severity_sort = true })
 

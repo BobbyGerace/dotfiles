@@ -6,4 +6,5 @@ require("plugins")
 require("mappings")
 -- Vim autocommands/autogroups
 require("autocmd")
-
+-- lsp setup
+require("lspconfig")
