@@ -18,6 +18,6 @@ vim.cmd([[
 vim.cmd([[
   augroup fmt
     autocmd!
-    au BufWritePre *.js,*.tsx,*.ts,*.jsx,*.css,*.scss,*.html,*.json,*.yml,*.md try | undojoin | Neoformat | catch /E790/ | Neoformat | endtry
+    au BufWritePre *.js,*.tsx,*.ts,*.jsx,*.css,*.scss,*.html,*.json,*.yml,*.md,*.go try | undojoin | Neoformat | catch /E790/ | Neoformat | endtry
   augroup END
 ]])

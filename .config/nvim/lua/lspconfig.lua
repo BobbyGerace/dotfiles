@@ -8,6 +8,19 @@ vim.diagnostic.config({
   },
 })
 
+-- Go
+vim.lsp.config.gopls = {
+  cmd = { 'gopls' },
+  filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
+  root_dir = function(bufnr, on_dir)
+    local fname = vim.api.nvim_buf_get_name(bufnr)
+    on_dir(vim.fs.root(fname, 'go.work') or vim.fs.root(fname, 'go.mod') or vim.fs.root(fname, '.git'))
+  end,
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+vim.lsp.enable('gopls')
+
 -- Rust
 vim.lsp.config.rust_analyzer = {
   cmd = { 'rust-analyzer' },
