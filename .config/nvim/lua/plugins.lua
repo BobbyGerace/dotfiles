@@ -85,14 +85,21 @@ local lazy_specs = {
   -- Nice git stuff
   { 'tpope/vim-fugitive' },
 
-  -- language server stuff
+
+  -- TypeScript tools
   {
-    'neovim/nvim-lspconfig',
-    dependencies = { 
-      'jose-elias-alvarez/nvim-lsp-ts-utils',
-      'nvim-cmp'
-    },
-    config = get_config('lspconfig')
+    "pmizio/typescript-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("typescript-tools").setup({
+        on_attach = require("config/shared/on_attach"),
+        settings = {
+          preferences = {
+            importModuleSpecifierPreference = "relative",
+          },
+        },
+      })
+    end,
   },
 
   -- autocomplete

@@ -12,6 +12,7 @@ dotfiles=(
   .config/lazygit
   .gitconfig
   .zshrc
+  .aider.conf.yml
   .zsh_theme.sh
   .tmux.conf
   .commonrc

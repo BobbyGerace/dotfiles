@@ -23,3 +23,6 @@ PROMPT='
 %(?.%F{green}.%F{red})λ%f '
 
 # Some other nice prompt characters:  ➜ λ
+
+. "$HOME/.local/bin/env"
+export PATH="$HOME/.local/bin:$PATH"

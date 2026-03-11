@@ -85,7 +85,7 @@ local themes = {
   }
 }
 
-local theme_name = 'kanso'
+local theme_name = 'tokyonight'
 local current_theme = themes[theme_name]
 
 local default_config = function() require(theme_name).setup({}) end
