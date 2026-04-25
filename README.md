@@ -15,7 +15,8 @@ ranger \
 ripgrep \
 jesseduffield/lazygit/lazygit \
 bat \
-git-delta
+git-delta \
+dotnet
 ```
 
 ## npm dependencies

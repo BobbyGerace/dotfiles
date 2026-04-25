@@ -81,6 +81,23 @@ vim.lsp.config.hls = {
   capabilities = capabilities,
 }
 
+-- C#
+local csharp_ls_path = vim.fn.exepath('csharp-ls')
+if csharp_ls_path ~= "" then
+  vim.lsp.config.csharp_ls = {
+    cmd = { csharp_ls_path },
+    cmd_env = { DOTNET_ROOT = '/usr/local/opt/dotnet/libexec' },
+    filetypes = { 'cs' },
+    root_dir = function(bufnr, on_dir)
+      local fname = vim.api.nvim_buf_get_name(bufnr)
+      on_dir(vim.fs.root(fname, '*.sln') or vim.fs.root(fname, '*.csproj') or vim.fs.root(fname, '.git'))
+    end,
+    on_attach = on_attach,
+    capabilities = capabilities,
+  }
+  vim.lsp.enable('csharp_ls')
+end
+
 -- Tailwind CSS
 vim.lsp.config.tailwindcss = {
   cmd = { 'tailwindcss-language-server', '--stdio' },

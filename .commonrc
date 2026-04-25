@@ -2,6 +2,8 @@
 
 export PATH="$HOME/tools/lua-language-server/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
+export DOTNET_ROOT=/usr/local/opt/dotnet/libexec
+export PATH="$HOME/.dotnet/tools:$PATH"
 
 # added by Snowflake SnowSQL installer v1.2
 export PATH=/Applications/SnowSQL.app/Contents/MacOS:$PATH
