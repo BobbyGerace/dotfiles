@@ -42,6 +42,7 @@ local lazy_specs = {
     dependencies = {
       'RRethy/nvim-treesitter-endwise'
     },
+    lazy = false,
     version = nil,
     build = ':TSUpdate',
     config = get_config('treesitter')

@@ -86,7 +86,7 @@ local csharp_ls_path = vim.fn.exepath('csharp-ls')
 if csharp_ls_path ~= "" then
   vim.lsp.config.csharp_ls = {
     cmd = { csharp_ls_path },
-    cmd_env = { DOTNET_ROOT = '/usr/local/opt/dotnet/libexec' },
+    cmd_env = { DOTNET_ROOT = '/opt/homebrew/opt/dotnet/libexec' },
     filetypes = { 'cs' },
     root_dir = function(bufnr, on_dir)
       local fname = vim.api.nvim_buf_get_name(bufnr)

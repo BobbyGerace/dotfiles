@@ -26,3 +26,5 @@ PROMPT='
 
 . "$HOME/.local/bin/env"
 export PATH="$HOME/.local/bin:$PATH"
+export DOTNET_ROOT=/opt/homebrew/opt/dotnet/libexec
+export PATH="$DOTNET_ROOT:$PATH"
