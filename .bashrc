@@ -31,3 +31,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 . "$HOME/.cargo/env"
 . "$HOME/.local/bin/env"
+
+# .NET SDK
+export PATH="${HOME}/.dotnet:${HOME}/.dotnet/tools:${PATH}"
+export DOTNET_ROOT="${HOME}/.dotnet"

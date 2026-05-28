@@ -26,5 +26,15 @@ PROMPT='
 
 . "$HOME/.local/bin/env"
 export PATH="$HOME/.local/bin:$PATH"
-export DOTNET_ROOT=/opt/homebrew/opt/dotnet/libexec
-export PATH="$DOTNET_ROOT:$PATH"
+export DOTNET_ROOT=/usr/local/share/dotnet
+
+# bun completions
+[ -s "/Users/robert/.bun/_bun" ] && source "/Users/robert/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+export PATH="$PATH:/usr/local/share/dotnet"
+
+eval "$(fnm env --use-on-cd)"
