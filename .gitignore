@@ -4,3 +4,4 @@ lazygit
 .config/ranger/history
 .config/ranger/tagged
 .aider*
+.config/hunk/state.json

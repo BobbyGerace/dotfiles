@@ -10,6 +10,7 @@ dotfiles=(
   .config/wezterm
   .config/ranger
   .config/lazygit
+  .config/hunk
   .gitconfig
   .zshrc
   .aider.conf.yml
