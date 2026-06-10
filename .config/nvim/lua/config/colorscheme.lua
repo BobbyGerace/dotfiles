@@ -27,9 +27,9 @@ local themes = {
   },
   catppuccin = {
     "catppuccin/nvim", 
-    theme_name = 'catppuccin-mocha',
+    -- theme_name = 'catppuccin-mocha',
     -- theme_name = 'catppuccin-frappe',
-    -- theme_name = 'catppuccin-macchiato',
+    theme_name = 'catppuccin-macchiato',
   },
   ['rose-pine'] = { 
     'rose-pine/neovim', 
@@ -85,7 +85,7 @@ local themes = {
   }
 }
 
-local theme_name = 'tokyonight'
+local theme_name = 'catppuccin'
 local current_theme = themes[theme_name]
 
 local default_config = function() require(theme_name).setup({}) end

@@ -23,12 +23,12 @@ dotnet
 
 ```bash
 sudo npm install -g \
-vtop \
 typescript \
 typescript-language-server \
 prettier \
 @fsouza/prettierd \
-@tailwindcss/language-server
+@tailwindcss/language-server \
+hunkdiff
 ```
 
 ## Install config files

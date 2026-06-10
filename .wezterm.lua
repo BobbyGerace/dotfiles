@@ -13,16 +13,17 @@ end
 -- Seems like most of the color schemes I use are already defined,
 -- but I can define more color schemes by dropping the toml files
 -- in .config/wezterm/colors if I need to (use the name in metadata)
-config.color_scheme = 'tokyonight_night'
+config.color_scheme = 'catppuccin-macchiato'
 
 -- OR import a custom theme config object and merge it
 -- merge_tables(config, require('themes.kanso-ink'))
 
 -- Ligature test: => === 
 config.font = wezterm.font 'Maple Mono NF'
+config.font_size = 13
 
 config.enable_tab_bar = false
-config.line_height = 1.2
+config.line_height = 1.1
 
 
 return config
